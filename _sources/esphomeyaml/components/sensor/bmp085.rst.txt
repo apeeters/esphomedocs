@@ -1,0 +1,63 @@
+BMP085 Temperature+Pressure Sensor
+==================================
+
+The BMP085 sensor platform allows you to use your BMP085
+(`datasheet <https://www.sparkfun.com/datasheets/Components/General/BST-BMP085-DS000-05.pdf>`__,
+`adafruit <https://www.adafruit.com/product/391>`__), BMP180
+(`datasheet <https://cdn-shop.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf>`__,
+`adafruit <https://www.adafruit.com/product/1603>`__) and BMP280
+(`datasheet <https://cdn-shop.adafruit.com/datasheets/BST-BMP280-DS001-11.pdf>`__,
+`adafruit <https://www.adafruit.com/product/2651>`__) temperature and
+pressure sensors with esphomelib. The :ref:`I²C <i2c>` is required to be set up in
+your configuration for this sensor to work.
+
+.. figure:: images/bmp180-full.jpg
+    :align: center
+    :width: 50.0%
+
+    BMP180 Temperature & Pressure Sensor..
+
+.. figure:: images/temperature-pressure.png
+    :align: center
+    :width: 80.0%
+
+.. code:: yaml
+
+    # Example configuration entry
+    sensor:
+      - platform: bmp085
+        temperature:
+          name: "Outside Temperature"
+        pressure:
+          name: "Outside Pressure"
+        update_interval: 15s
+
+Configuration variables:
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- **temperature** (**Required**): The information for the temperature sensor.
+
+  - **name** (**Required**, string): The name for the temperature
+    sensor.
+  - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - All other options from :ref:`Sensor <config-sensor>` and :ref:`MQTT Component <config-mqtt-component>`.
+
+- **pressure** (**Required**): The information for the pressure sensor.
+
+  - **name** (**Required**, string): The name for the pressure sensor.
+  - **id** (*Optional*, :ref:`config-id`): Set the ID of this sensor for use in lambdas.
+  - All other options from :ref:`Sensor <config-sensor>` and :ref:`MQTT Component <config-mqtt-component>`.
+
+-  **address** (*Optional*, int): Manually specify the i^2c address of
+   the sensor. Defaults to ``0x77``.
+-  **update_interval** (*Optional*, :ref:`config-time`): The interval to check the
+   sensor. Defaults to ``15s``. See :ref:`sensor-default_filter`.
+
+See Also
+^^^^^^^^
+
+- :ref:`sensor-filters`
+- :doc:`bme280`
+- :doc:`bme680`
+- :doc:`API Reference </api/sensor/bmp085>`
+- `Edit this page on GitHub <https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/bmp085.rst>`__

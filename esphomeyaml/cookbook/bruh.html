@@ -1,0 +1,58 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>BRUH Multisensor &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="TEMT6000"href="temt6000.html"><link rel="prev"title="Passive Infrared Sensor"href="pir.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="bruh-multisensor"><h1>BRUH Multisensor<a class="headerlink"href="#bruh-multisensor"title="Permalink to this headline">¶</a></h1><p>The BRUH Multisensor is a great introductory project into Home Automation with an amazing setup tutorial. And fortunately esphomelib has complete support for all the stuff used by the Multisensor 🎉</p><iframe width="560"height="315"src="https://www.youtube.com/embed/jpjfVc-9IrQ"frameborder="0"allow="autoplay; encrypted-media"allowfullscreen></iframe><p>Thank you very much to <a class="reference external"href="https://github.com/jackjohnsonuk">&#64;jackjohnsonuk</a> for providing this configuration file 😀<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">NODE_NAME</span><span class="o">&gt;</span>
+  <span class="n">platform</span><span class="p">:</span> <span class="n">ESP8266</span>
+  <span class="n">board</span><span class="p">:</span> <span class="n">nodemcuv2</span>
+
+<span class="n">wifi</span><span class="p">:</span>
+  <span class="n">ssid</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">SSID</span><span class="o">&gt;</span>
+  <span class="n">password</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">PASSWORD</span><span class="o">&gt;</span>
+
+<span class="n">mqtt</span><span class="p">:</span>
+  <span class="n">broker</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">MQTT_BROKER</span><span class="o">&gt;</span>
+  <span class="n">username</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">USER</span><span class="o">&gt;</span>
+  <span class="n">password</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">PASSWORD</span><span class="o">&gt;</span>
+
+<span class="c1"># Enable logging</span>
+<span class="n">logger</span><span class="p">:</span>
+
+<span class="n">ota</span><span class="p">:</span>
+
+<span class="n">sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">dht</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D7</span>
+    <span class="n">temperature</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Multisensor Temperature&quot;</span>
+    <span class="n">humidity</span><span class="p">:</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Multisensor Humidity&quot;</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">adc</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">A0</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Multisensor Brightness&quot;</span>
+    <span class="n">unit_of_measurement</span><span class="p">:</span> <span class="n">lux</span>
+    <span class="n">filters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="k">lambda</span><span class="p">:</span> <span class="o">&gt;-</span>
+          <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">10000.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2000000.0</span><span class="p">;</span>
+
+<span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D5</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Multisensor Motion&quot;</span>
+    <span class="n">device_class</span><span class="p">:</span> <span class="n">motion</span>
+
+<span class="n">output</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">esp8266_pwm</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D1</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">redgpio</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">esp8266_pwm</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D2</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">greengpio</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">esp8266_pwm</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D3</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">bluegpio</span>
+
+<span class="n">light</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">rgb</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Multisensor Light&quot;</span>
+    <span class="n">red</span><span class="p">:</span> <span class="n">redgpio</span>
+    <span class="n">green</span><span class="p">:</span> <span class="n">greengpio</span>
+    <span class="n">blue</span><span class="p">:</span> <span class="n">bluegpio</span>
+</pre></div></div><div class="section"id="see-also"><h2>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><a class="reference internal"href="../devices/nodemcu_esp8266.html"><span class="doc">NodeMCU ESP8266</span></a><li><a class="reference internal"href="pir.html"><span class="doc">Passive Infrared Sensor</span></a><li><a class="reference internal"href="temt6000.html"><span class="doc">TEMT6000</span></a><li><a class="reference internal"href="../components/light/rgb.html"><span class="doc">RGB Light</span></a><li><a class="reference internal"href="../components/output/esp8266_pwm.html"><span class="doc">ESP8266 Software PWM Output</span></a><li><a class="reference internal"href="../components/sensor/dht.html"><span class="doc">DHT Temperature+Humidity Sensor</span></a><li><a class="reference internal"href="../components/sensor/adc.html"><span class="doc">Analog To Digital Sensor</span></a><li><a class="reference internal"href="../components/binary_sensor/gpio.html"><span class="doc">GPIO Binary Sensor</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/cookbook/bruh.rst">Edit this page on GitHub</a></ul></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Cookbook</a><ul><li>Previous: <a href="pir.html"title="previous chapter">Passive Infrared Sensor</a><li>Next: <a href="temt6000.html"title="next chapter">TEMT6000</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/cookbook/bruh.rst.txt"rel="nofollow">Page source</a></div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Simple Garage Door &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Passive Infrared Sensor"href="pir.html"><link rel="prev"title="Cookbook"href="index.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="simple-garage-door"><h1>Simple Garage Door<a class="headerlink"href="#simple-garage-door"title="Permalink to this headline">¶</a></h1><p>The following is a possible configuration file for garage doors that are controlled by two relays: One for opening and another one for closing the garage door. When either one of them is turned on for a short period of time, the close/open action begins.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D3</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Garage Door Open Switch&quot;</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">open_switch</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D4</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Garage Door Close Switch&quot;</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">close_switch</span>
+<span class="n">cover</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">template</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Garage Door&quot;</span>
+    <span class="n">open_action</span><span class="p">:</span>
+      <span class="c1"># Cancel any previous action</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close_switch</span>
+      <span class="c1"># Turn the OPEN switch on briefly</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_on</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">open_switch</span>
+      <span class="o">-</span> <span class="n">delay</span><span class="p">:</span> <span class="mf">0.1</span><span class="n">s</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">open_switch</span>
+    <span class="n">close_action</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">open_switch</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_on</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close_switch</span>
+      <span class="o">-</span> <span class="n">delay</span><span class="p">:</span> <span class="mf">0.1</span><span class="n">s</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close_switch</span>
+    <span class="n">stop_action</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close_switch</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">open_switch</span>
+    <span class="n">optimistic</span><span class="p">:</span> <span class="n">true</span>
+</pre></div></div><div class="section"id="see-also"><h2>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><a class="reference internal"href="../guides/automations.html"><span class="doc">Automations And Templates</span></a><li><a class="reference internal"href="../components/cover/template.html"><span class="doc">Template Cover</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/cookbook/garage-door.rst">Edit this page on GitHub</a></ul></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Cookbook</a><ul><li>Previous: <a href="index.html"title="previous chapter">Cookbook</a><li>Next: <a href="pir.html"title="next chapter">Passive Infrared Sensor</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/cookbook/garage-door.rst.txt"rel="nofollow">Page source</a></div>

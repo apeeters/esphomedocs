@@ -1,0 +1,58 @@
+Output Component
+================
+
+Each platform of the ``output`` domain exposes some output to
+esphomelib. These are grouped into two categories: ``binary`` outputs
+(that can only be ON/OFF) and ``float`` outputs (like PWM, can output
+any rational value between 0 and 1).
+
+.. _config-output:
+
+Base Output Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each output platform extends this configuration schema.
+
+.. code:: yaml
+
+    # Example configuration entry
+    output:
+      - platform: ...
+        id: myoutput_id
+        power_supply: power_supply_id
+        inverted: False
+        max_power: 0.75
+
+Configuration variables:
+
+- **id** (**Required**, :ref:`config-id`): The id to use for this output component.
+- **power_supply** (*Optional*, :ref:`config-id`): The :doc:`power
+  supply </esphomeyaml/components/power_supply>` to connect to
+  this output. When the output is enabled, the power supply will
+  automatically be switched on too.
+- **inverted** (*Optional*, boolean): If the output should be treated
+  as inverted. Defaults to ``False``.
+- **max_power** (*Optional*, float): Only for float outputs. Sets the
+  maximum output value of this output platform. Each value will be
+  multiplied by this. Must be in range from 0 to 1. Defaults to 1.
+
+Full Output Index
+^^^^^^^^^^^^^^^^^
+
+- :doc:`/esphomeyaml/components/switch/output`
+- :doc:`/esphomeyaml/components/power_supply`
+- :doc:`/esphomeyaml/components/light/binary`
+- :doc:`/esphomeyaml/components/light/monochromatic`
+- :doc:`/esphomeyaml/components/light/rgb`
+- :doc:`/esphomeyaml/components/fan/binary`
+- :doc:`/esphomeyaml/components/fan/speed`
+- :doc:`API Reference </api/output/index>`
+- `Edit this page on GitHub <https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/output/index.rst>`__
+
+.. toctree::
+    :maxdepth: 1
+
+    esp8266_pwm.rst
+    gpio.rst
+    ledc.rst
+    pca9685.rst
