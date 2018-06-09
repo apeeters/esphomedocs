@@ -56,8 +56,9 @@
   <span class="c1"># Register the green LED as a dimmable output ....</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">esp8266_pwm</span>
     <span class="nb">id</span><span class="p">:</span> <span class="n">s20_green_led</span>
-    <span class="n">pin</span><span class="p">:</span> <span class="n">GPIO13</span>
-    <span class="n">inverted</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">pin</span><span class="p">:</span>
+      <span class="n">number</span><span class="p">:</span> <span class="n">GPIO13</span>
+      <span class="n">inverted</span><span class="p">:</span> <span class="kc">True</span>
 
 <span class="n">light</span><span class="p">:</span>
   <span class="c1"># ... and then make a light out of it.</span>
@@ -73,7 +74,7 @@
     <span class="nb">id</span><span class="p">:</span> <span class="n">s20_green_led</span>
     <span class="n">pin</span><span class="p">:</span>
       <span class="n">number</span><span class="p">:</span> <span class="n">GPIO13</span>
-    <span class="n">inverted</span><span class="p">:</span> <span class="kc">True</span>
+      <span class="n">inverted</span><span class="p">:</span> <span class="kc">True</span>
   <span class="c1"># Note: do *not* make the relay a dimmable (PWM) signal, relays cannot handle that</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">binary</span>
     <span class="nb">id</span><span class="p">:</span> <span class="n">s20_relay</span>
