@@ -1,7 +1,136 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>TSL2561 Ambient Light Sensor &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../../_static/pygments.css"type="text/css"><script src="../../../_static/documentation_options.js"></script><script src="../../../_static/jquery.js"></script><script src="../../../_static/underscore.js"></script><script src="../../../_static/doctools.js"></script><link rel="index"title="Index"href="../../../genindex.html"><link rel="search"title="Search"href="../../../search.html"><link rel="next"title="SHT3X-D Temperature+Humidity Sensor"href="sht3xd.html"><link rel="prev"title="BME680 Temperature+Pressure+Humidity+Gas Sensor"href="bme680.html"><link rel="stylesheet"href="../../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="tsl2561-ambient-light-sensor"><h1>TSL2561 Ambient Light Sensor<a class="headerlink"href="#tsl2561-ambient-light-sensor"title="Permalink to this headline">¶</a></h1><div class="admonition warning"><p class="first admonition-title">Warning<p class="last">This sensor is experimental has not been fully tested yet as I do not own all sensors. If you can verify it works (or if it doesn’t), please notify me on <a class="reference external"href="https://discord.gg/KhAMKrd">discord</a>.</div><p>The <code class="docutils literal notranslate"><span class="pre">tsl2561</span></code> sensor platform allows you to use your BH1750 (<a class="reference external"href="https://cdn-shop.adafruit.com/datasheets/TSL2561.pdf">datasheet</a>, <a class="reference external"href="https://www.adafruit.com/product/439">Adafruit</a>) ambient light sensor with esphomelib. The <a class="reference internal"href="../i2c.html#i2c"><span class="std std-ref">I²C</span></a> is required to be set up in your configuration for this sensor to work.<div class="figure align-center"id="id1"><a class="reference external image-reference"href="https://www.adafruit.com/product/439"><img alt="../../../_images/tsl2561-full.jpg"src="../../../_images/tsl2561-full.jpg"style="width: 50.0%;"></a><p class="caption"><span class="caption-text">TSL2561 Ambient Light Sensor. Image by <a class="reference external"href="https://www.adafruit.com/product/439">Adafruit</a>.</span></div><div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TSL2561 Ambient Light Sensor &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="SHT3X-D Temperature+Humidity Sensor" href="sht3xd.html" />
+    <link rel="prev" title="BME680 Temperature+Pressure+Humidity+Gas Sensor" href="bme680.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tsl2561-ambient-light-sensor">
+<h1>TSL2561 Ambient Light Sensor<a class="headerlink" href="#tsl2561-ambient-light-sensor" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">tsl2561</span></code> sensor platform allows you to use your BH1750
+(<a class="reference external" href="https://cdn-shop.adafruit.com/datasheets/TSL2561.pdf">datasheet</a>,
+<a class="reference external" href="https://www.adafruit.com/product/439">Adafruit</a>)
+ambient light sensor with esphomelib. The <a class="reference internal" href="../i2c.html#i2c"><span class="std std-ref">I²C</span></a> is required to be set up in
+your configuration for this sensor to work.</p>
+<div class="figure align-center" id="id1">
+<a class="reference external image-reference" href="https://www.adafruit.com/product/439"><img alt="../../../_images/tsl2561-full.jpg" src="../../../_images/tsl2561-full.jpg" style="width: 50.0%;" /></a>
+<p class="caption"><span class="caption-text">TSL2561 Ambient Light Sensor. Image by <a class="reference external" href="https://www.adafruit.com/product/439">Adafruit</a>.</span></p>
+</div>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
 <span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">tsl2561</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;TSL2561 Ambient Light&quot;</span>
     <span class="n">address</span><span class="p">:</span> <span class="mh">0x39</span>
     <span class="n">update_interval</span><span class="p">:</span> <span class="mi">15</span><span class="n">s</span>
-</pre></div></div><div class="section"id="configuration-variables"><h2>Configuration variables:<a class="headerlink"href="#configuration-variables"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><strong>name</strong> (<strong>Required</strong>, string): The name for the sensor.<li><strong>address</strong> (<em>Optional</em>, int): Manually specify the i^2c address of the sensor. Defaults to <code class="docutils literal notranslate"><span class="pre">0x39</span></code>.<li><strong>integration_time</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-time"><span class="std std-ref">Time</span></a>): The time the sensor will take for each measurement. Longer means more accurate values. One of <code class="docutils literal notranslate"><span class="pre">14ms</span></code>, <code class="docutils literal notranslate"><span class="pre">101ms</span></code>, <code class="docutils literal notranslate"><span class="pre">402ms</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">402ms</span></code>.<li><strong>gain</strong> (<em>Optional</em>, string): The gain of the sensor. Higher values are better in low-light conditions. One of <code class="docutils literal notranslate"><span class="pre">1x</span></code> and <code class="docutils literal notranslate"><span class="pre">16x</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">1x</span></code>.<li><strong>is_cs_package</strong> (<em>Optional</em>, boolean): The “CS” package of this sensor has a slightly different formula for calculating the illuminance in lx. Set this to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you’re working with a CS package. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.<li><strong>update_interval</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-time"><span class="std std-ref">Time</span></a>): The interval to check the sensor. Defaults to <code class="docutils literal notranslate"><span class="pre">15s</span></code>. See <a class="reference internal"href="index.html#sensor-default-filter"><span class="std std-ref">Default Filter</span></a>.<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.<li>All other options from <a class="reference internal"href="index.html#config-sensor"><span class="std std-ref">Sensor</span></a> and <a class="reference internal"href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</ul><div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="index.html#sensor-filters"><span class="std std-ref">Sensor Filters</span></a><li><a class="reference internal"href="bh1750.html"><span class="doc">BH1750 Ambient Light Sensor</span></a><li><a class="reference internal"href="adc.html"><span class="doc">Analog To Digital Sensor</span></a><li><a class="reference internal"href="../../../api/sensor/tsl2561.html"><span class="doc">API Reference</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/tsl2561.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../../index.html">Documentation overview</a><ul><li><a href="../../index.html">esphomeyaml</a><ul><li><a href="../index.html">Components</a><ul><li><a href="index.html">Sensor Component</a><ul><li>Previous: <a href="bme680.html"title="previous chapter">BME680 Temperature+Pressure+Humidity+Gas Sensor</a><li>Next: <a href="sht3xd.html"title="next chapter">SHT3X-D Temperature+Humidity Sensor</a></ul></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../../_sources/esphomeyaml/components/sensor/tsl2561.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables:<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>name</strong> (<strong>Required</strong>, string): The name for the sensor.</li>
+<li><strong>address</strong> (<em>Optional</em>, int): Manually specify the i^2c address of the sensor. Defaults to <code class="docutils literal notranslate"><span class="pre">0x39</span></code>.</li>
+<li><strong>integration_time</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-time"><span class="std std-ref">Time</span></a>):
+The time the sensor will take for each measurement. Longer means more accurate values. One of
+<code class="docutils literal notranslate"><span class="pre">14ms</span></code>, <code class="docutils literal notranslate"><span class="pre">101ms</span></code>, <code class="docutils literal notranslate"><span class="pre">402ms</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">402ms</span></code>.</li>
+<li><strong>gain</strong> (<em>Optional</em>, string): The gain of the sensor. Higher values are better in low-light conditions.
+One of <code class="docutils literal notranslate"><span class="pre">1x</span></code> and <code class="docutils literal notranslate"><span class="pre">16x</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">1x</span></code>.</li>
+<li><strong>is_cs_package</strong> (<em>Optional</em>, boolean): The “CS” package of this sensor has a slightly different
+formula for calculating the illuminance in lx. Set this to <code class="docutils literal notranslate"><span class="pre">true</span></code> if you’re working with a CS
+package. Defaults to <code class="docutils literal notranslate"><span class="pre">false</span></code>.</li>
+<li><strong>update_interval</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-time"><span class="std std-ref">Time</span></a>): The interval to check the
+sensor. Defaults to <code class="docutils literal notranslate"><span class="pre">15s</span></code>. See <a class="reference internal" href="index.html#sensor-default-filter"><span class="std std-ref">Default Filter</span></a>.</li>
+<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.</li>
+<li>All other options from <a class="reference internal" href="index.html#config-sensor"><span class="std std-ref">Sensor</span></a> and <a class="reference internal" href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</li>
+</ul>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="index.html#sensor-filters"><span class="std std-ref">Sensor Filters</span></a></li>
+<li><a class="reference internal" href="bh1750.html"><span class="doc">BH1750 Ambient Light Sensor</span></a></li>
+<li><a class="reference internal" href="adc.html"><span class="doc">Analog To Digital Sensor</span></a></li>
+<li><a class="reference internal" href="../../../api/sensor/tsl2561.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/tsl2561.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">esphomeyaml</a><ul>
+  <li><a href="../index.html">Components</a><ul>
+  <li><a href="index.html">Sensor Component</a><ul>
+      <li>Previous: <a href="bme680.html" title="previous chapter">BME680 Temperature+Pressure+Humidity+Gas Sensor</a></li>
+      <li>Next: <a href="sht3xd.html" title="next chapter">SHT3X-D Temperature+Humidity Sensor</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/esphomeyaml/components/sensor/tsl2561.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

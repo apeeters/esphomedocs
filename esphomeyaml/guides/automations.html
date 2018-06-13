@@ -1,4 +1,44 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Automations And Templates &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Configuration Types"href="configuration-types.html"><link rel="prev"title="Guides"href="index.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="automations-and-templates"><span id="automation"></span><h1>Automations And Templates<a class="headerlink"href="#automations-and-templates"title="Permalink to this headline">¶</a></h1><p>Automations and templates are two very powerful concepts of esphomelib/yaml. Automations allow you to perfom actions under certain conditions and templates are a way to easily customize everything about your node without having to dive into the full esphomelib C++ API.<p>Let’s begin with an example to explain these concepts. Suppose you have this configuration file:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Automations And Templates &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration Types" href="configuration-types.html" />
+    <link rel="prev" title="Guides" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="automations-and-templates">
+<span id="automation"></span><h1>Automations And Templates<a class="headerlink" href="#automations-and-templates" title="Permalink to this headline">¶</a></h1>
+<p>Automations and templates are two very powerful concepts of esphomelib/yaml. Automations
+allow you to perfom actions under certain conditions and templates are a way to easily
+customize everything about your node without having to dive into the full esphomelib C++
+API.</p>
+<p>Let’s begin with an example to explain these concepts. Suppose you have this configuration file:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">GPIO3</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Dehumidifer&quot;</span>
@@ -7,7 +47,21 @@
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">GPIO4</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Dehumidifer Toggle Button&quot;</span>
-</pre></div></div><p>With this file you can already perform some basic tasks. You can control the ON/OFF state of the dehumidifer in your livingroom from Home Assistant’s front-end. But in many cases, controlling everything strictly from the frontend is quite a pain. That’s why you have decided to also install a simple push button next to the dehumidifer on pin GPIO4. A simple push on this button should toggle the state of the dehumidifer.<p>You <em>could</em> write an automation to do this task in Home Assistant’s automation engine, but ideally the IoT should work without an internet connection and should not break without the MQTT server being online.<p>That’s why, starting with esphomelib 1.7.0, there’s a new automation engine. With it, you can write some basic (and also some more advanced) automations using a syntax that is hopefully a bit easier to read and understand than Home Assistant’s.<p>For example, this configuration would achieve your desired behavior:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>With this file you can already perform some basic tasks. You can control the ON/OFF state
+of the dehumidifer in your livingroom from Home Assistant’s front-end. But in many cases,
+controlling everything strictly from the frontend is quite a pain. That’s why you have
+decided to also install a simple push button next to the dehumidifer on pin GPIO4.
+A simple push on this button should toggle the state of the dehumidifer.</p>
+<p>You <em>could</em> write an automation to do this task in Home Assistant’s automation engine, but
+ideally the IoT should work without an internet connection and should not break without
+the MQTT server being online.</p>
+<p>That’s why, starting with esphomelib 1.7.0, there’s a new automation engine. With it, you
+can write some basic (and also some more advanced) automations using a syntax that is
+hopefully a bit easier to read and understand than Home Assistant’s.</p>
+<p>For example, this configuration would achieve your desired behavior:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">GPIO3</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Dehumidifier&quot;</span>
@@ -21,20 +75,41 @@
       <span class="n">then</span><span class="p">:</span>
         <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
             <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier1</span>
-</pre></div></div><p>Woah, hold on there. Please explain what’s going on here! Sure :) Let’s step through what’s happening here.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Woah, hold on there. Please explain what’s going on here! Sure :) Let’s step through what’s happening here.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">switch</span><span class="p">:</span>
    <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
      <span class="c1"># ...</span>
      <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier1</span>
-</pre></div></div><p>First, we have to give the dehumidifier an <a class="reference internal"href="configuration-types.html#config-id"><span class="std std-ref">ID</span></a> so that we can later use it inside our awesome automation.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binary_sensor</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>First, we have to give the dehumidifier an <a class="reference internal" href="configuration-types.html#config-id"><span class="std std-ref">ID</span></a> so that we can
+later use it inside our awesome automation.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binary_sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
     <span class="c1"># ...</span>
     <span class="n">on_press</span><span class="p">:</span>
-</pre></div></div><p>We now attach a special attribute <code class="docutils literal notranslate"><span class="pre">on_press</span></code> to the toggle button. This part is called a “trigger”. In this example, the automation in the next few lines will execute whenever someone <em>begins</em> to press the button. Note the terminology follows what you would call these events on mouse buttons. A <em>press</em> happens when you begin pressing the button/mouse. There are also other triggers like <code class="docutils literal notranslate"><span class="pre">on_release</span></code>, <code class="docutils literal notranslate"><span class="pre">on_click</span></code> or <code class="docutils literal notranslate"><span class="pre">on_double_click</span></code> available.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>We now attach a special attribute <code class="docutils literal notranslate"><span class="pre">on_press</span></code> to the toggle button. This part is called a “trigger”. In this example,
+the automation in the next few lines will execute whenever someone <em>begins</em> to press the button. Note the terminology
+follows what you would call these events on mouse buttons. A <em>press</em> happens when you begin pressing the button/mouse.
+There are also other triggers like <code class="docutils literal notranslate"><span class="pre">on_release</span></code>, <code class="docutils literal notranslate"><span class="pre">on_click</span></code> or <code class="docutils literal notranslate"><span class="pre">on_double_click</span></code> available.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
 <span class="n">on_press</span><span class="p">:</span>
   <span class="n">then</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier1</span>
-</pre></div></div><div class="section"id="actions"><span id="config-action"></span><h2>Actions<a class="headerlink"href="#actions"title="Permalink to this headline">¶</a></h2><p>Now comes the actual automation block. With <code class="docutils literal notranslate"><span class="pre">then</span></code>, you tell esphomeyaml what should happen when the press happens. Within this block, you can define several “actions”. For example, <code class="docutils literal notranslate"><span class="pre">switch.toggle</span></code> and the line after that form an action. Each action is separated by a dash and multiple actions can be executed in series by just adding another <code class="docutils literal notranslate"><span class="pre">-</span></code> like so:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="section" id="actions">
+<span id="config-action"></span><h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
+<p>Now comes the actual automation block. With <code class="docutils literal notranslate"><span class="pre">then</span></code>, you tell esphomeyaml what should happen when the press happens.
+Within this block, you can define several “actions”. For example, <code class="docutils literal notranslate"><span class="pre">switch.toggle</span></code> and the line after that form an
+action. Each action is separated by a dash and multiple actions can be executed in series by just adding another <code class="docutils literal notranslate"><span class="pre">-</span></code>
+like so:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
 <span class="n">on_press</span><span class="p">:</span>
   <span class="n">then</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
@@ -42,7 +117,11 @@
     <span class="o">-</span> <span class="n">delay</span><span class="p">:</span> <span class="mi">2</span><span class="n">s</span>
     <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier1</span>
-</pre></div></div><p>With this automation, a press on the push button would cause the dehumidifier to turn on/off for 2 seconds, and then cycle back to its original state. Similarly you can have a single trigger with multiple automations:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>With this automation, a press on the push button would cause the dehumidifier to turn on/off for 2 seconds, and then
+cycle back to its original state. Similarly you can have a single trigger with multiple automations:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
 <span class="n">on_press</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">then</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
@@ -58,7 +137,11 @@
         <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier1</span>
     <span class="o">-</span> <span class="n">light</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier_indicator_light</span>
-</pre></div></div><p>As a last example, let’s make our dehumidifier smart: Let’s make it turn on automatically when the humidity a sensor reports is above 65% and make it turn off again when it reaches 50%<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>As a last example, let’s make our dehumidifier smart: Let’s make it turn on automatically when the humidity a sensor
+reports is above 65% and make it turn off again when it reaches 50%</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">dht</span>
     <span class="n">humidity</span><span class="p">:</span>
       <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Humidity&quot;</span>
@@ -73,7 +156,21 @@
                 <span class="nb">id</span><span class="p">:</span> <span class="n">dehumidifier1</span>
     <span class="n">temperature</span><span class="p">:</span>
       <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Temperature&quot;</span>
-</pre></div></div><p>That’s a lot of indentation 😉 <code class="docutils literal notranslate"><span class="pre">on_value_range</span></code> is a special trigger for sensors that triggers when the value output of the sensor is within a certain range. In the first example, this range is defined as “any value above or including 65.0”, and the second one refers to once the humidity reaches 50% or below.<p>Now that concludes the introduction into automations in esphomeyaml. They’re a powerful tool to automate almost everything on your device with an easy-to-use syntax. For the cases where the “pure” YAML automations don’t work, esphomelib has another extremely powerful tool to offer: Templates.</div><div class="section"id="templates-lambdas"><span id="config-lambda"></span><h2>Templates (Lambdas)<a class="headerlink"href="#templates-lambdas"title="Permalink to this headline">¶</a></h2><p>With templates inside esphomelib, you can do almost <em>everything</em>. If for example you want to only perform a certain automation if a certain complex formula evaluates to true, you can do that with templates. Let’s look at an example first:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>binary_sensor:
+</pre></div>
+</div>
+<p>That’s a lot of indentation 😉 <code class="docutils literal notranslate"><span class="pre">on_value_range</span></code> is a special trigger for sensors that triggers when the value output
+of the sensor is within a certain range. In the first example, this range is defined as “any value above or including
+65.0”, and the second one refers to once the humidity reaches 50% or below.</p>
+<p>Now that concludes the introduction into automations in esphomeyaml. They’re a powerful tool to automate almost
+everything on your device with an easy-to-use syntax. For the cases where the “pure” YAML automations don’t work,
+esphomelib has another extremely powerful tool to offer: Templates.</p>
+</div>
+<div class="section" id="templates-lambdas">
+<span id="config-lambda"></span><h2>Templates (Lambdas)<a class="headerlink" href="#templates-lambdas" title="Permalink to this headline">¶</a></h2>
+<p>With templates inside esphomelib, you can do almost <em>everything</em>. If for example you want to only perform a certain
+automation if a certain complex formula evaluates to true, you can do that with templates. Let’s look at an example
+first:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>binary_sensor:
   - platform: gpio
     name: &quot;Cover End Stop&quot;
     id: top_end_stop
@@ -86,7 +183,42 @@ cover:
       } else {
         return cover::COVER_CLOSED;
       }
-</pre></div></div><p>What’s happening here? First, we define a binary sensor (with the id <code class="docutils literal notranslate"><span class="pre">top_end_stop</span></code>) and then a <a class="reference internal"href="../components/cover/template.html"><span class="doc">template cover</span></a>. The <em>state</em> of the template cover is controlled by a template, or “lambda”. In lambdas you’re effectively writing C++ code and therefore the name lambda is used instead of Home Assistant’s “template” lingo to avoid confusion. But before you go shy away from using lambdas because you just hear C++ and think oh noes, I’m not going down <em>that</em> road: Writing lambdas is not that hard! Here’s a bit of a primer:<p>First, you might have already wondered what the <code class="docutils literal notranslate"><span class="pre">lambda:</span> <span class="pre">!lambda</span> <span class="pre">&gt;-</span></code> part is supposed to mean. <code class="docutils literal notranslate"><span class="pre">!lambda</span></code> tells esphomeyaml that the following block is supposed to be interpreted as a lambda, or C++ code. Note that here, the <code class="docutils literal notranslate"><span class="pre">lambda:</span></code> key would actually implicitly make the following block a lambda so in this context, you could have just written <code class="docutils literal notranslate"><span class="pre">lambda:</span> <span class="pre">&gt;-</span></code>.<p>Next, there’s the weird <code class="docutils literal notranslate"><span class="pre">&gt;-</span></code> character combination. This effectively tells the YAML parser to treat the following <strong>indented</strong> (!) block as plaintext. Without it, the YAML parser would attempt to read the following block as if it were made up of YAML keys like <code class="docutils literal notranslate"><span class="pre">cover:</span></code> for example. (You may also have seen variations of this like <code class="docutils literal notranslate"><span class="pre">|-</span></code> or just <code class="docutils literal notranslate"><span class="pre">|</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. There’s a slight difference in how these different styles deal with whitespace, but for our purposes we can ignore that).<p>With <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(...)</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span> <span class="pre">else</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> we create a <em>condition</em>. What this effectively says that if the thing inside the first parentheses evaluates to <code class="docutils literal notranslate"><span class="pre">true`</span></code> then execute the first block (in this case <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">cover::COVER_OPEN;</span></code>, or else evaluate the second block. <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">...;</span></code> makes the code block give back a value to the template. In this case, we’re either <em>returning</em> <code class="docutils literal notranslate"><span class="pre">cover::COVER_OPEN</span></code> or <code class="docutils literal notranslate"><span class="pre">cover::COVER_CLOSED</span></code> to indicate that the cover is closed or open.<p>Finally, <code class="docutils literal notranslate"><span class="pre">id(...)</span></code> is a helper function that makes esphomeyaml fetch an object with the supplied ID (which you defined somewhere else, like <code class="docutils literal notranslate"><span class="pre">top_end_stop`</span></code>) and let’s you call any of esphomelib’s many APIs directly. For example, here we’re retrieving the current state of the end stop using <code class="docutils literal notranslate"><span class="pre">.value</span></code> and using it to construct our cover state.<div class="admonition note"><p class="first admonition-title">Note<p class="last">esphomeyaml (currently) does not check the validity of lambda expressions you enter and will blindly copy them into the generated C++ code. If compilation fails or something else is not working as expected with lambdas, it’s always best to look at the generated C++ source file under <code class="docutils literal notranslate"><span class="pre">&lt;NODE_NAME&gt;/src/main.cpp</span></code>.</div></div><div class="section"id="bonus-templating-actions"><span id="config-templatable"></span><h2>Bonus: Templating Actions<a class="headerlink"href="#bonus-templating-actions"title="Permalink to this headline">¶</a></h2><p>Another feature of esphomeyaml is that you can template almost every parameter for actions in automations. For example if you have a light and want to set it to a pre-defined color when a button is pressed, you can do this:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>on_press:
+</pre></div>
+</div>
+<p>What’s happening here? First, we define a binary sensor (with the id <code class="docutils literal notranslate"><span class="pre">top_end_stop</span></code>) and then a
+<a class="reference internal" href="../components/cover/template.html"><span class="doc">template cover</span></a>. The <em>state</em> of the template cover is
+controlled by a template, or “lambda”. In lambdas you’re effectively writing C++ code and therefore the
+name lambda is used instead of Home Assistant’s “template” lingo to avoid confusion. But before you go
+shy away from using lambdas because you just hear C++ and think oh noes, I’m not going down <em>that</em> road:
+Writing lambdas is not that hard! Here’s a bit of a primer:</p>
+<p>First, you might have already wondered what the <code class="docutils literal notranslate"><span class="pre">lambda:</span> <span class="pre">!lambda</span> <span class="pre">&gt;-</span></code> part is supposed to mean. <code class="docutils literal notranslate"><span class="pre">!lambda</span></code>
+tells esphomeyaml that the following block is supposed to be interpreted as a lambda, or C++ code. Note that
+here, the <code class="docutils literal notranslate"><span class="pre">lambda:</span></code> key would actually implicitly make the following block a lambda so in this context,
+you could have just written <code class="docutils literal notranslate"><span class="pre">lambda:</span> <span class="pre">&gt;-</span></code>.</p>
+<p>Next, there’s the weird <code class="docutils literal notranslate"><span class="pre">&gt;-</span></code> character combination. This effectively tells the YAML parser to treat the following
+<strong>indented</strong> (!) block as plaintext. Without it, the YAML parser would attempt to read the following block as if
+it were made up of YAML keys like <code class="docutils literal notranslate"><span class="pre">cover:</span></code> for example. (You may also have seen variations of this like <code class="docutils literal notranslate"><span class="pre">|-</span></code>
+or just <code class="docutils literal notranslate"><span class="pre">|</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. There’s a slight difference in how these different styles deal with whitespace, but for our
+purposes we can ignore that).</p>
+<p>With <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(...)</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span> <span class="pre">else</span> <span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code> we create a <em>condition</em>. What this effectively says that if the thing inside
+the first parentheses evaluates to <code class="docutils literal notranslate"><span class="pre">true`</span></code> then execute the first block (in this case <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">cover::COVER_OPEN;</span></code>,
+or else evaluate the second block. <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">...;</span></code> makes the code block give back a value to the template. In this case,
+we’re either <em>returning</em> <code class="docutils literal notranslate"><span class="pre">cover::COVER_OPEN</span></code> or <code class="docutils literal notranslate"><span class="pre">cover::COVER_CLOSED</span></code> to indicate that the cover is closed or open.</p>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">id(...)</span></code> is a helper function that makes esphomeyaml fetch an object with the supplied ID (which you defined
+somewhere else, like <code class="docutils literal notranslate"><span class="pre">top_end_stop`</span></code>) and let’s you call any of esphomelib’s many APIs directly. For example, here
+we’re retrieving the current state of the end stop using <code class="docutils literal notranslate"><span class="pre">.value</span></code> and using it to construct our cover state.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">esphomeyaml (currently) does not check the validity of lambda expressions you enter and will blindly copy
+them into the generated C++ code. If compilation fails or something else is not working as expected
+with lambdas, it’s always best to look at the generated C++ source file under <code class="docutils literal notranslate"><span class="pre">&lt;NODE_NAME&gt;/src/main.cpp</span></code>.</p>
+</div>
+</div>
+<div class="section" id="bonus-templating-actions">
+<span id="config-templatable"></span><h2>Bonus: Templating Actions<a class="headerlink" href="#bonus-templating-actions" title="Permalink to this headline">¶</a></h2>
+<p>Another feature of esphomeyaml is that you can template almost every parameter for actions in automations. For example
+if you have a light and want to set it to a pre-defined color when a button is pressed, you can do this:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>on_press:
   then:
     - light.turn_on:
         id: some_light_id
@@ -97,7 +229,50 @@ cover:
           # The sensor outputs values from 0 to 100. The blue
           # part of the light color will be determined by the sensor value.
           return id(some_sensor).value / 100.0;
-</pre></div></div><p>Every parameter in actions that has the label “templatable” in the docs can be templated like above, using all of the usual lambda syntax.<div class="section"id="all-triggers"><h3>All Triggers<a class="headerlink"href="#all-triggers"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="../components/mqtt.html#mqtt-on-message"><span class="std std-ref">mqtt.on_message</span></a><li><a class="reference internal"href="../components/sensor/index.html#sensor-on-value"><span class="std std-ref">sensor.on_value</span></a><li><a class="reference internal"href="../components/sensor/index.html#sensor-on-value-range"><span class="std std-ref">sensor.on_value_range</span></a><li><a class="reference internal"href="../components/sensor/index.html#sensor-on-raw-value"><span class="std std-ref">sensor.on_raw_value</span></a><li><a class="reference internal"href="../components/binary_sensor/index.html#binary-sensor-on-press"><span class="std std-ref">binary_sensor.on_press</span></a><li><a class="reference internal"href="../components/binary_sensor/index.html#binary-sensor-on-release"><span class="std std-ref">binary_sensor.on_release</span></a><li><a class="reference internal"href="../components/binary_sensor/index.html#binary-sensor-on-click"><span class="std std-ref">binary_sensor.on_click</span></a><li><a class="reference internal"href="../components/binary_sensor/index.html#binary-sensor-on-double-click"><span class="std std-ref">binary_sensor.on_double_click</span></a></ul></div><div class="section"id="all-actions"><h3>All Actions<a class="headerlink"href="#all-actions"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="#delay-action"><span class="std std-ref">delay</span></a><li><a class="reference internal"href="#lambda-action"><span class="std std-ref">lambda</span></a><li><a class="reference internal"href="../components/mqtt.html#mqtt-publish-action"><span class="std std-ref">mqtt.publish</span></a><li><a class="reference internal"href="../components/switch/index.html#switch-toggle-action"><span class="std std-ref">switch.toggle</span></a><li><a class="reference internal"href="../components/switch/index.html#switch-turn-off-action"><span class="std std-ref">switch.turn_off</span></a><li><a class="reference internal"href="../components/switch/index.html#switch-turn-on-action"><span class="std std-ref">switch.turn_on</span></a><li><a class="reference internal"href="../components/light/index.html#light-toggle-action"><span class="std std-ref">light.toggle</span></a><li><a class="reference internal"href="../components/light/index.html#light-turn-off-action"><span class="std std-ref">light.turn_off</span></a><li><a class="reference internal"href="../components/light/index.html#light-turn-on-action"><span class="std std-ref">light.turn_on</span></a><li><a class="reference internal"href="../components/cover/index.html#cover-open-action"><span class="std std-ref">cover.open</span></a><li><a class="reference internal"href="../components/cover/index.html#cover-close-action"><span class="std std-ref">cover.close</span></a><li><a class="reference internal"href="../components/cover/index.html#cover-stop-action"><span class="std std-ref">cover.stop</span></a><li><a class="reference internal"href="../components/fan/index.html#fan-toggle-action"><span class="std std-ref">fan.toggle</span></a><li><a class="reference internal"href="../components/fan/index.html#fan-turn-off-action"><span class="std std-ref">fan.turn_off</span></a><li><a class="reference internal"href="../components/fan/index.html#fan-turn-on-action"><span class="std std-ref">fan.turn_on</span></a></ul></div><div class="section"id="delay-action"><span id="id1"></span><h3>Delay Action<a class="headerlink"href="#delay-action"title="Permalink to this headline">¶</a></h3><p>This action delays the execution of the next action in the action list by a specified time period.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>on_...:
+</pre></div>
+</div>
+<p>Every parameter in actions that has the label “templatable” in the docs can be templated like above, using
+all of the usual lambda syntax.</p>
+<div class="section" id="all-triggers">
+<h3>All Triggers<a class="headerlink" href="#all-triggers" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="../components/mqtt.html#mqtt-on-message"><span class="std std-ref">mqtt.on_message</span></a></li>
+<li><a class="reference internal" href="../components/sensor/index.html#sensor-on-value"><span class="std std-ref">sensor.on_value</span></a></li>
+<li><a class="reference internal" href="../components/sensor/index.html#sensor-on-value-range"><span class="std std-ref">sensor.on_value_range</span></a></li>
+<li><a class="reference internal" href="../components/sensor/index.html#sensor-on-raw-value"><span class="std std-ref">sensor.on_raw_value</span></a></li>
+<li><a class="reference internal" href="../components/binary_sensor/index.html#binary-sensor-on-press"><span class="std std-ref">binary_sensor.on_press</span></a></li>
+<li><a class="reference internal" href="../components/binary_sensor/index.html#binary-sensor-on-release"><span class="std std-ref">binary_sensor.on_release</span></a></li>
+<li><a class="reference internal" href="../components/binary_sensor/index.html#binary-sensor-on-click"><span class="std std-ref">binary_sensor.on_click</span></a></li>
+<li><a class="reference internal" href="../components/binary_sensor/index.html#binary-sensor-on-double-click"><span class="std std-ref">binary_sensor.on_double_click</span></a></li>
+<li><a class="reference internal" href="../components/esphomeyaml.html#esphomeyaml-on-boot"><span class="std std-ref">esphomeyaml.on_boot</span></a></li>
+<li><a class="reference internal" href="../components/esphomeyaml.html#esphomeyaml-on-shutdown"><span class="std std-ref">esphomeyaml.on_shutdown</span></a></li>
+</ul>
+</div>
+<div class="section" id="all-actions">
+<h3>All Actions<a class="headerlink" href="#all-actions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="#delay-action"><span class="std std-ref">delay</span></a></li>
+<li><a class="reference internal" href="#lambda-action"><span class="std std-ref">lambda</span></a></li>
+<li><a class="reference internal" href="../components/mqtt.html#mqtt-publish-action"><span class="std std-ref">mqtt.publish</span></a></li>
+<li><a class="reference internal" href="../components/switch/index.html#switch-toggle-action"><span class="std std-ref">switch.toggle</span></a></li>
+<li><a class="reference internal" href="../components/switch/index.html#switch-turn-off-action"><span class="std std-ref">switch.turn_off</span></a></li>
+<li><a class="reference internal" href="../components/switch/index.html#switch-turn-on-action"><span class="std std-ref">switch.turn_on</span></a></li>
+<li><a class="reference internal" href="../components/light/index.html#light-toggle-action"><span class="std std-ref">light.toggle</span></a></li>
+<li><a class="reference internal" href="../components/light/index.html#light-turn-off-action"><span class="std std-ref">light.turn_off</span></a></li>
+<li><a class="reference internal" href="../components/light/index.html#light-turn-on-action"><span class="std std-ref">light.turn_on</span></a></li>
+<li><a class="reference internal" href="../components/cover/index.html#cover-open-action"><span class="std std-ref">cover.open</span></a></li>
+<li><a class="reference internal" href="../components/cover/index.html#cover-close-action"><span class="std std-ref">cover.close</span></a></li>
+<li><a class="reference internal" href="../components/cover/index.html#cover-stop-action"><span class="std std-ref">cover.stop</span></a></li>
+<li><a class="reference internal" href="../components/fan/index.html#fan-toggle-action"><span class="std std-ref">fan.toggle</span></a></li>
+<li><a class="reference internal" href="../components/fan/index.html#fan-turn-off-action"><span class="std std-ref">fan.turn_off</span></a></li>
+<li><a class="reference internal" href="../components/fan/index.html#fan-turn-on-action"><span class="std std-ref">fan.turn_on</span></a></li>
+</ul>
+</div>
+<div class="section" id="delay-action">
+<span id="id1"></span><h3>Delay Action<a class="headerlink" href="#delay-action" title="Permalink to this headline">¶</a></h3>
+<p>This action delays the execution of the next action in the action list by a specified
+time period.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span>on_...:
   then:
      - switch.turn_on:
          id: relay_1
@@ -106,8 +281,95 @@ cover:
          id: relay_1
      # Templated, waits for 1s (1000ms) only if a reed switch is active
      - delay: !lambda &quot;if (id(reed_switch).value) return 1000; else return 0;&quot;
-</pre></div></div><div class="admonition note"><p class="first admonition-title">Note<p class="last">This is a “smart” asynchronous delay - other code will still run in the background while the delay is happening.</div></div><div class="section"id="lambda-action"><span id="id2"></span><h3>Lambda Action<a class="headerlink"href="#lambda-action"title="Permalink to this headline">¶</a></h3><p>This action executes an arbitrary piece of C++ code (see <a class="reference internal"href="#config-lambda"><span class="std std-ref">Lambda</span></a>).<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a “smart” asynchronous delay - other code will still run in the background while
+the delay is happening.</p>
+</div>
+</div>
+<div class="section" id="lambda-action">
+<span id="id2"></span><h3>Lambda Action<a class="headerlink" href="#lambda-action" title="Permalink to this headline">¶</a></h3>
+<p>This action executes an arbitrary piece of C++ code (see <a class="reference internal" href="#config-lambda"><span class="std std-ref">Lambda</span></a>).</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
   <span class="n">then</span><span class="p">:</span>
     <span class="o">-</span> <span class="k">lambda</span><span class="p">:</span> <span class="o">&gt;-</span>
         <span class="nb">id</span><span class="p">(</span><span class="n">some_binary_sensor</span><span class="p">)</span><span class="o">.</span><span class="n">publish_state</span><span class="p">(</span><span class="n">false</span><span class="p">);</span>
-</pre></div></div></div><div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="configuration-types.html"><span class="doc">Configuration Types</span></a><li><a class="reference internal"href="faq.html"><span class="doc">Frequently Asked Questions</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/guides/automations.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Guides</a><ul><li>Previous: <a href="index.html"title="previous chapter">Guides</a><li>Next: <a href="configuration-types.html"title="next chapter">Configuration Types</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/guides/automations.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+</div>
+<div class="section" id="automation-conditions">
+<h3>Automation Conditions<a class="headerlink" href="#automation-conditions" title="Permalink to this headline">¶</a></h3>
+<p>Additionally, you can have a condition <code class="docutils literal notranslate"><span class="pre">if:</span></code> block in the automation. This will cause esphomelib
+to only execute the <code class="docutils literal notranslate"><span class="pre">then</span></code> block if the <code class="docutils literal notranslate"><span class="pre">if:</span></code> block succeeds:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
+  <span class="k">if</span><span class="p">:</span>
+    <span class="k">lambda</span><span class="p">:</span> <span class="s1">&#39;return id(some_binary_sensor).value;&#39;</span>
+  <span class="n">then</span><span class="p">:</span>
+    <span class="c1"># do something</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="configuration-types.html"><span class="doc">Configuration Types</span></a></li>
+<li><a class="reference internal" href="faq.html"><span class="doc">Frequently Asked Questions</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/guides/automations.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Guides</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Guides</a></li>
+      <li>Next: <a href="configuration-types.html" title="next chapter">Configuration Types</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/guides/automations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

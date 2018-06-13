@@ -1,5 +1,270 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>BMP085 Pressure/Temperature Sensor &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="HTU21D Temperature/Humidity Sensor"href="htu21d.html"><link rel="prev"title="ADS1115 ADC Component"href="ads1115.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="bmp085-pressure-temperature-sensor"><h1>BMP085 Pressure/Temperature Sensor<a class="headerlink"href="#bmp085-pressure-temperature-sensor"title="Permalink to this headline">¶</a></h1><p>The BMP085 component allows you get the temperature and pressure from your BMP085 (<a class="reference external"href="https://www.sparkfun.com/datasheets/Components/General/BST-BMP085-DS000-05.pdf">datasheet</a>, <a class="reference external"href="https://www.adafruit.com/product/391">adafruit</a>), BMP180 (<a class="reference external"href="https://cdn-shop.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf">datasheet</a>, <a class="reference external"href="https://www.adafruit.com/product/1603">adafruit</a>) and BMP280 (<a class="reference external"href="https://cdn-shop.adafruit.com/datasheets/BST-BMP280-DS001-11.pdf">datasheet</a>, <a class="reference external"href="https://www.adafruit.com/product/2651">adafruit</a>) sensors with esphomelib. To use these i2c-based devices, first initialize the i2c bus using the pins you have for SDA and SCL and then create the sensors themselves as in below example.<div class="section"id="example-usage"><h2>Example Usage<a class="headerlink"href="#example-usage"title="Permalink to this headline">¶</a></h2><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// inside setup()</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BMP085 Pressure/Temperature Sensor &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HTU21D Temperature/Humidity Sensor" href="htu21d.html" />
+    <link rel="prev" title="ADS1115 ADC Component" href="ads1115.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bmp085-pressure-temperature-sensor">
+<h1>BMP085 Pressure/Temperature Sensor<a class="headerlink" href="#bmp085-pressure-temperature-sensor" title="Permalink to this headline">¶</a></h1>
+<p>The BMP085 component allows you get the temperature and pressure from your BMP085
+(<a class="reference external" href="https://www.sparkfun.com/datasheets/Components/General/BST-BMP085-DS000-05.pdf">datasheet</a>,
+<a class="reference external" href="https://www.adafruit.com/product/391">adafruit</a>), BMP180
+(<a class="reference external" href="https://cdn-shop.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf">datasheet</a>,
+<a class="reference external" href="https://www.adafruit.com/product/1603">adafruit</a>) and BMP280
+(<a class="reference external" href="https://cdn-shop.adafruit.com/datasheets/BST-BMP280-DS001-11.pdf">datasheet</a>,
+<a class="reference external" href="https://www.adafruit.com/product/2651">adafruit</a>) sensors with esphomelib. To use these
+i2c-based devices, first initialize the i2c bus using the pins you have for SDA and SCL and
+then create the sensors themselves as in below example.</p>
+<div class="section" id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// inside setup()</span>
 <span class="n">App</span><span class="p">.</span><span class="n">init_i2c</span><span class="p">(</span><span class="n">SDA_PIN</span><span class="p">,</span> <span class="n">SCL_PIN</span><span class="p">);</span> <span class="c1">// change these values for your pins.</span>
 <span class="c1">// create sensors</span>
 <span class="n">App</span><span class="p">.</span><span class="n">make_bmp085_sensor</span><span class="p">(</span><span class="s">&quot;Outside Temperature&quot;</span><span class="p">,</span> <span class="s">&quot;Outside Pressure&quot;</span><span class="p">);</span>
-</pre></div></div><p>See <a class="reference internal"href="../core/application.html#_CPPv3N11Application18make_bmp085_sensorERKNSt6stringERKNSt6stringE8uint32_t"title="Application::make_bmp085_sensor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_bmp085_sensor()</span></code></a>.</div><div class="section"id="api-reference"><h2>API Reference<a class="headerlink"href="#api-reference"title="Permalink to this headline">¶</a></h2><dl class="class"><dt id="_CPPv3N6sensor15BMP085ComponentE"><span id="_CPPv2N6sensor15BMP085ComponentE"></span><span id="sensor::BMP085Component"></span><span class="target"id="classsensor_1_1_b_m_p085_component"></span><em class="property">class </em>sensor<code class="descclassname">::</code><code class="descname">BMP085Component</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085ComponentE"title="Permalink to this definition">¶</a><br><dd><p>This <a class="reference internal"href="../core/component.html#class_component"><span class="std std-ref">Component</span></a> represents a BMP085/BMP180/BMP280 Pressure+Temperature i2c sensor.<p>It’s built up similar to the DHT component: a central hub that has two sensors.<p>Inherits from <a class="reference internal"href="../core/component.html#class_polling_component"><span class="std std-ref">PollingComponent</span></a>, <a class="reference internal"href="../core/i2c.html#class_i2_c_device"><span class="std std-ref">I2CDevice</span></a><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Functions<dl class="function"><dt id="_CPPv3N6sensor15BMP085Component15BMP085ComponentEP12I2CComponentRKNSt6stringERKNSt6stringE8uint32_t"><span id="_CPPv2N6sensor15BMP085Component15BMP085ComponentEP12I2CComponentRKNSt6stringERKNSt6stringE8uint32_t"></span><span id="sensor::BMP085Component::BMP085Component__I2CComponentP.ssCR.ssCR.uint32_t"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1aa04c5971cb0e75dcb532dae74b00f70b"></span>sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">BMP085Component</code><span class="sig-paren">(</span><a class="reference internal"href="../core/i2c.html#_CPPv312I2CComponent"title="I2CComponent">I2CComponent</a> *<em>parent</em>, <em class="property">const</em> std::string &amp;<em>temperature_name</em>, <em class="property">const</em> std::string &amp;<em>pressure_name</em>, uint32_t <em>update_interval</em> = 30000<span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15BMP085ComponentEP12I2CComponentRKNSt6stringERKNSt6stringE8uint32_t"title="Permalink to this definition">¶</a><br><dd><p>Construct the <a class="reference internal"href="#classsensor_1_1_b_m_p085_component"><span class="std std-ref">BMP085Component</span></a> using the provided address and update interval.</dl><dl class="function"><dt id="_CPPv3NK6sensor15BMP085Component22get_temperature_sensorEv"><span id="_CPPv2NK6sensor15BMP085Component22get_temperature_sensorEv"></span><span id="sensor::BMP085Component::get_temperature_sensorC"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1a3b16a91e043a90b1af309205aac59d66"></span>BMP085TemperatureSensor *sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">get_temperature_sensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink"href="#_CPPv3NK6sensor15BMP085Component22get_temperature_sensorEv"title="Permalink to this definition">¶</a><br><dd><p>Get the internal temperature sensor used to expose the temperature as a sensor object.</dl><dl class="function"><dt id="_CPPv3NK6sensor15BMP085Component19get_pressure_sensorEv"><span id="_CPPv2NK6sensor15BMP085Component19get_pressure_sensorEv"></span><span id="sensor::BMP085Component::get_pressure_sensorC"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1ab2f3c15d54c5e66edcf8d6f2c6207fb3"></span>BMP085PressureSensor *sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">get_pressure_sensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink"href="#_CPPv3NK6sensor15BMP085Component19get_pressure_sensorEv"title="Permalink to this definition">¶</a><br><dd><p>Get the internal pressure sensor used to expose the pressure as a sensor object.</dl><dl class="function"><dt id="_CPPv3N6sensor15BMP085Component6updateEv"><span id="_CPPv2N6sensor15BMP085Component6updateEv"></span><span id="sensor::BMP085Component::update"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1acc48b3efa7c5be754e3ab0d0b3d7e7ff"></span>void sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component6updateEv"title="Permalink to this definition">¶</a><br><dd><p>Schedule temperature+pressure readings.</dl><dl class="function"><dt id="_CPPv3N6sensor15BMP085Component5setupEv"><span id="_CPPv2N6sensor15BMP085Component5setupEv"></span><span id="sensor::BMP085Component::setup"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1ad022150f70028a216c1d675df487d71d"></span>void sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component5setupEv"title="Permalink to this definition">¶</a><br><dd><p>Setup the sensor and test for a connection.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Functions<dl class="function"><dt id="_CPPv3N6sensor15BMP085Component17read_temperature_Ev"><span id="_CPPv2N6sensor15BMP085Component17read_temperature_Ev"></span><span id="sensor::BMP085Component::read_temperature_"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1a8ad727e767de3775c07b4b07f03f4a32"></span>void sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">read_temperature_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component17read_temperature_Ev"title="Permalink to this definition">¶</a><br><dd><p>Internal method to read the temperature from the component after it has been scheduled.</dl><dl class="function"><dt id="_CPPv3N6sensor15BMP085Component14read_pressure_Ev"><span id="_CPPv2N6sensor15BMP085Component14read_pressure_Ev"></span><span id="sensor::BMP085Component::read_pressure_"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1aa7d346dd0d9478d79f6007662786a1b6"></span>void sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">read_pressure_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component14read_pressure_Ev"title="Permalink to this definition">¶</a><br><dd><p>Internal method to read the pressure from the component after it has been scheduled.</dl><dl class="function"><dt id="_CPPv3N6sensor15BMP085Component9set_mode_E7uint8_t"><span id="_CPPv2N6sensor15BMP085Component9set_mode_E7uint8_t"></span><span id="sensor::BMP085Component::set_mode___uint8_t"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1ac4ed075d546b4e05a0fea6ecced5cc34"></span>bool sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">set_mode_</code><span class="sig-paren">(</span>uint8_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component9set_mode_E7uint8_t"title="Permalink to this definition">¶</a><br><dd></dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Attributes<dl class="member"><dt id="_CPPv3N6sensor15BMP085Component12temperature_E"><span id="_CPPv2N6sensor15BMP085Component12temperature_E"></span><span id="sensor::BMP085Component::temperature___BMP085TemperatureSensorP"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1a7f5542b72c5ca9d7763c11cfc5bfdfce"></span>BMP085TemperatureSensor *sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">temperature_</code> = {nullptr}<a class="headerlink"href="#_CPPv3N6sensor15BMP085Component12temperature_E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component9pressure_E"><span id="_CPPv2N6sensor15BMP085Component9pressure_E"></span><span id="sensor::BMP085Component::pressure___BMP085PressureSensorP"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1ade5f06dce07f200ea063a7671d8440e8"></span>BMP085PressureSensor *sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">pressure_</code> = {nullptr}<a class="headerlink"href="#_CPPv3N6sensor15BMP085Component9pressure_E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component12calibration_E"><span id="_CPPv2N6sensor15BMP085Component12calibration_E"></span><span id="sensor::BMP085Component::calibration___CalibrationData"></span><span class="target"id="classsensor_1_1_b_m_p085_component_1a31bf0e5c51b6ccd6163cd2ccfa685a27"></span><a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a> sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">calibration_</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component12calibration_E"title="Permalink to this definition">¶</a><br><dd></dl></div><dl class="class"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationDataE"><span id="_CPPv2N6sensor15BMP085Component15CalibrationDataE"></span><span id="sensor::BMP085Component::CalibrationData"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data"></span><em class="property">struct </em>sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a><code class="descname">CalibrationData</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="Permalink to this definition">¶</a><br><dd><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Members<dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac1E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac1E"></span><span id="sensor::BMP085Component::CalibrationData::ac1__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ae400ee69936d83ee6add9ce8f2593fe2"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac1</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac1E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac2E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac2E"></span><span id="sensor::BMP085Component::CalibrationData::ac2__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ab068d457b2a01611390ef440a45491c1"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac2</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac2E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac3E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac3E"></span><span id="sensor::BMP085Component::CalibrationData::ac3__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ac46fc4eef63d3953bdfdeb8a1cd9af5e"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac3</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac3E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac4E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac4E"></span><span id="sensor::BMP085Component::CalibrationData::ac4__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aeb579b82ac720056ef0eee4eb6e52a38"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac4</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac4E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac5E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac5E"></span><span id="sensor::BMP085Component::CalibrationData::ac5__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1a13df07d37ed145ec32260d79c8accb24"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac5</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac5E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac6E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac6E"></span><span id="sensor::BMP085Component::CalibrationData::ac6__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ad2063ae08e78bca5df50276bcea19a85"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac6</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac6E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2b1E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData2b1E"></span><span id="sensor::BMP085Component::CalibrationData::b1__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1a556711c96ba70c96eec44b8ccf4eaad1"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">b1</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData2b1E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2b2E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData2b2E"></span><span id="sensor::BMP085Component::CalibrationData::b2__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aa0ac6b88bb075f5ca6b646132ddb169f"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">b2</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData2b2E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2mbE"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData2mbE"></span><span id="sensor::BMP085Component::CalibrationData::mb__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aa53a81109c2ac974ac0b3163013c0ff8"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">mb</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData2mbE"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2mcE"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData2mcE"></span><span id="sensor::BMP085Component::CalibrationData::mc__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aacb77161fb25b8b5bd4302bfd7f96e20"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">mc</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData2mcE"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2mdE"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData2mdE"></span><span id="sensor::BMP085Component::CalibrationData::md__int16_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1abf97c2607e09d0b252fb06e07e71533a"></span>int16_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">md</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData2mdE"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2b5E"><span id="_CPPv2N6sensor15BMP085Component15CalibrationData2b5E"></span><span id="sensor::BMP085Component::CalibrationData::b5__int32_t"></span><span class="target"id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1a68f2332cc237644749763c46ca83672e"></span>int32_t sensor::<a class="reference internal"href="#_CPPv3N6sensor15BMP085ComponentE"title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal"href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE"title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">b5</code><a class="headerlink"href="#_CPPv3N6sensor15BMP085Component15CalibrationData2b5E"title="Permalink to this definition">¶</a><br><dd></dl></div></dl></dl></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">API Reference</a><ul><li><a href="index.html">Sensor</a><ul><li>Previous: <a href="ads1115.html"title="previous chapter">ADS1115 ADC Component</a><li>Next: <a href="htu21d.html"title="next chapter">HTU21D Temperature/Humidity Sensor</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/api/sensor/bmp085.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../core/application.html#_CPPv3N11Application18make_bmp085_sensorERKNSt6stringERKNSt6stringE8uint32_t" title="Application::make_bmp085_sensor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_bmp085_sensor()</span></code></a>.</p>
+</div>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv3N6sensor15BMP085ComponentE">
+<span id="_CPPv2N6sensor15BMP085ComponentE"></span><span id="sensor::BMP085Component"></span><span class="target" id="classsensor_1_1_b_m_p085_component"></span><em class="property">class </em>sensor<code class="descclassname">::</code><code class="descname">BMP085Component</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085ComponentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This <a class="reference internal" href="../core/component.html#class_component"><span class="std std-ref">Component</span></a> represents a BMP085/BMP180/BMP280 Pressure+Temperature i2c sensor. </p>
+<p>It’s built up similar to the DHT component: a central hub that has two sensors. </p>
+<p>Inherits from <a class="reference internal" href="../core/component.html#class_polling_component"><span class="std std-ref">PollingComponent</span></a>, <a class="reference internal" href="../core/i2c.html#class_i2_c_device"><span class="std std-ref">I2CDevice</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6sensor15BMP085Component15BMP085ComponentEP12I2CComponentRKNSt6stringERKNSt6stringE8uint32_t">
+<span id="_CPPv2N6sensor15BMP085Component15BMP085ComponentEP12I2CComponentRKNSt6stringERKNSt6stringE8uint32_t"></span><span id="sensor::BMP085Component::BMP085Component__I2CComponentP.ssCR.ssCR.uint32_t"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1aa04c5971cb0e75dcb532dae74b00f70b"></span>sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">BMP085Component</code><span class="sig-paren">(</span><a class="reference internal" href="../core/i2c.html#_CPPv312I2CComponent" title="I2CComponent">I2CComponent</a> *<em>parent</em>, <em class="property">const</em> std::string &amp;<em>temperature_name</em>, <em class="property">const</em> std::string &amp;<em>pressure_name</em>, uint32_t <em>update_interval</em> = 30000<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15BMP085ComponentEP12I2CComponentRKNSt6stringERKNSt6stringE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Construct the <a class="reference internal" href="#classsensor_1_1_b_m_p085_component"><span class="std std-ref">BMP085Component</span></a> using the provided address and update interval. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK6sensor15BMP085Component22get_temperature_sensorEv">
+<span id="_CPPv2NK6sensor15BMP085Component22get_temperature_sensorEv"></span><span id="sensor::BMP085Component::get_temperature_sensorC"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1a3b16a91e043a90b1af309205aac59d66"></span>BMP085TemperatureSensor *sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">get_temperature_sensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK6sensor15BMP085Component22get_temperature_sensorEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the internal temperature sensor used to expose the temperature as a sensor object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK6sensor15BMP085Component19get_pressure_sensorEv">
+<span id="_CPPv2NK6sensor15BMP085Component19get_pressure_sensorEv"></span><span id="sensor::BMP085Component::get_pressure_sensorC"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1ab2f3c15d54c5e66edcf8d6f2c6207fb3"></span>BMP085PressureSensor *sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">get_pressure_sensor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK6sensor15BMP085Component19get_pressure_sensorEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the internal pressure sensor used to expose the pressure as a sensor object. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6sensor15BMP085Component6updateEv">
+<span id="_CPPv2N6sensor15BMP085Component6updateEv"></span><span id="sensor::BMP085Component::update"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1acc48b3efa7c5be754e3ab0d0b3d7e7ff"></span>void sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component6updateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Schedule temperature+pressure readings. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6sensor15BMP085Component5setupEv">
+<span id="_CPPv2N6sensor15BMP085Component5setupEv"></span><span id="sensor::BMP085Component::setup"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1ad022150f70028a216c1d675df487d71d"></span>void sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Setup the sensor and test for a connection. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK6sensor15BMP085Component18get_setup_priorityEv">
+<span id="_CPPv2NK6sensor15BMP085Component18get_setup_priorityEv"></span><span id="sensor::BMP085Component::get_setup_priorityC"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1a996f023d4dbb7c852da980f24a08e9c0"></span>float sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK6sensor15BMP085Component18get_setup_priorityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>priority of <a class="reference internal" href="#classsensor_1_1_b_m_p085_component_1ad022150f70028a216c1d675df487d71d"><span class="std std-ref">setup()</span></a>. </p>
+<p>higher -&gt; executed earlier</p>
+<p>Defaults to 0.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The setup priority of this component </dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6sensor15BMP085Component17read_temperature_Ev">
+<span id="_CPPv2N6sensor15BMP085Component17read_temperature_Ev"></span><span id="sensor::BMP085Component::read_temperature_"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1a8ad727e767de3775c07b4b07f03f4a32"></span>void sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">read_temperature_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component17read_temperature_Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internal method to read the temperature from the component after it has been scheduled. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6sensor15BMP085Component14read_pressure_Ev">
+<span id="_CPPv2N6sensor15BMP085Component14read_pressure_Ev"></span><span id="sensor::BMP085Component::read_pressure_"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1aa7d346dd0d9478d79f6007662786a1b6"></span>void sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">read_pressure_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component14read_pressure_Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internal method to read the pressure from the component after it has been scheduled. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6sensor15BMP085Component9set_mode_E7uint8_t">
+<span id="_CPPv2N6sensor15BMP085Component9set_mode_E7uint8_t"></span><span id="sensor::BMP085Component::set_mode___uint8_t"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1ac4ed075d546b4e05a0fea6ecced5cc34"></span>bool sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">set_mode_</code><span class="sig-paren">(</span>uint8_t <em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component9set_mode_E7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component12temperature_E">
+<span id="_CPPv2N6sensor15BMP085Component12temperature_E"></span><span id="sensor::BMP085Component::temperature___BMP085TemperatureSensorP"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1a7f5542b72c5ca9d7763c11cfc5bfdfce"></span>BMP085TemperatureSensor *sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">temperature_</code> = {nullptr}<a class="headerlink" href="#_CPPv3N6sensor15BMP085Component12temperature_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component9pressure_E">
+<span id="_CPPv2N6sensor15BMP085Component9pressure_E"></span><span id="sensor::BMP085Component::pressure___BMP085PressureSensorP"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1ade5f06dce07f200ea063a7671d8440e8"></span>BMP085PressureSensor *sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">pressure_</code> = {nullptr}<a class="headerlink" href="#_CPPv3N6sensor15BMP085Component9pressure_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component12calibration_E">
+<span id="_CPPv2N6sensor15BMP085Component12calibration_E"></span><span id="sensor::BMP085Component::calibration___CalibrationData"></span><span class="target" id="classsensor_1_1_b_m_p085_component_1a31bf0e5c51b6ccd6163cd2ccfa685a27"></span><a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a> sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">calibration_</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component12calibration_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="class">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationDataE">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationDataE"></span><span id="sensor::BMP085Component::CalibrationData"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data"></span><em class="property">struct </em>sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a><code class="descname">CalibrationData</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac1E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac1E"></span><span id="sensor::BMP085Component::CalibrationData::ac1__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ae400ee69936d83ee6add9ce8f2593fe2"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac1</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac1E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac2E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac2E"></span><span id="sensor::BMP085Component::CalibrationData::ac2__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ab068d457b2a01611390ef440a45491c1"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac2</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac3E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac3E"></span><span id="sensor::BMP085Component::CalibrationData::ac3__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ac46fc4eef63d3953bdfdeb8a1cd9af5e"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac3</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac3E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac4E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac4E"></span><span id="sensor::BMP085Component::CalibrationData::ac4__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aeb579b82ac720056ef0eee4eb6e52a38"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac4</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac4E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac5E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac5E"></span><span id="sensor::BMP085Component::CalibrationData::ac5__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1a13df07d37ed145ec32260d79c8accb24"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac5</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac5E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData3ac6E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData3ac6E"></span><span id="sensor::BMP085Component::CalibrationData::ac6__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1ad2063ae08e78bca5df50276bcea19a85"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">ac6</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData3ac6E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2b1E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData2b1E"></span><span id="sensor::BMP085Component::CalibrationData::b1__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1a556711c96ba70c96eec44b8ccf4eaad1"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">b1</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData2b1E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2b2E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData2b2E"></span><span id="sensor::BMP085Component::CalibrationData::b2__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aa0ac6b88bb075f5ca6b646132ddb169f"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">b2</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData2b2E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2mbE">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData2mbE"></span><span id="sensor::BMP085Component::CalibrationData::mb__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aa53a81109c2ac974ac0b3163013c0ff8"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">mb</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData2mbE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2mcE">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData2mcE"></span><span id="sensor::BMP085Component::CalibrationData::mc__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1aacb77161fb25b8b5bd4302bfd7f96e20"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">mc</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData2mcE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2mdE">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData2mdE"></span><span id="sensor::BMP085Component::CalibrationData::md__int16_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1abf97c2607e09d0b252fb06e07e71533a"></span>int16_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">md</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData2mdE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6sensor15BMP085Component15CalibrationData2b5E">
+<span id="_CPPv2N6sensor15BMP085Component15CalibrationData2b5E"></span><span id="sensor::BMP085Component::CalibrationData::b5__int32_t"></span><span class="target" id="structsensor_1_1_b_m_p085_component_1_1_calibration_data_1a68f2332cc237644749763c46ca83672e"></span>int32_t sensor::<a class="reference internal" href="#_CPPv3N6sensor15BMP085ComponentE" title="sensor::BMP085Component">BMP085Component</a>::<a class="reference internal" href="#_CPPv3N6sensor15BMP085Component15CalibrationDataE" title="sensor::BMP085Component::CalibrationData">CalibrationData</a><code class="descname">b5</code><a class="headerlink" href="#_CPPv3N6sensor15BMP085Component15CalibrationData2b5E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+  <li><a href="index.html">Sensor</a><ul>
+      <li>Previous: <a href="ads1115.html" title="previous chapter">ADS1115 ADC Component</a></li>
+      <li>Next: <a href="htu21d.html" title="next chapter">HTU21D Temperature/Humidity Sensor</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/api/sensor/bmp085.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,4 +1,43 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Generic Output Switch &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../../_static/pygments.css"type="text/css"><script src="../../../_static/documentation_options.js"></script><script src="../../../_static/jquery.js"></script><script src="../../../_static/underscore.js"></script><script src="../../../_static/doctools.js"></script><link rel="index"title="Index"href="../../../genindex.html"><link rel="search"title="Search"href="../../../search.html"><link rel="next"title="IR Transmitter Switch"href="ir_transmitter.html"><link rel="prev"title="Shutdown Switch"href="shutdown.html"><link rel="stylesheet"href="../../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="generic-output-switch"><span id="output"></span><h1>Generic Output Switch<a class="headerlink"href="#generic-output-switch"title="Permalink to this headline">¶</a></h1><p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> switch platform allows you to use any output component as a switch.<div class="figure align-center"><a class="reference internal image-reference"href="../../../_images/output-ui.png"><img alt="../../../_images/output-ui.png"src="../../../_images/output-ui.png"style="width: 80.0%;"></a></div><div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Generic Output Switch &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Remote Transmitter Switch" href="remote_transmitter.html" />
+    <link rel="prev" title="Shutdown Switch" href="shutdown.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="generic-output-switch">
+<span id="output"></span><h1>Generic Output Switch<a class="headerlink" href="#generic-output-switch" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> switch platform allows you to use any output component as a switch.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/output-ui.png"><img alt="../../../_images/output-ui.png" src="../../../_images/output-ui.png" style="width: 80.0%;" /></a>
+</div>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
 <span class="n">output</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
     <span class="n">pin</span><span class="p">:</span> <span class="mi">25</span>
@@ -7,4 +46,77 @@
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">output</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Generic Output&quot;</span>
     <span class="n">output</span><span class="p">:</span> <span class="s1">&#39;generic_out&#39;</span>
-</pre></div></div><div class="section"id="configuration-variables"><h2>Configuration variables:<a class="headerlink"href="#configuration-variables"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><strong>output</strong> (<strong>Required</strong>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): The ID of the output component to use.<li><strong>name</strong> (<strong>Required</strong>, string): The name for the switch.<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.<li>All other options from <a class="reference internal"href="index.html#config-switch"><span class="std std-ref">Switch</span></a> and <a class="reference internal"href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</ul><div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="../output/index.html"><span class="doc">Output Component</span></a><li><a class="reference internal"href="../../../api/switch/index.html"><span class="doc">API Reference</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/switch/output.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../../index.html">Documentation overview</a><ul><li><a href="../../index.html">esphomeyaml</a><ul><li><a href="../index.html">Components</a><ul><li><a href="index.html">Switch Component</a><ul><li>Previous: <a href="shutdown.html"title="previous chapter">Shutdown Switch</a><li>Next: <a href="ir_transmitter.html"title="next chapter">IR Transmitter Switch</a></ul></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../../_sources/esphomeyaml/components/switch/output.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables:<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>output</strong> (<strong>Required</strong>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): The ID of the output component to use.</li>
+<li><strong>name</strong> (<strong>Required</strong>, string): The name for the switch.</li>
+<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.</li>
+<li>All other options from <a class="reference internal" href="index.html#config-switch"><span class="std std-ref">Switch</span></a> and <a class="reference internal" href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</li>
+</ul>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="../output/index.html"><span class="doc">Output Component</span></a></li>
+<li><a class="reference internal" href="../../../api/switch/index.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/switch/output.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">esphomeyaml</a><ul>
+  <li><a href="../index.html">Components</a><ul>
+  <li><a href="index.html">Switch Component</a><ul>
+      <li>Previous: <a href="shutdown.html" title="previous chapter">Shutdown Switch</a></li>
+      <li>Next: <a href="remote_transmitter.html" title="next chapter">Remote Transmitter Switch</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/esphomeyaml/components/switch/output.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

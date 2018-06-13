@@ -1,4 +1,51 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>TEMT6000 &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Relay"href="relay.html"><link rel="prev"title="BRUH Multisensor"href="bruh.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="temt6000"><h1>TEMT6000<a class="headerlink"href="#temt6000"title="Permalink to this headline">¶</a></h1><p>The TEMT6000 is a simple and cheap ambient light sensor. The sensor itself changes its resistance based on how much light hits the sensor. In order for us to read this resistance the breakout boards you can buy these chips on often have a small constant value resistor and three pins: <code class="docutils literal notranslate"><span class="pre">GND</span></code>, <code class="docutils literal notranslate"><span class="pre">VCC</span></code> and <code class="docutils literal notranslate"><span class="pre">SIG</span></code>. Connect <code class="docutils literal notranslate"><span class="pre">VCC</span></code> to <code class="docutils literal notranslate"><span class="pre">3.3V</span></code>, <code class="docutils literal notranslate"><span class="pre">GND</span></code> to <code class="docutils literal notranslate"><span class="pre">GND</span></code> and <code class="docutils literal notranslate"><span class="pre">SIG</span></code> to any available <a class="reference internal"href="../components/sensor/adc.html"><span class="doc">analog pin</span></a>.<div class="figure align-center"><a class="reference internal image-reference"href="../../_images/temt6000-header.jpg"><img alt="../../_images/temt6000-header.jpg"src="../../_images/temt6000-header.jpg"style="width: 75.0%;"></a></div><p>To get the brightness the sensor measures, we then simply have to measure the voltage on the <code class="docutils literal notranslate"><span class="pre">SIG</span></code> (also called <code class="docutils literal notranslate"><span class="pre">OUT</span></code>) pin using the <a class="reference internal"href="../components/sensor/adc.html"><span class="doc">Analog To Digital Sensor</span></a> and convert those voltage measurements to illuminance values in lux using a formula:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TEMT6000 &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Relay" href="relay.html" />
+    <link rel="prev" title="BRUH Multisensor" href="bruh.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="temt6000">
+<h1>TEMT6000<a class="headerlink" href="#temt6000" title="Permalink to this headline">¶</a></h1>
+<p>The TEMT6000 is a simple and cheap ambient light sensor. The sensor itself
+changes its resistance based on how much light hits the sensor. In order
+for us to read this resistance the breakout boards you can buy these chips on
+often have a small constant value resistor and three pins: <code class="docutils literal notranslate"><span class="pre">GND</span></code>, <code class="docutils literal notranslate"><span class="pre">VCC</span></code> and
+<code class="docutils literal notranslate"><span class="pre">SIG</span></code>. Connect <code class="docutils literal notranslate"><span class="pre">VCC</span></code> to <code class="docutils literal notranslate"><span class="pre">3.3V</span></code>, <code class="docutils literal notranslate"><span class="pre">GND</span></code> to <code class="docutils literal notranslate"><span class="pre">GND</span></code> and <code class="docutils literal notranslate"><span class="pre">SIG</span></code> to any
+available <a class="reference internal" href="../components/sensor/adc.html"><span class="doc">analog pin</span></a>.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/temt6000-header.jpg"><img alt="../../_images/temt6000-header.jpg" src="../../_images/temt6000-header.jpg" style="width: 75.0%;" /></a>
+</div>
+<p>To get the brightness the sensor measures, we then simply have to measure the voltage
+on the <code class="docutils literal notranslate"><span class="pre">SIG</span></code> (also called <code class="docutils literal notranslate"><span class="pre">OUT</span></code>) pin using the <a class="reference internal" href="../components/sensor/adc.html"><span class="doc">Analog To Digital Sensor</span></a>
+and convert those voltage measurements to illuminance values in lux using a formula:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">adc</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">A0</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;TEMT6000 Illuminance&quot;</span>
@@ -6,4 +53,93 @@
     <span class="n">filters</span><span class="p">:</span>
       <span class="o">-</span> <span class="k">lambda</span><span class="p">:</span> <span class="o">&gt;-</span>
           <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="mf">10000.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2000000.0</span><span class="p">;</span>
-</pre></div></div><div class="figure align-center"id="id1"><a class="reference internal image-reference"href="../../_images/temt6000-pins.jpg"><img alt="../../_images/temt6000-pins.jpg"src="../../_images/temt6000-pins.jpg"style="width: 75.0%;"></a><p class="caption"><span class="caption-text">Pins on the TEMT6000. Connect <code class="docutils literal notranslate"><span class="pre">OUT</span></code> to an ADC pin, <code class="docutils literal notranslate"><span class="pre">GND</span></code> to <code class="docutils literal notranslate"><span class="pre">GND</span></code>, and <code class="docutils literal notranslate"><span class="pre">VCC</span></code> to <code class="docutils literal notranslate"><span class="pre">3.3V</span></code></span></div><div class="section"id="formula-explanation"><h2>Formula Explanation:<a class="headerlink"href="#formula-explanation"title="Permalink to this headline">¶</a></h2><p>To get the illuminance in lux, we first need to convert the measured voltage to the current flowing across the TEMT6000 sensor. This current is also equal to the current flowing across the 10kΩ resistor in the voltage divider circuit, which is <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">=</span> <span class="pre">adc_value/10000kΩ</span></code>.<p>The <a class="reference external"href="https://www.sparkfun.com/datasheets/Sensors/Imaging/TEMT6000.pdf">datasheet for the TEMT6000</a> specifies a proportional correlation between current and illuminance: Every 2 µA of current correlates to 1 lx in the illuminance.<div class="admonition note"><p class="first admonition-title">Note<p>The default voltage range of the ADC for the ESP8266 and ESP32 are from 0 to 1.0V. So you won’t be able to measure any value above 200 lx using the default setup.<p>For the ESP32, you have the option of setting a <a class="reference internal"href="../components/sensor/adc.html#adc-esp32-attenuation"><span class="std std-ref">Voltage Attenuation</span></a> (note that the formula doesn’t need to be adjusted if you set an attenuation, as the value <code class="docutils literal notranslate"><span class="pre">x</span></code> is automatically converted to volts).<p class="last">For the ESP8266, you unfortunately need to tinker with the hardware a bit to decrease the voltage a bit. So one option would be to create another voltage divider on the <code class="docutils literal notranslate"><span class="pre">SIG</span></code> pin to divide the analog voltage by a constant value.</div></div><div class="section"id="see-also"><h2>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><a class="reference internal"href="../components/sensor/adc.html"><span class="doc">Analog To Digital Sensor</span></a><li><a class="reference external"href="https://www.sparkfun.com/datasheets/Sensors/Imaging/TEMT6000.pdf">TEMT6000 datasheet</a><li><a class="reference internal"href="bruh.html"><span class="doc">BRUH Multisensor</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/cookbook/temt6000.rst">Edit this page on GitHub</a></ul></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Cookbook</a><ul><li>Previous: <a href="bruh.html"title="previous chapter">BRUH Multisensor</a><li>Next: <a href="relay.html"title="next chapter">Relay</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/cookbook/temt6000.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/temt6000-pins.jpg"><img alt="../../_images/temt6000-pins.jpg" src="../../_images/temt6000-pins.jpg" style="width: 75.0%;" /></a>
+<p class="caption"><span class="caption-text">Pins on the TEMT6000. Connect <code class="docutils literal notranslate"><span class="pre">OUT</span></code> to an ADC pin, <code class="docutils literal notranslate"><span class="pre">GND</span></code> to <code class="docutils literal notranslate"><span class="pre">GND</span></code>, and <code class="docutils literal notranslate"><span class="pre">VCC</span></code>
+to <code class="docutils literal notranslate"><span class="pre">3.3V</span></code></span></p>
+</div>
+<div class="section" id="formula-explanation">
+<h2>Formula Explanation:<a class="headerlink" href="#formula-explanation" title="Permalink to this headline">¶</a></h2>
+<p>To get the illuminance in lux, we first need to convert the measured voltage to the
+current flowing across the TEMT6000 sensor. This current is also equal to the current
+flowing across the 10kΩ resistor in the voltage divider circuit, which is
+<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">=</span> <span class="pre">adc_value/10000kΩ</span></code>.</p>
+<p>The <a class="reference external" href="https://www.sparkfun.com/datasheets/Sensors/Imaging/TEMT6000.pdf">datasheet for the TEMT6000</a>
+specifies a proportional correlation between current and illuminance: Every 2 µA of current
+correlates to 1 lx in the illuminance.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The default voltage range of the ADC for the ESP8266 and ESP32 are from 0 to 1.0V.
+So you won’t be able to measure any value above 200 lx using the default setup.</p>
+<p>For the ESP32, you have the option of setting a <a class="reference internal" href="../components/sensor/adc.html#adc-esp32-attenuation"><span class="std std-ref">Voltage Attenuation</span></a>
+(note that the formula doesn’t need to be adjusted if you set an attenuation, as the value <code class="docutils literal notranslate"><span class="pre">x</span></code>
+is automatically converted to volts).</p>
+<p class="last">For the ESP8266, you unfortunately need to tinker with the hardware a bit to decrease
+the voltage a bit. So one option would be to create another voltage divider on the <code class="docutils literal notranslate"><span class="pre">SIG</span></code> pin
+to divide the analog voltage by a constant value.</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../components/sensor/adc.html"><span class="doc">Analog To Digital Sensor</span></a></li>
+<li><a class="reference external" href="https://www.sparkfun.com/datasheets/Sensors/Imaging/TEMT6000.pdf">TEMT6000 datasheet</a></li>
+<li><a class="reference internal" href="bruh.html"><span class="doc">BRUH Multisensor</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/cookbook/temt6000.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Cookbook</a><ul>
+      <li>Previous: <a href="bruh.html" title="previous chapter">BRUH Multisensor</a></li>
+      <li>Next: <a href="relay.html" title="next chapter">Relay</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/cookbook/temt6000.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

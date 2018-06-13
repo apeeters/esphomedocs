@@ -1,7 +1,175 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>GPIO Binary Sensor &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../../_static/pygments.css"type="text/css"><script src="../../../_static/documentation_options.js"></script><script src="../../../_static/jquery.js"></script><script src="../../../_static/underscore.js"></script><script src="../../../_static/doctools.js"></script><link rel="index"title="Index"href="../../../genindex.html"><link rel="search"title="Search"href="../../../search.html"><link rel="next"title="Status Binary Sensor"href="status.html"><link rel="prev"title="Binary Sensor Component"href="index.html"><link rel="stylesheet"href="../../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="gpio-binary-sensor"><h1>GPIO Binary Sensor<a class="headerlink"href="#gpio-binary-sensor"title="Permalink to this headline">¶</a></h1><p>The GPIO Binary Sensor platform allows you to use any input pin on your device as a binary sensor.<div class="figure align-center"><a class="reference internal image-reference"href="../../../_images/gpio-ui.png"><img alt="../../../_images/gpio-ui.png"src="../../../_images/gpio-ui.png"style="width: 80.0%;"></a></div><div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GPIO Binary Sensor &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Status Binary Sensor" href="status.html" />
+    <link rel="prev" title="Binary Sensor Component" href="index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gpio-binary-sensor">
+<h1>GPIO Binary Sensor<a class="headerlink" href="#gpio-binary-sensor" title="Permalink to this headline">¶</a></h1>
+<p>The GPIO Binary Sensor platform allows you to use any input pin on your
+device as a binary sensor.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/gpio-ui.png"><img alt="../../../_images/gpio-ui.png" src="../../../_images/gpio-ui.png" style="width: 80.0%;" /></a>
+</div>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
 <span class="n">binary_sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">D2</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Window&quot;</span>
     <span class="n">device_class</span><span class="p">:</span> <span class="n">window</span>
-</pre></div></div><div class="section"id="configuration-variables"><h2>Configuration variables:<a class="headerlink"href="#configuration-variables"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><strong>pin</strong> (<strong>Required</strong>, <a class="reference internal"href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>): The pin to periodically check.<li><strong>name</strong> (<strong>Required</strong>, string): The name of the binary sensor.<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.<li>All other options from <a class="reference internal"href="index.html#config-binary-sensor"><span class="std std-ref">Binary Sensor</span></a> and <a class="reference internal"href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</ul><div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="index.html"><span class="doc">Binary Sensor Component</span></a><li><a class="reference internal"href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a><li><a class="reference internal"href="../../../api/binary_sensor/gpio.html"><span class="doc">API Reference</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/binary_sensor/gpio.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../../index.html">Documentation overview</a><ul><li><a href="../../index.html">esphomeyaml</a><ul><li><a href="../index.html">Components</a><ul><li><a href="index.html">Binary Sensor Component</a><ul><li>Previous: <a href="index.html"title="previous chapter">Binary Sensor Component</a><li>Next: <a href="status.html"title="next chapter">Status Binary Sensor</a></ul></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../../_sources/esphomeyaml/components/binary_sensor/gpio.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables:<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>pin</strong> (<strong>Required</strong>, <a class="reference internal" href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>): The pin to periodically check.</li>
+<li><strong>name</strong> (<strong>Required</strong>, string): The name of the binary sensor.</li>
+<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.</li>
+<li>All other options from <a class="reference internal" href="index.html#config-binary-sensor"><span class="std std-ref">Binary Sensor</span></a>
+and <a class="reference internal" href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For some applications such as reed switches you need to set the pin mode to <code class="docutils literal notranslate"><span class="pre">INPUT_PULLUP</span></code>
+like this:</p>
+<div class="code yaml last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span>
+      <span class="n">number</span><span class="p">:</span> <span class="n">D2</span>
+      <span class="n">mode</span><span class="p">:</span> <span class="n">INPUT_PULLUP</span>
+    <span class="n">name</span><span class="p">:</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="inverting-values">
+<h2>Inverting Values<a class="headerlink" href="#inverting-values" title="Permalink to this headline">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">inverted</span></code> property of the <a class="reference internal" href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a> to invert the binary
+sensor:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+<span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span>
+      <span class="n">number</span><span class="p">:</span> <span class="n">D2</span>
+      <span class="n">inverted</span><span class="p">:</span> <span class="kc">True</span>
+    <span class="n">name</span><span class="p">:</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debouncing-values">
+<h2>Debouncing Values<a class="headerlink" href="#debouncing-values" title="Permalink to this headline">¶</a></h2>
+<p>Some binary sensors are a bit unstable and quickly transition between the ON and OFF state while
+they’re pressed. To fix this and debounce the signal, use the <a class="reference internal" href="index.html#binary-sensor-filters"><span class="std std-ref">binary sensor filters</span></a>:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+<span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D2</span>
+    <span class="n">name</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">filters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">delayed_on</span><span class="p">:</span> <span class="mi">10</span><span class="n">ms</span>
+</pre></div>
+</div>
+<p>Above example will only make the signal go high if the button has stayed high for more than 10ms.
+Alternatively, below configuration will make the binary sensor publish an ON value immediately, but
+will wait 10ms before publishing an OFF value:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+<span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="n">D2</span>
+    <span class="n">name</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">filters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">delayed_off</span><span class="p">:</span> <span class="mi">10</span><span class="n">ms</span>
+</pre></div>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="index.html"><span class="doc">Binary Sensor Component</span></a></li>
+<li><a class="reference internal" href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a></li>
+<li><a class="reference internal" href="../../../api/binary_sensor/gpio.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/binary_sensor/gpio.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">esphomeyaml</a><ul>
+  <li><a href="../index.html">Components</a><ul>
+  <li><a href="index.html">Binary Sensor Component</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Binary Sensor Component</a></li>
+      <li>Next: <a href="status.html" title="next chapter">Status Binary Sensor</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/esphomeyaml/components/binary_sensor/gpio.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

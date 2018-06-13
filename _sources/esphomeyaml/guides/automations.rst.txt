@@ -257,6 +257,8 @@ All Triggers
 - :ref:`binary_sensor.on_release <binary_sensor-on_release>`
 - :ref:`binary_sensor.on_click <binary_sensor-on_click>`
 - :ref:`binary_sensor.on_double_click <binary_sensor-on_double_click>`
+- :ref:`esphomeyaml.on_boot <esphomeyaml-on_boot>`
+- :ref:`esphomeyaml.on_shutdown <esphomeyaml-on_shutdown>`
 
 All Actions
 ~~~~~~~~~~~
@@ -316,6 +318,20 @@ This action executes an arbitrary piece of C++ code (see :ref:`Lambda <config-la
         - lambda: >-
             id(some_binary_sensor).publish_state(false);
 
+
+Automation Conditions
+~~~~~~~~~~~~~~~~~~~~~
+
+Additionally, you can have a condition ``if:`` block in the automation. This will cause esphomelib
+to only execute the ``then`` block if the ``if:`` block succeeds:
+
+.. code:: yaml
+
+    on_...:
+      if:
+        lambda: 'return id(some_binary_sensor).value;'
+      then:
+        # do something
 
 See Also
 ~~~~~~~~

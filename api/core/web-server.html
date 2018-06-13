@@ -1,1 +1,332 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Web Server &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Deep Sleep"href="deep-sleep.html"><link rel="prev"title="Controller"href="controller.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="web-server"><h1>Web Server<a class="headerlink"href="#web-server"title="Permalink to this headline">¶</a></h1><div class="section"id="api-reference"><h2>API Reference<a class="headerlink"href="#api-reference"title="Permalink to this headline">¶</a></h2><dl class="class"><dt id="_CPPv39WebServer"><span id="_CPPv29WebServer"></span><span id="WebServer"></span><span class="target"id="class_web_server"></span><em class="property">class </em><code class="descname">WebServer</code><a class="headerlink"href="#_CPPv39WebServer"title="Permalink to this definition">¶</a><br><dd><p>This class allows users to create a web server with their ESP nodes.<p>Behind the scenes it’s using AsyncWebServer to set up the server. It exposes 3 things: an index page under ‘/’ that’s used to show a simple web interface (the css/js is hosted by esphomelib.com by default), an event source under ‘/events’ that automatically sends all state updates in real time + the debug log. Lastly, there’s an REST API available under the ‘/light/…’, ‘/sensor/…’, … URLs. A full documentation for this API can be found under <a class="reference external"href="https://esphomelib.com/web-api/index.html">https://esphomelib.com/web-api/index.html</a>.<p>Additionally, the web server is advertised via mDNS.<p>Inherits from <a class="reference internal"href="controller.html#class_storing_controller"><span class="std std-ref">StoringController</span></a>, <a class="reference internal"href="component.html#class_component"><span class="std std-ref">Component</span></a>, AsyncWebHandler<div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Functions<dl class="function"><dt id="_CPPv3N9WebServer9WebServerE8uint16_t"><span id="_CPPv2N9WebServer9WebServerE8uint16_t"></span><span id="WebServer::WebServer__uint16_t"></span><span class="target"id="class_web_server_1a4fabb079cf1f2733031df4793bf4a8b5"></span><a class="reference internal"href="#_CPPv3N9WebServer9WebServerE8uint16_t"title="WebServer::WebServer">WebServer</a><code class="descname">WebServer</code><span class="sig-paren">(</span>uint16_t <em>port</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer9WebServerE8uint16_t"title="Permalink to this definition">¶</a><br><dd><p>Initialize the web server with the specified port.</dl><dl class="function"><dt id="_CPPv3N9WebServer11set_css_urlEPKc"><span id="_CPPv2N9WebServer11set_css_urlEPKc"></span><span id="WebServer::set_css_url__cCP"></span><span class="target"id="class_web_server_1a2264b69067c2693b2107142bcd43e7c9"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">set_css_url</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>css_url</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer11set_css_urlEPKc"title="Permalink to this definition">¶</a><br><dd><p>Set the URL to the CSS &lt;link&gt; that’s sent to each client.<p>Defaults to <a class="reference external"href="https://esphomelib.com/_static/webserver-v1.min.css">https://esphomelib.com/_static/webserver-v1.min.css</a><p><dl class="docutils"><dt><strong>Parameters</strong><dd><ul class="breatheparameterlist first last simple"><li><code class="docutils literal notranslate"><span class="pre">css_url</span></code>: The url to the web server stylesheet.</ul></dl><p></dl><dl class="function"><dt id="_CPPv3N9WebServer10set_js_urlEPKc"><span id="_CPPv2N9WebServer10set_js_urlEPKc"></span><span id="WebServer::set_js_url__cCP"></span><span class="target"id="class_web_server_1a390b3f421a98ce55dd191d71f03b91e7"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">set_js_url</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>js_url</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer10set_js_urlEPKc"title="Permalink to this definition">¶</a><br><dd><p>Set the URL to the script that’s embedded in the index page.<p>Defaults to <a class="reference external"href="https://esphomelib.com/_static/webserver-v1.min.js">https://esphomelib.com/_static/webserver-v1.min.js</a><p><dl class="docutils"><dt><strong>Parameters</strong><dd><ul class="breatheparameterlist first last simple"><li><code class="docutils literal notranslate"><span class="pre">js_url</span></code>: The url to the web server script.</ul></dl><p></dl><dl class="function"><dt id="_CPPv3N9WebServer8set_portE8uint16_t"><span id="_CPPv2N9WebServer8set_portE8uint16_t"></span><span id="WebServer::set_port__uint16_t"></span><span class="target"id="class_web_server_1aca12a4e68a436fb72e348d445f6dd2ef"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">set_port</code><span class="sig-paren">(</span>uint16_t <em>port</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer8set_portE8uint16_t"title="Permalink to this definition">¶</a><br><dd><p>Set the web server port.</dl><dl class="function"><dt id="_CPPv3N9WebServer5setupEv"><span id="_CPPv2N9WebServer5setupEv"></span><span id="WebServer::setup"></span><span class="target"id="class_web_server_1aa5084aafbe9c4d8684a2f8e8396c49c0"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer5setupEv"title="Permalink to this definition">¶</a><br><dd><p>Setup the internal web server and register handlers.</dl><dl class="function"><dt id="_CPPv3NK9WebServer18get_setup_priorityEv"><span id="_CPPv2NK9WebServer18get_setup_priorityEv"></span><span id="WebServer::get_setup_priorityC"></span><span class="target"id="class_web_server_1af72f8079798eccab6cd39a93bb4cc589"></span>float <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink"href="#_CPPv3NK9WebServer18get_setup_priorityEv"title="Permalink to this definition">¶</a><br><dd><p>MQTT setup priority.</dl><dl class="function"><dt id="_CPPv3N9WebServer20handle_index_requestEP21AsyncWebServerRequest"><span id="_CPPv2N9WebServer20handle_index_requestEP21AsyncWebServerRequest"></span><span id="WebServer::handle_index_request__AsyncWebServerRequestP"></span><span class="target"id="class_web_server_1aa2baa93fabfdd584c09703ce2f4cfd1b"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handle_index_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer20handle_index_requestEP21AsyncWebServerRequest"title="Permalink to this definition">¶</a><br><dd><p>Handle an index request under ‘/’.</dl><dl class="function"><dt id="_CPPv3N9WebServer15register_sensorEPN6sensor6SensorE"><span id="_CPPv2N9WebServer15register_sensorEPN6sensor6SensorE"></span><span id="WebServer::register_sensor__sensor::SensorP"></span><span class="target"id="class_web_server_1aac71ff053d2cc22b1d929fa80a865a79"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">register_sensor</code><span class="sig-paren">(</span>sensor::<a class="reference internal"href="../sensor/index.html#_CPPv3N6sensor6SensorE"title="sensor::Sensor">Sensor</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer15register_sensorEPN6sensor6SensorE"title="Permalink to this definition">¶</a><br><dd><p>Internally register a sensor and set a callback on state changes.</dl><dl class="function"><dt id="_CPPv3N9WebServer21handle_sensor_requestEP21AsyncWebServerRequest8UrlMatch"><span id="_CPPv2N9WebServer21handle_sensor_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_sensor_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target"id="class_web_server_1a3247143d8ab846cf89e843247c0fd9ef"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handle_sensor_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer21handle_sensor_requestEP21AsyncWebServerRequest8UrlMatch"title="Permalink to this definition">¶</a><br><dd><p>Handle a sensor request under ‘/sensor/&lt;id&gt;’.</dl><dl class="function"><dt id="_CPPv3N9WebServer11sensor_jsonEPN6sensor6SensorEf"><span id="_CPPv2N9WebServer11sensor_jsonEPN6sensor6SensorEf"></span><span id="WebServer::sensor_json__sensor::SensorP.float"></span><span class="target"id="class_web_server_1a426461c0d58256e2651d6883155a4a46"></span>std::string <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">sensor_json</code><span class="sig-paren">(</span>sensor::<a class="reference internal"href="../sensor/index.html#_CPPv3N6sensor6SensorE"title="sensor::Sensor">Sensor</a> *<em>obj</em>, float <em>value</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer11sensor_jsonEPN6sensor6SensorEf"title="Permalink to this definition">¶</a><br><dd><p>Dump the sensor state with its value as a JSON string.</dl><dl class="function"><dt id="_CPPv3N9WebServer15register_switchEPN7switch_6SwitchE"><span id="_CPPv2N9WebServer15register_switchEPN7switch_6SwitchE"></span><span id="WebServer::register_switch__switch_::SwitchP"></span><span class="target"id="class_web_server_1a62276a9c51223610de3863d95e9b9dc0"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">register_switch</code><span class="sig-paren">(</span>switch_::<a class="reference internal"href="../switch/index.html#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer15register_switchEPN7switch_6SwitchE"title="Permalink to this definition">¶</a><br><dd><p>Internally register a switch and set a callback on state changes.</dl><dl class="function"><dt id="_CPPv3N9WebServer21handle_switch_requestEP21AsyncWebServerRequest8UrlMatch"><span id="_CPPv2N9WebServer21handle_switch_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_switch_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target"id="class_web_server_1ab1bdabd3f6a73a8e6f352020785eb1c8"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handle_switch_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer21handle_switch_requestEP21AsyncWebServerRequest8UrlMatch"title="Permalink to this definition">¶</a><br><dd><p>Handle a switch request under ‘/switch/&lt;id&gt;/&lt;/turn_on/turn_off/toggle&gt;’.</dl><dl class="function"><dt id="_CPPv3N9WebServer11switch_jsonEPN7switch_6SwitchEb"><span id="_CPPv2N9WebServer11switch_jsonEPN7switch_6SwitchEb"></span><span id="WebServer::switch_json__switch_::SwitchP.b"></span><span class="target"id="class_web_server_1a05b9f01c27ce8c4cb30297902da5799a"></span>std::string <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">switch_json</code><span class="sig-paren">(</span>switch_::<a class="reference internal"href="../switch/index.html#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a> *<em>obj</em>, bool <em>value</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer11switch_jsonEPN7switch_6SwitchEb"title="Permalink to this definition">¶</a><br><dd><p>Dump the switch state with its value as a JSON string.</dl><dl class="function"><dt id="_CPPv3N9WebServer22register_binary_sensorEPN13binary_sensor12BinarySensorE"><span id="_CPPv2N9WebServer22register_binary_sensorEPN13binary_sensor12BinarySensorE"></span><span id="WebServer::register_binary_sensor__binary_sensor::BinarySensorP"></span><span class="target"id="class_web_server_1a50f4459de75178ac1112b98a3c0dfbee"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">register_binary_sensor</code><span class="sig-paren">(</span>binary_sensor::<a class="reference internal"href="../binary_sensor/index.html#_CPPv3N13binary_sensor12BinarySensorE"title="binary_sensor::BinarySensor">BinarySensor</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer22register_binary_sensorEPN13binary_sensor12BinarySensorE"title="Permalink to this definition">¶</a><br><dd><p>Internally register a binary sensor and set a callback on state changes.</dl><dl class="function"><dt id="_CPPv3N9WebServer28handle_binary_sensor_requestEP21AsyncWebServerRequest8UrlMatch"><span id="_CPPv2N9WebServer28handle_binary_sensor_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_binary_sensor_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target"id="class_web_server_1aa21ad1ce424a3c977aba4e045d1d21a1"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handle_binary_sensor_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer28handle_binary_sensor_requestEP21AsyncWebServerRequest8UrlMatch"title="Permalink to this definition">¶</a><br><dd><p>Handle a binary sensor request under ‘/binary_sensor/&lt;id&gt;’.</dl><dl class="function"><dt id="_CPPv3N9WebServer18binary_sensor_jsonEPN13binary_sensor12BinarySensorEb"><span id="_CPPv2N9WebServer18binary_sensor_jsonEPN13binary_sensor12BinarySensorEb"></span><span id="WebServer::binary_sensor_json__binary_sensor::BinarySensorP.b"></span><span class="target"id="class_web_server_1ab9b18e9e1de8a266e5bed54dbabcc6a8"></span>std::string <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">binary_sensor_json</code><span class="sig-paren">(</span>binary_sensor::<a class="reference internal"href="../binary_sensor/index.html#_CPPv3N13binary_sensor12BinarySensorE"title="binary_sensor::BinarySensor">BinarySensor</a> *<em>obj</em>, bool <em>value</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer18binary_sensor_jsonEPN13binary_sensor12BinarySensorEb"title="Permalink to this definition">¶</a><br><dd><p>Dump the binary sensor state with its value as a JSON string.</dl><dl class="function"><dt id="_CPPv3N9WebServer12register_fanEPN3fan8FanStateE"><span id="_CPPv2N9WebServer12register_fanEPN3fan8FanStateE"></span><span id="WebServer::register_fan__fan::FanStateP"></span><span class="target"id="class_web_server_1a28e54466eb97f5f519bb498894740bae"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">register_fan</code><span class="sig-paren">(</span>fan::<a class="reference internal"href="../fan/index.html#_CPPv3N3fan8FanStateE"title="fan::FanState">FanState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer12register_fanEPN3fan8FanStateE"title="Permalink to this definition">¶</a><br><dd><p>Internally register a fan and set a callback on state changes.</dl><dl class="function"><dt id="_CPPv3N9WebServer18handle_fan_requestEP21AsyncWebServerRequest8UrlMatch"><span id="_CPPv2N9WebServer18handle_fan_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_fan_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target"id="class_web_server_1a39810bcdd1fb46e6555630c089733c0b"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handle_fan_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer18handle_fan_requestEP21AsyncWebServerRequest8UrlMatch"title="Permalink to this definition">¶</a><br><dd><p>Handle a fan request under ‘/fan/&lt;id&gt;/&lt;/turn_on/turn_off/toggle&gt;’.</dl><dl class="function"><dt id="_CPPv3N9WebServer8fan_jsonEPN3fan8FanStateE"><span id="_CPPv2N9WebServer8fan_jsonEPN3fan8FanStateE"></span><span id="WebServer::fan_json__fan::FanStateP"></span><span class="target"id="class_web_server_1ad760befcc7f43fa2cc5ba60d2a2a73b2"></span>std::string <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">fan_json</code><span class="sig-paren">(</span>fan::<a class="reference internal"href="../fan/index.html#_CPPv3N3fan8FanStateE"title="fan::FanState">FanState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer8fan_jsonEPN3fan8FanStateE"title="Permalink to this definition">¶</a><br><dd><p>Dump the fan state as a JSON string.</dl><dl class="function"><dt id="_CPPv3N9WebServer14register_lightEPN5light10LightStateE"><span id="_CPPv2N9WebServer14register_lightEPN5light10LightStateE"></span><span id="WebServer::register_light__light::LightStateP"></span><span class="target"id="class_web_server_1a52b424fb85c6d97db2fefcd15cc08e1f"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">register_light</code><span class="sig-paren">(</span>light::<a class="reference internal"href="../light/index.html#_CPPv3N5light10LightStateE"title="light::LightState">LightState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer14register_lightEPN5light10LightStateE"title="Permalink to this definition">¶</a><br><dd><p>Internally register a light and set a callback on state changes.</dl><dl class="function"><dt id="_CPPv3N9WebServer20handle_light_requestEP21AsyncWebServerRequest8UrlMatch"><span id="_CPPv2N9WebServer20handle_light_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_light_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target"id="class_web_server_1a335e0332c778c47a6dacc9578264db8f"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handle_light_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer20handle_light_requestEP21AsyncWebServerRequest8UrlMatch"title="Permalink to this definition">¶</a><br><dd><p>Handle a light request under ‘/light/&lt;id&gt;/&lt;/turn_on/turn_off/toggle&gt;’.</dl><dl class="function"><dt id="_CPPv3N9WebServer10light_jsonEPN5light10LightStateE"><span id="_CPPv2N9WebServer10light_jsonEPN5light10LightStateE"></span><span id="WebServer::light_json__light::LightStateP"></span><span class="target"id="class_web_server_1af1d4320a29cea6b2352f573f5fe646af"></span>std::string <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">light_json</code><span class="sig-paren">(</span>light::<a class="reference internal"href="../light/index.html#_CPPv3N5light10LightStateE"title="light::LightState">LightState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer10light_jsonEPN5light10LightStateE"title="Permalink to this definition">¶</a><br><dd><p>Dump the light state as a JSON string.</dl><dl class="function"><dt id="_CPPv3N9WebServer9canHandleEP21AsyncWebServerRequest"><span id="_CPPv2N9WebServer9canHandleEP21AsyncWebServerRequest"></span><span id="WebServer::canHandle__AsyncWebServerRequestP"></span><span class="target"id="class_web_server_1ac8fbc4e8637b9e1c015c45576fc8ba2a"></span>bool <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">canHandle</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer9canHandleEP21AsyncWebServerRequest"title="Permalink to this definition">¶</a><br><dd><p>Override the web handler’s canHandle method.</dl><dl class="function"><dt id="_CPPv3N9WebServer13handleRequestEP21AsyncWebServerRequest"><span id="_CPPv2N9WebServer13handleRequestEP21AsyncWebServerRequest"></span><span id="WebServer::handleRequest__AsyncWebServerRequestP"></span><span class="target"id="class_web_server_1a1fd16fb9aea0c8893e5c630fb3724fa1"></span>void <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">handleRequest</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer13handleRequestEP21AsyncWebServerRequest"title="Permalink to this definition">¶</a><br><dd><p>Override the web handler’s handleRequest method.</dl><dl class="function"><dt id="_CPPv3N9WebServer23isRequestHandlerTrivialEv"><span id="_CPPv2N9WebServer23isRequestHandlerTrivialEv"></span><span id="WebServer::isRequestHandlerTrivial"></span><span class="target"id="class_web_server_1af927d78cd5cff8d4fab3999ac9d2de84"></span>bool <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">isRequestHandlerTrivial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N9WebServer23isRequestHandlerTrivialEv"title="Permalink to this definition">¶</a><br><dd><p>This web handle is not trivial.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Attributes<dl class="member"><dt id="_CPPv3N9WebServer5port_E"><span id="_CPPv2N9WebServer5port_E"></span><span id="WebServer::port___uint16_t"></span><span class="target"id="class_web_server_1a53e0255e876af07249945a2e190b7180"></span>uint16_t <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">port_</code><a class="headerlink"href="#_CPPv3N9WebServer5port_E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N9WebServer7server_E"><span id="_CPPv2N9WebServer7server_E"></span><span id="WebServer::server___AsyncWebServerP"></span><span class="target"id="class_web_server_1a8edfc62e456829d2bad3e9ab4d59fd99"></span>AsyncWebServer *<a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">server_</code><a class="headerlink"href="#_CPPv3N9WebServer7server_E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N9WebServer7events_E"><span id="_CPPv2N9WebServer7events_E"></span><span id="WebServer::events___AsyncEventSource"></span><span class="target"id="class_web_server_1af774c32824cd6fa6b0af5358e23baaad"></span>AsyncEventSource <a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">events_</code> = {&quot;/events&quot;}<a class="headerlink"href="#_CPPv3N9WebServer7events_E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N9WebServer8css_url_E"><span id="_CPPv2N9WebServer8css_url_E"></span><span id="WebServer::css_url___cCP"></span><span class="target"id="class_web_server_1ab3052fe30cf184013e703c6db5bf4073"></span><em class="property">const</em> char *<a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">css_url_</code> = {nullptr}<a class="headerlink"href="#_CPPv3N9WebServer8css_url_E"title="Permalink to this definition">¶</a><br><dd></dl><dl class="member"><dt id="_CPPv3N9WebServer7js_url_E"><span id="_CPPv2N9WebServer7js_url_E"></span><span id="WebServer::js_url___cCP"></span><span class="target"id="class_web_server_1ae58f3f64ec79732387b129b69c1aaa2b"></span><em class="property">const</em> char *<a class="reference internal"href="#_CPPv39WebServer"title="WebServer">WebServer</a><code class="descname">js_url_</code> = {nullptr}<a class="headerlink"href="#_CPPv3N9WebServer7js_url_E"title="Permalink to this definition">¶</a><br><dd></dl></div></dl><dl class="class"><dt id="_CPPv38UrlMatch"><span id="_CPPv28UrlMatch"></span><span id="UrlMatch"></span><span class="target"id="struct_url_match"></span><em class="property">struct </em><code class="descname">UrlMatch</code><a class="headerlink"href="#_CPPv38UrlMatch"title="Permalink to this definition">¶</a><br><dd><p>Internal helper struct that is used to parse incoming URLs.<div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Members<dl class="member"><dt id="_CPPv3N8UrlMatch6domainE"><span id="_CPPv2N8UrlMatch6domainE"></span><span id="UrlMatch::domain__ss"></span><span class="target"id="struct_url_match_1a4ed690629117577960c304b6af1ac2b5"></span>std::string <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a><code class="descname">domain</code><a class="headerlink"href="#_CPPv3N8UrlMatch6domainE"title="Permalink to this definition">¶</a><br><dd><p>The domain of the component, for example “sensor”.</dl><dl class="member"><dt id="_CPPv3N8UrlMatch2idE"><span id="_CPPv2N8UrlMatch2idE"></span><span id="UrlMatch::id__ss"></span><span class="target"id="struct_url_match_1a09f5aa4c4958b057e4e2dad8b3581e8c"></span>std::string <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a><code class="descname">id</code><a class="headerlink"href="#_CPPv3N8UrlMatch2idE"title="Permalink to this definition">¶</a><br><dd><p>The id of the device that’s being aceesed, for example “living_room_fan”.</dl><dl class="member"><dt id="_CPPv3N8UrlMatch6methodE"><span id="_CPPv2N8UrlMatch6methodE"></span><span id="UrlMatch::method__ss"></span><span class="target"id="struct_url_match_1a1b6c1df1fa008dbc7d893768d923acfd"></span>std::string <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a><code class="descname">method</code><a class="headerlink"href="#_CPPv3N8UrlMatch6methodE"title="Permalink to this definition">¶</a><br><dd><p>The method that’s being called, for example “turn_on”.</dl><dl class="member"><dt id="_CPPv3N8UrlMatch5validE"><span id="_CPPv2N8UrlMatch5validE"></span><span id="UrlMatch::valid__b"></span><span class="target"id="struct_url_match_1a049ecc35f418e5c1d3f3b97591eee49c"></span>bool <a class="reference internal"href="#_CPPv38UrlMatch"title="UrlMatch">UrlMatch</a><code class="descname">valid</code><a class="headerlink"href="#_CPPv3N8UrlMatch5validE"title="Permalink to this definition">¶</a><br><dd><p>Whether this match is valid.</dl></div></dl></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">API Reference</a><ul><li><a href="index.html">Core</a><ul><li>Previous: <a href="controller.html"title="previous chapter">Controller</a><li>Next: <a href="deep-sleep.html"title="next chapter">Deep Sleep</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/api/core/web-server.rst.txt"rel="nofollow">Page source</a></div>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web Server &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deep Sleep" href="deep-sleep.html" />
+    <link rel="prev" title="Controller" href="controller.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="web-server">
+<h1>Web Server<a class="headerlink" href="#web-server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv39WebServer">
+<span id="_CPPv29WebServer"></span><span id="WebServer"></span><span class="target" id="class_web_server"></span><em class="property">class </em><code class="descname">WebServer</code><a class="headerlink" href="#_CPPv39WebServer" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This class allows users to create a web server with their ESP nodes. </p>
+<p>Behind the scenes it’s using AsyncWebServer to set up the server. It exposes 3 things: an index page under ‘/’ that’s used to show a simple web interface (the css/js is hosted by esphomelib.com by default), an event source under ‘/events’ that automatically sends all state updates in real time + the debug log. Lastly, there’s an REST API available under the ‘/light/…’, ‘/sensor/…’, … URLs. A full documentation for this API can be found under <a class="reference external" href="https://esphomelib.com/web-api/index.html">https://esphomelib.com/web-api/index.html</a>.</p>
+<p>Additionally, the web server is advertised via mDNS. </p>
+<p>Inherits from <a class="reference internal" href="controller.html#class_storing_controller"><span class="std std-ref">StoringController</span></a>, <a class="reference internal" href="component.html#class_component"><span class="std std-ref">Component</span></a>, AsyncWebHandler</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N9WebServer9WebServerE8uint16_t">
+<span id="_CPPv2N9WebServer9WebServerE8uint16_t"></span><span id="WebServer::WebServer__uint16_t"></span><span class="target" id="class_web_server_1a4fabb079cf1f2733031df4793bf4a8b5"></span><a class="reference internal" href="#_CPPv3N9WebServer9WebServerE8uint16_t" title="WebServer::WebServer">WebServer</a><code class="descname">WebServer</code><span class="sig-paren">(</span>uint16_t <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer9WebServerE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize the web server with the specified port. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer11set_css_urlEPKc">
+<span id="_CPPv2N9WebServer11set_css_urlEPKc"></span><span id="WebServer::set_css_url__cCP"></span><span class="target" id="class_web_server_1a2264b69067c2693b2107142bcd43e7c9"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">set_css_url</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>css_url</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer11set_css_urlEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the URL to the CSS &lt;link&gt; that’s sent to each client. </p>
+<p>Defaults to <a class="reference external" href="https://esphomelib.com/_static/webserver-v1.min.css">https://esphomelib.com/_static/webserver-v1.min.css</a></p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">css_url</span></code>: The url to the web server stylesheet. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer10set_js_urlEPKc">
+<span id="_CPPv2N9WebServer10set_js_urlEPKc"></span><span id="WebServer::set_js_url__cCP"></span><span class="target" id="class_web_server_1a390b3f421a98ce55dd191d71f03b91e7"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">set_js_url</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>js_url</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer10set_js_urlEPKc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the URL to the script that’s embedded in the index page. </p>
+<p>Defaults to <a class="reference external" href="https://esphomelib.com/_static/webserver-v1.min.js">https://esphomelib.com/_static/webserver-v1.min.js</a></p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">js_url</span></code>: The url to the web server script. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer8set_portE8uint16_t">
+<span id="_CPPv2N9WebServer8set_portE8uint16_t"></span><span id="WebServer::set_port__uint16_t"></span><span class="target" id="class_web_server_1aca12a4e68a436fb72e348d445f6dd2ef"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">set_port</code><span class="sig-paren">(</span>uint16_t <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer8set_portE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the web server port. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer5setupEv">
+<span id="_CPPv2N9WebServer5setupEv"></span><span id="WebServer::setup"></span><span class="target" id="class_web_server_1aa5084aafbe9c4d8684a2f8e8396c49c0"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Setup the internal web server and register handlers. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK9WebServer18get_setup_priorityEv">
+<span id="_CPPv2NK9WebServer18get_setup_priorityEv"></span><span id="WebServer::get_setup_priorityC"></span><span class="target" id="class_web_server_1af72f8079798eccab6cd39a93bb4cc589"></span>float <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK9WebServer18get_setup_priorityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>MQTT setup priority. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer20handle_index_requestEP21AsyncWebServerRequest">
+<span id="_CPPv2N9WebServer20handle_index_requestEP21AsyncWebServerRequest"></span><span id="WebServer::handle_index_request__AsyncWebServerRequestP"></span><span class="target" id="class_web_server_1aa2baa93fabfdd584c09703ce2f4cfd1b"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handle_index_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer20handle_index_requestEP21AsyncWebServerRequest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Handle an index request under ‘/’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer15register_sensorEPN6sensor6SensorE">
+<span id="_CPPv2N9WebServer15register_sensorEPN6sensor6SensorE"></span><span id="WebServer::register_sensor__sensor::SensorP"></span><span class="target" id="class_web_server_1aac71ff053d2cc22b1d929fa80a865a79"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">register_sensor</code><span class="sig-paren">(</span>sensor::<a class="reference internal" href="../sensor/index.html#_CPPv3N6sensor6SensorE" title="sensor::Sensor">Sensor</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer15register_sensorEPN6sensor6SensorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internally register a sensor and set a callback on state changes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer21handle_sensor_requestEP21AsyncWebServerRequest8UrlMatch">
+<span id="_CPPv2N9WebServer21handle_sensor_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_sensor_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target" id="class_web_server_1a3247143d8ab846cf89e843247c0fd9ef"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handle_sensor_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer21handle_sensor_requestEP21AsyncWebServerRequest8UrlMatch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Handle a sensor request under ‘/sensor/&lt;id&gt;’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer11sensor_jsonEPN6sensor6SensorEf">
+<span id="_CPPv2N9WebServer11sensor_jsonEPN6sensor6SensorEf"></span><span id="WebServer::sensor_json__sensor::SensorP.float"></span><span class="target" id="class_web_server_1a426461c0d58256e2651d6883155a4a46"></span>std::string <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">sensor_json</code><span class="sig-paren">(</span>sensor::<a class="reference internal" href="../sensor/index.html#_CPPv3N6sensor6SensorE" title="sensor::Sensor">Sensor</a> *<em>obj</em>, float <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer11sensor_jsonEPN6sensor6SensorEf" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dump the sensor state with its value as a JSON string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer15register_switchEPN7switch_6SwitchE">
+<span id="_CPPv2N9WebServer15register_switchEPN7switch_6SwitchE"></span><span id="WebServer::register_switch__switch_::SwitchP"></span><span class="target" id="class_web_server_1a62276a9c51223610de3863d95e9b9dc0"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">register_switch</code><span class="sig-paren">(</span>switch_::<a class="reference internal" href="../switch/index.html#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer15register_switchEPN7switch_6SwitchE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internally register a switch and set a callback on state changes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer21handle_switch_requestEP21AsyncWebServerRequest8UrlMatch">
+<span id="_CPPv2N9WebServer21handle_switch_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_switch_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target" id="class_web_server_1ab1bdabd3f6a73a8e6f352020785eb1c8"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handle_switch_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer21handle_switch_requestEP21AsyncWebServerRequest8UrlMatch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Handle a switch request under ‘/switch/&lt;id&gt;/&lt;/turn_on/turn_off/toggle&gt;’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer11switch_jsonEPN7switch_6SwitchEb">
+<span id="_CPPv2N9WebServer11switch_jsonEPN7switch_6SwitchEb"></span><span id="WebServer::switch_json__switch_::SwitchP.b"></span><span class="target" id="class_web_server_1a05b9f01c27ce8c4cb30297902da5799a"></span>std::string <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">switch_json</code><span class="sig-paren">(</span>switch_::<a class="reference internal" href="../switch/index.html#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a> *<em>obj</em>, bool <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer11switch_jsonEPN7switch_6SwitchEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dump the switch state with its value as a JSON string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer22register_binary_sensorEPN13binary_sensor12BinarySensorE">
+<span id="_CPPv2N9WebServer22register_binary_sensorEPN13binary_sensor12BinarySensorE"></span><span id="WebServer::register_binary_sensor__binary_sensor::BinarySensorP"></span><span class="target" id="class_web_server_1a50f4459de75178ac1112b98a3c0dfbee"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">register_binary_sensor</code><span class="sig-paren">(</span>binary_sensor::<a class="reference internal" href="../binary_sensor/index.html#_CPPv3N13binary_sensor12BinarySensorE" title="binary_sensor::BinarySensor">BinarySensor</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer22register_binary_sensorEPN13binary_sensor12BinarySensorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internally register a binary sensor and set a callback on state changes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer28handle_binary_sensor_requestEP21AsyncWebServerRequest8UrlMatch">
+<span id="_CPPv2N9WebServer28handle_binary_sensor_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_binary_sensor_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target" id="class_web_server_1aa21ad1ce424a3c977aba4e045d1d21a1"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handle_binary_sensor_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer28handle_binary_sensor_requestEP21AsyncWebServerRequest8UrlMatch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Handle a binary sensor request under ‘/binary_sensor/&lt;id&gt;’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer18binary_sensor_jsonEPN13binary_sensor12BinarySensorEb">
+<span id="_CPPv2N9WebServer18binary_sensor_jsonEPN13binary_sensor12BinarySensorEb"></span><span id="WebServer::binary_sensor_json__binary_sensor::BinarySensorP.b"></span><span class="target" id="class_web_server_1ab9b18e9e1de8a266e5bed54dbabcc6a8"></span>std::string <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">binary_sensor_json</code><span class="sig-paren">(</span>binary_sensor::<a class="reference internal" href="../binary_sensor/index.html#_CPPv3N13binary_sensor12BinarySensorE" title="binary_sensor::BinarySensor">BinarySensor</a> *<em>obj</em>, bool <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer18binary_sensor_jsonEPN13binary_sensor12BinarySensorEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dump the binary sensor state with its value as a JSON string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer12register_fanEPN3fan8FanStateE">
+<span id="_CPPv2N9WebServer12register_fanEPN3fan8FanStateE"></span><span id="WebServer::register_fan__fan::FanStateP"></span><span class="target" id="class_web_server_1a28e54466eb97f5f519bb498894740bae"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">register_fan</code><span class="sig-paren">(</span>fan::<a class="reference internal" href="../fan/index.html#_CPPv3N3fan8FanStateE" title="fan::FanState">FanState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer12register_fanEPN3fan8FanStateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internally register a fan and set a callback on state changes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer18handle_fan_requestEP21AsyncWebServerRequest8UrlMatch">
+<span id="_CPPv2N9WebServer18handle_fan_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_fan_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target" id="class_web_server_1a39810bcdd1fb46e6555630c089733c0b"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handle_fan_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer18handle_fan_requestEP21AsyncWebServerRequest8UrlMatch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Handle a fan request under ‘/fan/&lt;id&gt;/&lt;/turn_on/turn_off/toggle&gt;’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer8fan_jsonEPN3fan8FanStateE">
+<span id="_CPPv2N9WebServer8fan_jsonEPN3fan8FanStateE"></span><span id="WebServer::fan_json__fan::FanStateP"></span><span class="target" id="class_web_server_1ad760befcc7f43fa2cc5ba60d2a2a73b2"></span>std::string <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">fan_json</code><span class="sig-paren">(</span>fan::<a class="reference internal" href="../fan/index.html#_CPPv3N3fan8FanStateE" title="fan::FanState">FanState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer8fan_jsonEPN3fan8FanStateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dump the fan state as a JSON string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer14register_lightEPN5light10LightStateE">
+<span id="_CPPv2N9WebServer14register_lightEPN5light10LightStateE"></span><span id="WebServer::register_light__light::LightStateP"></span><span class="target" id="class_web_server_1a52b424fb85c6d97db2fefcd15cc08e1f"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">register_light</code><span class="sig-paren">(</span>light::<a class="reference internal" href="../light/index.html#_CPPv3N5light10LightStateE" title="light::LightState">LightState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer14register_lightEPN5light10LightStateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internally register a light and set a callback on state changes. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer20handle_light_requestEP21AsyncWebServerRequest8UrlMatch">
+<span id="_CPPv2N9WebServer20handle_light_requestEP21AsyncWebServerRequest8UrlMatch"></span><span id="WebServer::handle_light_request__AsyncWebServerRequestP.UrlMatch"></span><span class="target" id="class_web_server_1a335e0332c778c47a6dacc9578264db8f"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handle_light_request</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em>, <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a> <em>match</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer20handle_light_requestEP21AsyncWebServerRequest8UrlMatch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Handle a light request under ‘/light/&lt;id&gt;/&lt;/turn_on/turn_off/toggle&gt;’. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer10light_jsonEPN5light10LightStateE">
+<span id="_CPPv2N9WebServer10light_jsonEPN5light10LightStateE"></span><span id="WebServer::light_json__light::LightStateP"></span><span class="target" id="class_web_server_1af1d4320a29cea6b2352f573f5fe646af"></span>std::string <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">light_json</code><span class="sig-paren">(</span>light::<a class="reference internal" href="../light/index.html#_CPPv3N5light10LightStateE" title="light::LightState">LightState</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer10light_jsonEPN5light10LightStateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Dump the light state as a JSON string. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer9canHandleEP21AsyncWebServerRequest">
+<span id="_CPPv2N9WebServer9canHandleEP21AsyncWebServerRequest"></span><span id="WebServer::canHandle__AsyncWebServerRequestP"></span><span class="target" id="class_web_server_1ac8fbc4e8637b9e1c015c45576fc8ba2a"></span>bool <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">canHandle</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer9canHandleEP21AsyncWebServerRequest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Override the web handler’s canHandle method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer13handleRequestEP21AsyncWebServerRequest">
+<span id="_CPPv2N9WebServer13handleRequestEP21AsyncWebServerRequest"></span><span id="WebServer::handleRequest__AsyncWebServerRequestP"></span><span class="target" id="class_web_server_1a1fd16fb9aea0c8893e5c630fb3724fa1"></span>void <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">handleRequest</code><span class="sig-paren">(</span>AsyncWebServerRequest *<em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer13handleRequestEP21AsyncWebServerRequest" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Override the web handler’s handleRequest method. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N9WebServer23isRequestHandlerTrivialEv">
+<span id="_CPPv2N9WebServer23isRequestHandlerTrivialEv"></span><span id="WebServer::isRequestHandlerTrivial"></span><span class="target" id="class_web_server_1af927d78cd5cff8d4fab3999ac9d2de84"></span>bool <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">isRequestHandlerTrivial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N9WebServer23isRequestHandlerTrivialEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This web handle is not trivial. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N9WebServer5port_E">
+<span id="_CPPv2N9WebServer5port_E"></span><span id="WebServer::port___uint16_t"></span><span class="target" id="class_web_server_1a53e0255e876af07249945a2e190b7180"></span>uint16_t <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">port_</code><a class="headerlink" href="#_CPPv3N9WebServer5port_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N9WebServer7server_E">
+<span id="_CPPv2N9WebServer7server_E"></span><span id="WebServer::server___AsyncWebServerP"></span><span class="target" id="class_web_server_1a8edfc62e456829d2bad3e9ab4d59fd99"></span>AsyncWebServer *<a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">server_</code><a class="headerlink" href="#_CPPv3N9WebServer7server_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N9WebServer7events_E">
+<span id="_CPPv2N9WebServer7events_E"></span><span id="WebServer::events___AsyncEventSource"></span><span class="target" id="class_web_server_1af774c32824cd6fa6b0af5358e23baaad"></span>AsyncEventSource <a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">events_</code> = {&quot;/events&quot;}<a class="headerlink" href="#_CPPv3N9WebServer7events_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N9WebServer8css_url_E">
+<span id="_CPPv2N9WebServer8css_url_E"></span><span id="WebServer::css_url___cCP"></span><span class="target" id="class_web_server_1ab3052fe30cf184013e703c6db5bf4073"></span><em class="property">const</em> char *<a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">css_url_</code> = {nullptr}<a class="headerlink" href="#_CPPv3N9WebServer8css_url_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N9WebServer7js_url_E">
+<span id="_CPPv2N9WebServer7js_url_E"></span><span id="WebServer::js_url___cCP"></span><span class="target" id="class_web_server_1ae58f3f64ec79732387b129b69c1aaa2b"></span><em class="property">const</em> char *<a class="reference internal" href="#_CPPv39WebServer" title="WebServer">WebServer</a><code class="descname">js_url_</code> = {nullptr}<a class="headerlink" href="#_CPPv3N9WebServer7js_url_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv38UrlMatch">
+<span id="_CPPv28UrlMatch"></span><span id="UrlMatch"></span><span class="target" id="struct_url_match"></span><em class="property">struct </em><code class="descname">UrlMatch</code><a class="headerlink" href="#_CPPv38UrlMatch" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Internal helper struct that is used to parse incoming URLs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv3N8UrlMatch6domainE">
+<span id="_CPPv2N8UrlMatch6domainE"></span><span id="UrlMatch::domain__ss"></span><span class="target" id="struct_url_match_1a4ed690629117577960c304b6af1ac2b5"></span>std::string <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a><code class="descname">domain</code><a class="headerlink" href="#_CPPv3N8UrlMatch6domainE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The domain of the component, for example “sensor”. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N8UrlMatch2idE">
+<span id="_CPPv2N8UrlMatch2idE"></span><span id="UrlMatch::id__ss"></span><span class="target" id="struct_url_match_1a09f5aa4c4958b057e4e2dad8b3581e8c"></span>std::string <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a><code class="descname">id</code><a class="headerlink" href="#_CPPv3N8UrlMatch2idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The id of the device that’s being aceesed, for example “living_room_fan”. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N8UrlMatch6methodE">
+<span id="_CPPv2N8UrlMatch6methodE"></span><span id="UrlMatch::method__ss"></span><span class="target" id="struct_url_match_1a1b6c1df1fa008dbc7d893768d923acfd"></span>std::string <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a><code class="descname">method</code><a class="headerlink" href="#_CPPv3N8UrlMatch6methodE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The method that’s being called, for example “turn_on”. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N8UrlMatch5validE">
+<span id="_CPPv2N8UrlMatch5validE"></span><span id="UrlMatch::valid__b"></span><span class="target" id="struct_url_match_1a049ecc35f418e5c1d3f3b97591eee49c"></span>bool <a class="reference internal" href="#_CPPv38UrlMatch" title="UrlMatch">UrlMatch</a><code class="descname">valid</code><a class="headerlink" href="#_CPPv3N8UrlMatch5validE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whether this match is valid. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+  <li><a href="index.html">Core</a><ul>
+      <li>Previous: <a href="controller.html" title="previous chapter">Controller</a></li>
+      <li>Next: <a href="deep-sleep.html" title="next chapter">Deep Sleep</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/api/core/web-server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

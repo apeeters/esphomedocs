@@ -1,0 +1,242 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Changelog &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Web Server API" href="../../web-api/index.html" />
+    <link rel="prev" title="Contributing" href="contributing.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-1-7-0">
+<h2>Version 1.7.0<a class="headerlink" href="#version-1-7-0" title="Permalink to this headline">¶</a></h2>
+<p>Wow, what a week! As you may know, I wrote a blog post on the <a class="reference external" href="https://www.home-assistant.io/blog/2018/06/05/esphomelib/">Home Assistant web site</a>
+and since then, the amount of esphomelib users has grown sixfold according to the number of GitHub clones!</p>
+<p>Version 1.7.0 of esphomelib brings with it (again) a lot of awesome features. One I’m particularly excited about is
+the new ESP32 BLE Beacon, with it I can finally track reliably whether my devices are home or not without wasting too much
+battery. But also the new remote receivers and remote transmitters have allowed me to add about ~15 433MHz lights into
+Home Assistant.</p>
+<p>In the next couple of weeks I unfortunately won’t be able to “innovate” as quickly as in the previous weeks, as I will
+be travelling a lot (and enjoying my vacation 😎), so don’t expect too many awesome features 😸</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference external" href="/esphomeyaml/components/esp32_ble_beacon.html"><img alt="ESP32 BLE Beacon" class="component-image" src="../../_images/bluetooth.svg" /></a></td>
+<td><a class="reference external" href="/esphomeyaml/components/status_led.html"><img alt="Status LED" class="component-image" src="../../_images/led-on.svg" /></a></td>
+<td><a class="reference external" href="/esphomeyaml/components/sensor/wifi_signal.html"><img alt="WiFi Signal Strength" class="component-image" src="../../_images/network-wifi.svg" /></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="/esphomeyaml/components/esp32_ble_beacon.html">ESP32 BLE Beacon</a></td>
+<td><a class="reference external" href="/esphomeyaml/components/status_led.html">Status LED</a></td>
+<td><a class="reference external" href="/esphomeyaml/components/sensor/wifi_signal.html">WiFi Signal Strength</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="/esphomeyaml/components/sensor/duty_cycle.html"><img alt="Duty Cycle Sensor" class="component-image" src="../../_images/percent.svg" /></a></td>
+<td><a class="reference external" href="/esphomeyaml/components/sensor/pulse_counter.html"><img alt="Pulse Counter for ESP8266" class="component-image" src="../../_images/pulse.svg" /></a></td>
+<td><a class="reference external" href="/esphomeyaml/components/switch/remote_transmitter.html"><img alt="Remote Transmitter" class="component-image" src="../../_images/remote.svg" /></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="/esphomeyaml/components/sensor/duty_cycle.html">Duty Cycle Sensor</a></td>
+<td><a class="reference external" href="/esphomeyaml/components/sensor/pulse_counter.html">Pulse Counter for ESP8266</a></td>
+<td><a class="reference external" href="/esphomeyaml/components/switch/remote_transmitter.html">Remote Transmitter</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="/esphomeyaml/components/binary_sensor/remote_receiver.html"><img alt="Remote Receiver" class="component-image" src="../../_images/remote.svg" /></a></td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="/esphomeyaml/components/binary_sensor/remote_receiver.html">Remote Receiver</a></td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="new-components">
+<h3>New Components<a class="headerlink" href="#new-components" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>New <a class="reference internal" href="../components/sensor/wifi_signal.html"><span class="doc">WiFi signal strength sensor</span></a> by
+<a class="reference external" href="https://github.com/brandond">&#64;brandond</a>. So now you can monitor how strong the WiFi signal is for your node 📶</li>
+<li>You can now create a BLE iBeacon with your ESP32s using the new
+<a class="reference internal" href="../components/esp32_ble_beacon.html"><span class="doc">BLE Beacon component</span></a>.</li>
+<li>esphomelib has finally gained support for a <a class="reference internal" href="../components/status_led.html"><span class="doc">status LED</span></a>. Now
+you can quickly identify if everything is OK with your ESP with a quick look at this LED. Happy <span class="blink-tag">blinking</span>!</li>
+</ul>
+<ul class="simple">
+<li>The <a class="reference internal" href="../components/sensor/pulse_counter.html"><span class="doc">pulse counter sensor</span></a> has been backported to the
+ESP8266, so now you can observe the number of pulses and frequency on any pin 🔢</li>
+<li>A new <a class="reference internal" href="../components/sensor/duty_cycle.html"><span class="doc">duty cycle sensor</span></a> has been added, allowing you to
+measure how much of the time a specific pin is HIGH or LOW. Can for example be used to detect if a status LED
+on an external device is blinking or permanently on.</li>
+<li>The new <a class="reference internal" href="../components/remote_transmitter.html"><span class="doc">remote receiver</span></a> and
+<a class="reference internal" href="../components/remote_receiver.html"><span class="doc">remote transmitter</span></a> components now allows you to use any 433MHz
+receivers and senders with esphomelib. Currently, you will need to use the <code class="docutils literal notranslate"><span class="pre">raw</span></code> data as described in
+<a class="reference internal" href="../components/switch/remote_transmitter.html#finding-remote-codes"><span class="std std-ref">this guide</span></a>, but in the future more protocols will be supported out of the box.</li>
+</ul>
+</div>
+<div class="section" id="new-features">
+<h3>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>While all <a class="reference internal" href="automations.html#automation"><span class="std std-ref">automations</span></a> were previously already performed on the ESP itself, they only
+triggered when an active WiFi and MQTT connection existed. Large parts of the WiFi and MQTT clients has now
+been rewritten to allow for automations to be executed asynchronously, while the device is still connecting to WiFi.</li>
+<li>The HassIO add-on now has a new <code class="docutils literal notranslate"><span class="pre">password</span></code> option with which you can secure your installation. See
+<a class="reference internal" href="getting_started_hassio.html"><span class="doc">Getting Started with esphomeyaml through HassIO</span></a>. 🔒</li>
+<li>Binary Sensors now have filters too. They can now be used to debounce any binary sensor and do some more
+complicated actions using lambdas. See <a class="reference internal" href="../components/binary_sensor/index.html#binary-sensor-filters"><span class="std std-ref">Binary Sensor Filters</span></a>. ⛹️‍</li>
+<li>All components can now be flagged <code class="docutils literal notranslate"><span class="pre">internal</span></code>. Doing so will prevent them from being represented in the front-end
+(like MQTT). Useful for <a class="reference internal" href="automations.html#automation"><span class="std std-ref">on-device automations</span></a>. See 😎</li>
+<li>The <a class="reference internal" href="../components/deep_sleep.html"><span class="doc">Deep Sleep Component</span></a> now has a <code class="docutils literal notranslate"><span class="pre">wakeup_pin_mode</span></code> option for the ESP32. This option
+can be used to tell esphomelib what to do if the wakeup pin is already in the wakeup level when attempting
+to enter deep sleep. 🛌</li>
+<li>There are two new triggers available now: <a class="reference internal" href="../components/esphomeyaml.html#esphomeyaml-on-boot"><span class="std std-ref">esphomeyaml.on_boot</span></a> and
+<a class="reference internal" href="../components/esphomeyaml.html#esphomeyaml-on-shutdown"><span class="std std-ref">esphomeyaml.on_shutdown</span></a> with which you can do some advanced cleanup/setup
+on boot and shutdown of the node.</li>
+<li>All HassIO add-on builds have now been more or less completely automated using a private Gitlab server. You
+can find all the new docker files <a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/tree/master/docker">here</a>.</li>
+<li>Added a new <code class="docutils literal notranslate"><span class="pre">build_path</span></code> option in the <code class="docutils literal notranslate"><span class="pre">esphomeyaml</span></code> section with which you can customize where
+esphomeyaml stores the platformio project files. See <a class="reference internal" href="../components/esphomeyaml.html"><span class="doc">esphomeyaml Core Configuration</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="breaking-changes">
+<h3>Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Fixed the <a class="reference internal" href="../components/sensor/sht3xd.html"><span class="doc">SHT3x-D</span></a> component and removed the <code class="docutils literal notranslate"><span class="pre">accuracy</span></code>
+parameter. The accuracy now defaults to <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>.</p>
+</li>
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">inverted</span></code> option of binary sensors has been moved into the <code class="docutils literal notranslate"><span class="pre">filters:</span></code> section. So instead of</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="o">...</span>
+    <span class="c1"># ...</span>
+    <span class="n">inverted</span><span class="p">:</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>you would now write:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="o">...</span>
+    <span class="c1"># ...</span>
+    <span class="n">filters</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">invert</span><span class="p">:</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">esp32_ble</span></code> component and platform have been renamed to <a class="reference internal" href="../components/esp32_ble_tracker.html"><span class="doc">esp32_ble_tracker</span></a> in order to make the naming clearer with the new <a class="reference internal" href="../components/esp32_ble_beacon.html"><span class="doc">esp32_ble_beacon</span></a> component.</p>
+</li>
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">receive_timeout</span></code> option has been removed from the <a class="reference internal" href="../components/i2c.html"><span class="doc">i2c component</span></a> as it
+turns out it didn’t actually do anything.</p>
+</li>
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">ir_transmitter</span></code> component has been renamed to <a class="reference internal" href="../components/remote_transmitter.html"><span class="doc">remote_transmitter</span></a>
+as it now works with all kinds of protocols, not just infrared-based ones.</p>
+</li>
+<li><p class="first">The <code class="docutils literal notranslate"><span class="pre">pull_mode</span></code> option of the <a class="reference internal" href="../components/sensor/pulse_counter.html"><span class="doc">Pulse Counter</span></a> has been removed, please
+use the <a class="reference internal" href="configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a> now instead. Additionally, the <code class="docutils literal notranslate"><span class="pre">internal_filter</span></code> option now only accepts
+<a class="reference internal" href="configuration-types.html#config-time"><span class="std std-ref">time</span></a> units.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other-contributions">
+<h3>Other Contributions<a class="headerlink" href="#other-contributions" title="Permalink to this headline">¶</a></h3>
+<p>(Not in any order and probably missed some, still figuring this changelog stuff out…)</p>
+<ul class="simple">
+<li>Make sure logs after upload works when using explicit OTA. (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/42">esphomeyaml/#42</a>) by <a class="reference external" href="https://github.com/aequitas">&#64;aequitas</a></li>
+<li>Fix deprecation of board_flash_mode parameter (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/41">esphomeyaml/#41</a>) by <a class="reference external" href="https://github.com/aequitas">&#64;aequitas</a></li>
+<li>Support specifying hostname/ip as –upload-port (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/36">esphomeyaml/#36</a>) by <a class="reference external" href="https://github.com/aequitas">&#64;aequitas</a></li>
+<li>DHT11 sensor doesn’t work with esphomelib (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/88">esphomelib/#88</a>) by <a class="reference external" href="https://github.com/ayavilevich">&#64;ayavilevich</a></li>
+<li>tsl2561: wrong i2c function for channel 1 (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/81">esphomelib/#81</a>) by <a class="reference external" href="https://github.com/schumar">&#64;schumar</a></li>
+<li>No need to wait after Wire.requestFrom(). (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/80">esphomelib/#80</a>) by <a class="reference external" href="https://github.com/Koepel">&#64;Koepel</a></li>
+<li>I2CComponent::write_byte_16 writes 0 words (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/78">esphomelib/#78</a>) by <a class="reference external" href="https://github.com/schumar">&#64;schumar</a></li>
+<li>Minor update to the feature section (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/71">esphomelib/#71</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+<li>Fix pin number (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/70">esphomelib/#70</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+<li>Fix #55 - Action._next not initialized to nullptr (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/57">esphomelib/#57</a>) by <a class="reference external" href="https://github.com/brandond">&#64;brandond</a></li>
+<li>Add workaround for out of space esp8266 ota update. (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/12">esphomedocs/#12</a>) by <a class="reference external" href="https://github.com/aequitas">&#64;aequitas</a></li>
+<li>Add cookbook for dual relay cover (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/10">esphomedocs/#10</a>) by <a class="reference external" href="https://github.com/r-jordan">&#64;r-jordan</a></li>
+<li>Correct output pin declaration in S20 device guide example. (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/9">esphomedocs/#9</a>) by <a class="reference external" href="https://github.com/r-jordan">&#64;r-jordan</a></li>
+<li>Remove BMP280 (doesn’t work) (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/8">esphomedocs/#8</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+<li>Passing inverted to output should be valid, but does not work, use … (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/7">esphomedocs/#7</a>) by <a class="reference external" href="https://github.com/aequitas">&#64;aequitas</a></li>
+<li>Make the example configuration entry copy&amp;paste-friendly (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/6">esphomedocs/#6</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+<li>Minor formatting tweaks. (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/4">esphomedocs/#4</a>) by <a class="reference external" href="https://github.com/Landradsh">&#64;Landradsh</a></li>
+<li>Details about Sonoff basic (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/3">esphomedocs/#3</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+<li>Add missing module (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/2">esphomedocs/#2</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+<li>Fix unit name (<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/pull/1">esphomedocs/#1</a>) by <a class="reference external" href="https://github.com/fabaff">&#64;fabaff</a></li>
+</ul>
+<p>And last but not least, check out this awesome video by <a class="reference external" href="https://www.youtube.com/channel/UC2gyzKcHbYfqoXA5xbyGXtQ">The Hook Up</a>
+for using esphomeyaml to create a simple wireless doorbell:</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/xCQoOZNdaGY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Guides</a><ul>
+      <li>Previous: <a href="contributing.html" title="previous chapter">Contributing</a></li>
+      <li>Next: <a href="../../web-api/index.html" title="next chapter">Web Server API</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/guides/changelog.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

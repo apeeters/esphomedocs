@@ -1,0 +1,151 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ESP32 Bluetooth Low Energy Beacon &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Status LED" href="status_led.html" />
+    <link rel="prev" title="WiFi Component" href="wifi.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="esp32-bluetooth-low-energy-beacon">
+<h1>ESP32 Bluetooth Low Energy Beacon<a class="headerlink" href="#esp32-bluetooth-low-energy-beacon" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">esp32_ble_beacon</span></code> component creates a Bluetooth Low Energy Beacon with your ESP32 device.
+Beacons are BLE devices that repeatedly just send out a pre-defined packet of data. This packet
+can then be received by devices like smartphones and can then be used to track a phone’s location.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+<span class="n">esp32_ble_beacon</span><span class="p">:</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">iBeacon</span>
+  <span class="n">uuid</span><span class="p">:</span> <span class="s1">&#39;c29ce823-e67a-4e71-bff2-abaa32e77a98&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables:<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>type</strong> (<strong>Required</strong>): The type of beacon to create, currently only supports <code class="docutils literal notranslate"><span class="pre">iBeacon</span></code>.</li>
+<li><strong>uuid</strong> (<strong>Required</strong>): The <a class="reference external" href="https://en.wikipedia.org/wiki/Universally_unique_identifier">universally unique identifier</a>
+to identify the beacon.</li>
+<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal" href="../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID for code generation.</li>
+</ul>
+<p>Advanced options:</p>
+<ul class="simple">
+<li><strong>major</strong> (<em>Optional</em>, integer): The iBeacon major identifier of this beacon. Usually used to
+group beacons, for example for grouping all beacons in the same building, but has no effect if
+the BLE receiver doesn’t use it. Defaults to <code class="docutils literal notranslate"><span class="pre">10167</span></code>.</li>
+<li><strong>minor</strong> (<em>Optional</em>, integer): The iBeacon minor identifier of this beacon. Usually used to
+identify beacons within an iBeacon group. Defaults to <code class="docutils literal notranslate"><span class="pre">61958</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="setting-up">
+<h2>Setting Up<a class="headerlink" href="#setting-up" title="Permalink to this headline">¶</a></h2>
+<p>First, you’ll need to set up the configuration for esphomeyaml. Just copy above configuration and
+change the UUID to something unique. For example, you can copy below randomly generated UUID:</p>
+<input type="text" id="ble-uuid" style="width: 240px;" readonly="readonly">
+<script>
+  // https://stackoverflow.com/a/105074/8924614
+  function guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  }
+  document.getElementById("ble-uuid").value = guid();
+</script><p>Then, just compile and flash the ESP32. Note that esphomeyaml needs to increase the size of the code
+partitions of the ESP32 because BLE can take up a lot of space. It does this automatically, but you need
+to flash the ESP32 via USB when enabling or disabling this component.</p>
+<p>When everything is set up correctly, you should see a show up using your iBeacon scanner of choice. On iPhones,
+this should already work from the bluetooth screen (not tested), on Android, you will need to use an app like
+<a class="reference external" href="https://play.google.com/store/apps/details?id=com.bridou_n.beaconscanner">“Beacon Scanner”</a> by Nicolas Bridoux.</p>
+<p>For using these beacons to track the location of your phone, you will need to use another app. For example, I used
+<a class="reference external" href="https://owntracks.org/booklet/features/beacons/">this guide by the owntracks</a> app to let my Home Automation system
+know when I’m home or away.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/esp32_ble_beacon-ibeacon.png"><img alt="../../_images/esp32_ble_beacon-ibeacon.png" src="../../_images/esp32_ble_beacon-ibeacon.png" style="width: 75.0%;" /></a>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="binary_sensor/esp32_ble_tracker.html"><span class="doc">ESP32 Bluetooth Low Energy Device</span></a></li>
+<li><a class="reference internal" href="../../api/misc/esp32_ble_beacon.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/esp32_ble_beacon.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Components</a><ul>
+      <li>Previous: <a href="wifi.html" title="previous chapter">WiFi Component</a></li>
+      <li>Next: <a href="status_led.html" title="next chapter">Status LED</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/components/esp32_ble_beacon.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

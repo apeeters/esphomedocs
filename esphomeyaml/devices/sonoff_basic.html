@@ -1,4 +1,98 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Using With Sonoff Basic &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Guides"href="../guides/index.html"><link rel="prev"title="Using With Sonoff S20"href="sonoff_s20.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="using-with-sonoff-basic"><h1>Using With Sonoff Basic<a class="headerlink"href="#using-with-sonoff-basic"title="Permalink to this headline">¶</a></h1><p>esphomeyaml can be used with Sonoff Basic. These devices are basically just an ESP8266 chip with a relay to control the connection, a small button on the front and a green LED light.<div class="figure align-center"id="id1"><a class="reference internal image-reference"href="../../_images/sonoff_basic.jpg"><img alt="../../_images/sonoff_basic.jpg"src="../../_images/sonoff_basic.jpg"style="width: 75.0%;"></a><p class="caption"><span class="caption-text">Sonoff Basic</span></div><p>This guide will not guide you through setting up your Sonoff Basic step-by-step. It just provide a sample configuration. For detailed instructions, see <a class="reference internal"href="sonoff_s20.html"><span class="doc">Using With Sonoff S20</span></a>, as those devices are pretty similar.<div class="admonition note"><p class="first admonition-title">Note<p class="last">If you’ve previously installed Sonoff-Tasmota or ESPurna on your Sonoff Basic, you’re in luck 😀 esphomeyaml can generate a firmware binary which you can then upload via the web interface.</div><div class="section"id="sample-configuration"><h2>Sample configuration<a class="headerlink"href="#sample-configuration"title="Permalink to this headline">¶</a></h2><p>The Sonoff Basic is based on the <code class="docutils literal notranslate"><span class="pre">ESP8266</span></code> platform and is a subtype of the <code class="docutils literal notranslate"><span class="pre">esp01_1m</span></code> board. With this information, you can also step through the esphomeyaml wizard (<code class="docutils literal notranslate"><span class="pre">esphomeyaml</span> <span class="pre">sonoff_basic.yaml</span> <span class="pre">wizard</span></code>) if you don’t want to use the sample configuration file from below.<p>If you go through the wizard, please make sure you manually set <code class="docutils literal notranslate"><span class="pre">board_flash_mode</span></code> to <code class="docutils literal notranslate"><span class="pre">dout</span></code> as seen below. The version of the uploader used by esphomeyaml should automatically detect that the Sonoff Basic uses the <code class="docutils literal notranslate"><span class="pre">dout</span></code> SPI flash chip mode. But, as some users of other firmwares have said that other flash modes can brick the device, it’s always good to specify it explicitly.<p>Below you will find a table of all usable GPIO pins of the Sonoff Basic and a configuration file that exposes all of the basic functions.<table border="1"class="no-center docutils"><col width="50%"><col width="50%"><tbody valign="top"><tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO0</span></code><td>Button (inverted)<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO1</span></code><td><code class="docutils literal notranslate"><span class="pre">RX</span></code> pin (for external sensors)<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO3</span></code><td><code class="docutils literal notranslate"><span class="pre">TX</span></code> pin (for external sensors)<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO4</span></code><td>Optional Sensor<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO12</span></code><td>Relay and Red LED<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO13</span></code><td>Green LED (inverted)<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO14</span></code><td>Optional Sensor<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO17</span></code><td>Analog Input</table><div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span><span class="p">:</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Using With Sonoff Basic &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Guides" href="../guides/index.html" />
+    <link rel="prev" title="Using With Sonoff S20" href="sonoff_s20.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-with-sonoff-basic">
+<h1>Using With Sonoff Basic<a class="headerlink" href="#using-with-sonoff-basic" title="Permalink to this headline">¶</a></h1>
+<p>esphomeyaml can be used with Sonoff Basic. These devices are basically just
+an ESP8266 chip with a relay to control the connection, a small button on the
+front and a green LED light.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/sonoff_basic.jpg"><img alt="../../_images/sonoff_basic.jpg" src="../../_images/sonoff_basic.jpg" style="width: 75.0%;" /></a>
+<p class="caption"><span class="caption-text">Sonoff Basic</span></p>
+</div>
+<p>This guide will not guide you through setting up your Sonoff Basic step-by-step. It just provide
+a sample configuration. For detailed instructions, see <a class="reference internal" href="sonoff_s20.html"><span class="doc">Using With Sonoff S20</span></a>, as those devices are
+pretty similar.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you’ve previously installed Sonoff-Tasmota or ESPurna on your Sonoff Basic, you’re in luck 😀
+esphomeyaml can generate a firmware binary which you can then upload via the
+web interface.</p>
+</div>
+<div class="section" id="sample-configuration">
+<h2>Sample configuration<a class="headerlink" href="#sample-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Sonoff Basic is based on the <code class="docutils literal notranslate"><span class="pre">ESP8266</span></code> platform and is a subtype of the <code class="docutils literal notranslate"><span class="pre">esp01_1m</span></code> board.
+With this information, you can also step through the esphomeyaml wizard (<code class="docutils literal notranslate"><span class="pre">esphomeyaml</span> <span class="pre">sonoff_basic.yaml</span> <span class="pre">wizard</span></code>)
+if you don’t want to use the sample configuration file from below.</p>
+<p>If you go through the wizard, please make sure you manually set <code class="docutils literal notranslate"><span class="pre">board_flash_mode</span></code> to <code class="docutils literal notranslate"><span class="pre">dout</span></code>
+as seen below. The version of the uploader used by esphomeyaml should automatically detect that
+the Sonoff Basic uses the <code class="docutils literal notranslate"><span class="pre">dout</span></code> SPI flash chip mode. But, as some users of other firmwares have
+said that other flash modes can brick the device, it’s always good to specify it explicitly.</p>
+<p>Below you will find a table of all usable GPIO pins of the Sonoff Basic and a configuration file that
+exposes all of the basic functions.</p>
+<table border="1" class="no-center docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO0</span></code></td>
+<td>Button (inverted)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO1</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">RX</span></code> pin (for external sensors)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO3</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">TX</span></code> pin (for external sensors)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO4</span></code></td>
+<td>Optional Sensor</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO12</span></code></td>
+<td>Relay and Red LED</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO13</span></code></td>
+<td>Green LED (inverted)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">GPIO14</span></code></td>
+<td>Optional Sensor</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">GPIO17</span></code></td>
+<td>Analog Input</td>
+</tr>
+</tbody>
+</table>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span><span class="p">:</span>
   <span class="n">name</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">NAME_OF_NODE</span><span class="o">&gt;</span>
   <span class="n">platform</span><span class="p">:</span> <span class="n">ESP8266</span>
   <span class="n">board</span><span class="p">:</span> <span class="n">esp01_1m</span>
@@ -43,5 +137,80 @@
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">monochromatic</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Sonoff Basic Green LED&quot;</span>
     <span class="n">output</span><span class="p">:</span> <span class="n">basic_green_led</span>
-</pre></div></div><p>Now run <code class="docutils literal notranslate"><span class="pre">esphomeyaml</span> <span class="pre">sonoff_basic.yaml</span> <span class="pre">compile</span></code> to validate the configuration and pre-compile the firmware.<div class="admonition note"><p class="first admonition-title">Note<p class="last">After this step, you will be able to find the compiled binary under <code class="docutils literal notranslate"><span class="pre">&lt;NAME_OF_NODE&gt;/.pioenvs/&lt;NAME_OF_NODE&gt;/firmware.bin</span></code>. If you’re having trouble with uploading, you can also try uploading this file directly with other tools.</div><p>Or run the upload command if your device is connected to the serial interface:<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">sonoff_basic</span><span class="o">.</span><span class="n">yaml</span> <span class="n">run</span>
-</pre></div></div></div><div class="section"id="see-also"><h2>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><a class="reference internal"href="sonoff.html"><span class="doc">Generic Sonoff</span></a><li><a class="reference internal"href="sonoff_4ch.html"><span class="doc">Using With Sonoff 4CH</span></a><li><a class="reference internal"href="sonoff_s20.html"><span class="doc">Using With Sonoff S20</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/devices/sonoff_basic.rst">Edit this page on GitHub</a></ul></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Cookbook</a><ul><li>Previous: <a href="sonoff_s20.html"title="previous chapter">Using With Sonoff S20</a><li>Next: <a href="../guides/index.html"title="next chapter">Guides</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/devices/sonoff_basic.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<p>Now run <code class="docutils literal notranslate"><span class="pre">esphomeyaml</span> <span class="pre">sonoff_basic.yaml</span> <span class="pre">compile</span></code> to validate the configuration and
+pre-compile the firmware.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">After this step, you will be able to find the compiled binary under
+<code class="docutils literal notranslate"><span class="pre">&lt;NAME_OF_NODE&gt;/.pioenvs/&lt;NAME_OF_NODE&gt;/firmware.bin</span></code>. If you’re having trouble with
+uploading, you can also try uploading this file directly with other tools.</p>
+</div>
+<p>Or run the upload command if your device is connected to the serial interface:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">sonoff_basic</span><span class="o">.</span><span class="n">yaml</span> <span class="n">run</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="sonoff.html"><span class="doc">Generic Sonoff</span></a></li>
+<li><a class="reference internal" href="sonoff_4ch.html"><span class="doc">Using With Sonoff 4CH</span></a></li>
+<li><a class="reference internal" href="sonoff_s20.html"><span class="doc">Using With Sonoff S20</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/devices/sonoff_basic.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Cookbook</a><ul>
+      <li>Previous: <a href="sonoff_s20.html" title="previous chapter">Using With Sonoff S20</a></li>
+      <li>Next: <a href="../guides/index.html" title="next chapter">Guides</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/devices/sonoff_basic.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

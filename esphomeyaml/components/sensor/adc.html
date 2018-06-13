@@ -1,18 +1,170 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Analog To Digital Sensor &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../../_static/pygments.css"type="text/css"><script src="../../../_static/documentation_options.js"></script><script src="../../../_static/jquery.js"></script><script src="../../../_static/underscore.js"></script><script src="../../../_static/doctools.js"></script><link rel="index"title="Index"href="../../../genindex.html"><link rel="search"title="Search"href="../../../search.html"><link rel="next"title="ADS1115 Sensor"href="ads1115.html"><link rel="prev"title="Dallas Temperature Sensor"href="dallas.html"><link rel="stylesheet"href="../../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="analog-to-digital-sensor"><h1>Analog To Digital Sensor<a class="headerlink"href="#analog-to-digital-sensor"title="Permalink to this headline">¶</a></h1><p>The Analog To Digital (<code class="docutils literal notranslate"><span class="pre">adc</span></code>) Sensor allows you to use the built-in ADC in your device to measure a voltage on certain pins. On the ESP8266 only pin A0 (GPIO17) supports this. On the ESP32 pins GPIO32 through GPIO39 can be used.<div class="figure align-center"><a class="reference internal image-reference"href="../../../_images/adc-ui.png"><img alt="../../../_images/adc-ui.png"src="../../../_images/adc-ui.png"style="width: 80.0%;"></a></div><div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Analog To Digital Sensor &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="ADS1115 Sensor" href="ads1115.html" />
+    <link rel="prev" title="Dallas Temperature Sensor" href="dallas.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="analog-to-digital-sensor">
+<h1>Analog To Digital Sensor<a class="headerlink" href="#analog-to-digital-sensor" title="Permalink to this headline">¶</a></h1>
+<p>The Analog To Digital (<code class="docutils literal notranslate"><span class="pre">adc</span></code>) Sensor allows you to use the built-in
+ADC in your device to measure a voltage on certain pins. On the ESP8266
+only pin A0 (GPIO17) supports this. On the ESP32 pins GPIO32 through
+GPIO39 can be used.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/adc-ui.png"><img alt="../../../_images/adc-ui.png" src="../../../_images/adc-ui.png" style="width: 80.0%;" /></a>
+</div>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
 <span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">adc</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">A0</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Living Room Brightness&quot;</span>
     <span class="n">update_interval</span><span class="p">:</span> <span class="mi">15</span><span class="n">s</span>
-</pre></div></div><div class="section"id="configuration-variables"><h2>Configuration variables:<a class="headerlink"href="#configuration-variables"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><strong>pin</strong> (<strong>Required</strong>, <a class="reference internal"href="../../guides/configuration-types.html#config-pin"><span class="std std-ref">Pin</span></a>): The pin to measure the voltage on. Or on the ESP8266 alternatively also <code class="docutils literal notranslate"><span class="pre">VCC</span></code>, see <a class="reference internal"href="#adc-esp8266-vcc"><span class="std std-ref">ESP8266 Measuring VCC</span></a>.<li><strong>name</strong> (<strong>Required</strong>, string): The name of the voltage sensor.<li><strong>attenuation</strong> (<em>Optional</em>): Only on ESP32. Specify the ADC attenuation to use. See <a class="reference internal"href="#adc-esp32-attenuation"><span class="std std-ref">ESP32 Attenuation</span></a>.<li><strong>update_interval</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-time"><span class="std std-ref">Time</span></a>): The interval to check the sensor. Defaults to <code class="docutils literal notranslate"><span class="pre">15s</span></code>. See <a class="reference internal"href="index.html#sensor-default-filter"><span class="std std-ref">Default Filter</span></a>.<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.<li>All other options from <a class="reference internal"href="index.html#config-sensor"><span class="std std-ref">Sensor</span></a> and <a class="reference internal"href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</ul><div class="admonition note"><p class="first admonition-title">Note<p class="last">On the ESP8266, the voltage range is 0 to 1.0V - so to measure any higher voltage you need to scale the voltage down using, for example, a voltage divider circuit.</div></div><div class="section"id="esp32-attenuation"><span id="adc-esp32-attenuation"></span><h2>ESP32 Attenuation<a class="headerlink"href="#esp32-attenuation"title="Permalink to this headline">¶</a></h2><p>On the ESP32, the voltage measured with the ADC caps out at 1.1V by default as the sensing range or the attenuation of the ADC is set to <code class="docutils literal notranslate"><span class="pre">0db</span></code> by default.<p>To measure voltages higher than 1.1V, set <code class="docutils literal notranslate"><span class="pre">attenuation</span></code> to one of the <a class="reference external"href="http://esp-idf.readthedocs.io/en/latest/api-reference/peripherals/adc.html#_CPPv225adc1_config_channel_atten14adc1_channel_t11adc_atten_t">following values</a>:<ul class="simple"><li><code class="docutils literal notranslate"><span class="pre">0db</span></code> for a full-scale voltage of 1.1V (default)<li><code class="docutils literal notranslate"><span class="pre">2.5db</span></code> for a full-scale voltage of 1.5V<li><code class="docutils literal notranslate"><span class="pre">6db</span></code> for a full-scale voltage of 2.2V<li><code class="docutils literal notranslate"><span class="pre">11db</span></code> for a full-scale voltage of 3.9V</ul></div><div class="section"id="esp8266-measuring-vcc"><span id="adc-esp8266-vcc"></span><h2>ESP8266 Measuring VCC<a class="headerlink"href="#esp8266-measuring-vcc"title="Permalink to this headline">¶</a></h2><p>On the ESP8266 you can even measure the voltage the chip is getting. This can be useful in situations where you want to shut down the chip if the voltage is low when using a battery.<p>To measure the VCC voltage, set <code class="docutils literal notranslate"><span class="pre">pin:</span></code> to <code class="docutils literal notranslate"><span class="pre">VCC</span></code> and make sure nothing is connected to the <code class="docutils literal notranslate"><span class="pre">A0</span></code> pin.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables:<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>pin</strong> (<strong>Required</strong>, <a class="reference internal" href="../../guides/configuration-types.html#config-pin"><span class="std std-ref">Pin</span></a>): The pin to measure the voltage on.
+Or on the ESP8266 alternatively also <code class="docutils literal notranslate"><span class="pre">VCC</span></code>, see <a class="reference internal" href="#adc-esp8266-vcc"><span class="std std-ref">ESP8266 Measuring VCC</span></a>.</li>
+<li><strong>name</strong> (<strong>Required</strong>, string): The name of the voltage sensor.</li>
+<li><strong>attenuation</strong> (<em>Optional</em>): Only on ESP32. Specify the ADC
+attenuation to use. See <a class="reference internal" href="#adc-esp32-attenuation"><span class="std std-ref">ESP32 Attenuation</span></a>.</li>
+<li><strong>update_interval</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-time"><span class="std std-ref">Time</span></a>): The interval
+to check the sensor. Defaults to <code class="docutils literal notranslate"><span class="pre">15s</span></code>. See <a class="reference internal" href="index.html#sensor-default-filter"><span class="std std-ref">Default Filter</span></a>.</li>
+<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.</li>
+<li>All other options from <a class="reference internal" href="index.html#config-sensor"><span class="std std-ref">Sensor</span></a> and <a class="reference internal" href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On the ESP8266, the voltage range is 0 to 1.0V - so to measure any higher voltage you need to scale the voltage
+down using, for example, a voltage divider circuit.</p>
+</div>
+</div>
+<div class="section" id="esp32-attenuation">
+<span id="adc-esp32-attenuation"></span><h2>ESP32 Attenuation<a class="headerlink" href="#esp32-attenuation" title="Permalink to this headline">¶</a></h2>
+<p>On the ESP32, the voltage measured with the ADC caps out at 1.1V by default as the sensing range
+or the attenuation of the ADC is set to <code class="docutils literal notranslate"><span class="pre">0db</span></code> by default.</p>
+<p>To measure voltages higher than 1.1V, set <code class="docutils literal notranslate"><span class="pre">attenuation</span></code> to one of the <a class="reference external" href="http://esp-idf.readthedocs.io/en/latest/api-reference/peripherals/adc.html#_CPPv225adc1_config_channel_atten14adc1_channel_t11adc_atten_t">following values</a>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">0db</span></code> for a full-scale voltage of 1.1V (default)</li>
+<li><code class="docutils literal notranslate"><span class="pre">2.5db</span></code> for a full-scale voltage of 1.5V</li>
+<li><code class="docutils literal notranslate"><span class="pre">6db</span></code> for a full-scale voltage of 2.2V</li>
+<li><code class="docutils literal notranslate"><span class="pre">11db</span></code> for a full-scale voltage of 3.9V</li>
+</ul>
+</div>
+<div class="section" id="esp8266-measuring-vcc">
+<span id="adc-esp8266-vcc"></span><h2>ESP8266 Measuring VCC<a class="headerlink" href="#esp8266-measuring-vcc" title="Permalink to this headline">¶</a></h2>
+<p>On the ESP8266 you can even measure the voltage the chip is getting. This can be useful in situations
+where you want to shut down the chip if the voltage is low when using a battery.</p>
+<p>To measure the VCC voltage, set <code class="docutils literal notranslate"><span class="pre">pin:</span></code> to <code class="docutils literal notranslate"><span class="pre">VCC</span></code> and make sure nothing is connected to the <code class="docutils literal notranslate"><span class="pre">A0</span></code> pin.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">adc</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">VCC</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;VCC Voltage&quot;</span>
-</pre></div></div><p>Next, you need to add a line at the top of your C++ project source code. Unfortunately, esphomelib can’t do this automatically for you because of how the compiler is linking the esphomelib library. Open up the <code class="docutils literal notranslate"><span class="pre">&lt;NODE_NAME&gt;/src/main.cpp</span></code> file and insert the <code class="docutils literal notranslate"><span class="pre">ADC_MODE</span></code> line like this:<div class="code cpp highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">esphomelib</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Next, you need to add a line at the top of your C++ project source code. Unfortunately, esphomelib can’t do this
+automatically for you because of how the compiler is linking the esphomelib library. Open up the
+<code class="docutils literal notranslate"><span class="pre">&lt;NODE_NAME&gt;/src/main.cpp</span></code> file and insert the <code class="docutils literal notranslate"><span class="pre">ADC_MODE</span></code> line like this:</p>
+<div class="code cpp highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">esphomelib</span><span class="p">;</span>
 
 <span class="o">//</span> <span class="n">Enable</span> <span class="n">measuring</span> <span class="n">VCC</span>
 <span class="n">ADC_MODE</span><span class="p">(</span><span class="n">ADC_VCC</span><span class="p">);</span>
 
 <span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
   <span class="o">//</span> <span class="o">...</span>
-</pre></div></div><div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="index.html#sensor-filters"><span class="std std-ref">Sensor Filters</span></a><li><a class="reference internal"href="ads1115.html"><span class="doc">ADS1115 Sensor</span></a><li><a class="reference internal"href="max6675.html"><span class="doc">MAX6675 K-Type Thermocouple Temperature Sensor</span></a><li><a class="reference internal"href="../../../api/sensor/adc-sensor.html"><span class="doc">API Reference</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/adc.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../../index.html">Documentation overview</a><ul><li><a href="../../index.html">esphomeyaml</a><ul><li><a href="../index.html">Components</a><ul><li><a href="index.html">Sensor Component</a><ul><li>Previous: <a href="dallas.html"title="previous chapter">Dallas Temperature Sensor</a><li>Next: <a href="ads1115.html"title="next chapter">ADS1115 Sensor</a></ul></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../../_sources/esphomeyaml/components/sensor/adc.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="index.html#sensor-filters"><span class="std std-ref">Sensor Filters</span></a></li>
+<li><a class="reference internal" href="ads1115.html"><span class="doc">ADS1115 Sensor</span></a></li>
+<li><a class="reference internal" href="max6675.html"><span class="doc">MAX6675 K-Type Thermocouple Temperature Sensor</span></a></li>
+<li><a class="reference internal" href="../../../api/sensor/adc-sensor.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/adc.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">esphomeyaml</a><ul>
+  <li><a href="../index.html">Components</a><ul>
+  <li><a href="index.html">Sensor Component</a><ul>
+      <li>Previous: <a href="dallas.html" title="previous chapter">Dallas Temperature Sensor</a></li>
+      <li>Next: <a href="ads1115.html" title="next chapter">ADS1115 Sensor</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/esphomeyaml/components/sensor/adc.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

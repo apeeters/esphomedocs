@@ -1,0 +1,533 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Remote Receiver &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Output" href="../output/index.html" />
+    <link rel="prev" title="Template Binary Sensor" href="template.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="remote-receiver">
+<h1>Remote Receiver<a class="headerlink" href="#remote-receiver" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference internal" href="../core/application.html#_CPPv3N11Application30make_remote_receiver_componentERK12GPIOInputPin" title="Application::make_remote_receiver_component"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_remote_receiver_component()</span></code></a> and
+<a class="reference internal" href="../core/application.html#_CPPv3N11Application22register_binary_sensorEPN13binary_sensor12BinarySensorE" title="Application::register_binary_sensor"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::register_binary_sensor()</span></code></a>.</p>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv3N6remote23RemoteReceiverComponentE">
+<span id="_CPPv2N6remote23RemoteReceiverComponentE"></span><span id="remote::RemoteReceiverComponent"></span><span class="target" id="classremote_1_1_remote_receiver_component"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">RemoteReceiverComponent</code><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="../switch/remote_transmitter.html#classremote_1_1_remote_control_component_base"><span class="std std-ref">remote::RemoteControlComponentBase</span></a>, <a class="reference internal" href="../core/component.html#class_component"><span class="std std-ref">Component</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent23RemoteReceiverComponentEP7GPIOPin">
+<span id="_CPPv2N6remote23RemoteReceiverComponent23RemoteReceiverComponentEP7GPIOPin"></span><span id="remote::RemoteReceiverComponent::RemoteReceiverComponent__GPIOPinP"></span><span class="target" id="classremote_1_1_remote_receiver_component_1afeee112915f573003e388be3367686ae"></span>remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">RemoteReceiverComponent</code><span class="sig-paren">(</span><a class="reference internal" href="../core/helpers.html#_CPPv37GPIOPin" title="GPIOPin">GPIOPin</a> *<em>pin</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent23RemoteReceiverComponentEP7GPIOPin" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent5setupEv">
+<span id="_CPPv2N6remote23RemoteReceiverComponent5setupEv"></span><span id="remote::RemoteReceiverComponent::setup"></span><span class="target" id="classremote_1_1_remote_receiver_component_1af455edc5d5903b278edefd8aeb1f1966"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Where the component’s initialization should happen. </p>
+<p>Analogous to Arduino’s <a class="reference internal" href="#classremote_1_1_remote_receiver_component_1af455edc5d5903b278edefd8aeb1f1966"><span class="std std-ref">setup()</span></a>. This method is guaranteed to only be called once. Defaults to doing noting. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent4loopEv">
+<span id="_CPPv2N6remote23RemoteReceiverComponent4loopEv"></span><span id="remote::RemoteReceiverComponent::loop"></span><span class="target" id="classremote_1_1_remote_receiver_component_1ab63aa0818a6f0e1e9d50e5125ad3b427"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">loop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent4loopEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method will be called repeatedly. </p>
+<p>Analogous to Arduino’s <a class="reference internal" href="#classremote_1_1_remote_receiver_component_1ab63aa0818a6f0e1e9d50e5125ad3b427"><span class="std std-ref">loop()</span></a>. <a class="reference internal" href="#classremote_1_1_remote_receiver_component_1af455edc5d5903b278edefd8aeb1f1966"><span class="std std-ref">setup()</span></a> is guaranteed to be called before this. Defaults to doing nothing. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK6remote23RemoteReceiverComponent18get_setup_priorityEv">
+<span id="_CPPv2NK6remote23RemoteReceiverComponent18get_setup_priorityEv"></span><span id="remote::RemoteReceiverComponent::get_setup_priorityC"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a1b53eb246d0daf8c297e9e7defb93ac6"></span>float remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK6remote23RemoteReceiverComponent18get_setup_priorityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>priority of <a class="reference internal" href="#classremote_1_1_remote_receiver_component_1af455edc5d5903b278edefd8aeb1f1966"><span class="std std-ref">setup()</span></a>. </p>
+<p>higher -&gt; executed earlier</p>
+<p>Defaults to 0.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The setup priority of this component </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent11add_decoderEP14RemoteReceiver">
+<span id="_CPPv2N6remote23RemoteReceiverComponent11add_decoderEP14RemoteReceiver"></span><span id="remote::RemoteReceiverComponent::add_decoder__RemoteReceiverP"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a2d08162fa347da72fef83572295f0c58"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">add_decoder</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv3N6remote14RemoteReceiverE" title="remote::RemoteReceiver">RemoteReceiver</a> *<em>decoder</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent11add_decoderEP14RemoteReceiver" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent10add_dumperEP19RemoteReceiveDumper">
+<span id="_CPPv2N6remote23RemoteReceiverComponent10add_dumperEP19RemoteReceiveDumper"></span><span id="remote::RemoteReceiverComponent::add_dumper__RemoteReceiveDumperP"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a373c8227c1963529298f4ce3af52d4f8"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">add_dumper</code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv3N6remote19RemoteReceiveDumperE" title="remote::RemoteReceiveDumper">RemoteReceiveDumper</a> *<em>dumper</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent10add_dumperEP19RemoteReceiveDumper" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent15set_buffer_sizeE8uint32_t">
+<span id="_CPPv2N6remote23RemoteReceiverComponent15set_buffer_sizeE8uint32_t"></span><span id="remote::RemoteReceiverComponent::set_buffer_size__uint32_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1ad83cf6d59497fcbfa466b237197f63f1"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">set_buffer_size</code><span class="sig-paren">(</span>uint32_t <em>buffer_size</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent15set_buffer_sizeE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent13set_toleranceE7uint8_t">
+<span id="_CPPv2N6remote23RemoteReceiverComponent13set_toleranceE7uint8_t"></span><span id="remote::RemoteReceiverComponent::set_tolerance__uint8_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a4ed27951cef63abe5d9ba28830c53d41"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">set_tolerance</code><span class="sig-paren">(</span>uint8_t <em>tolerance</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent13set_toleranceE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent13set_filter_usE7uint8_t">
+<span id="_CPPv2N6remote23RemoteReceiverComponent13set_filter_usE7uint8_t"></span><span id="remote::RemoteReceiverComponent::set_filter_us__uint8_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a49cdfba8a0bf63d935f54b2d34de344c"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">set_filter_us</code><span class="sig-paren">(</span>uint8_t <em>filter_us</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent13set_filter_usE7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent11set_idle_usE8uint32_t">
+<span id="_CPPv2N6remote23RemoteReceiverComponent11set_idle_usE8uint32_t"></span><span id="remote::RemoteReceiverComponent::set_idle_us__uint32_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a8b3ec8c1702f30aeaa780e068d70ae24"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">set_idle_us</code><span class="sig-paren">(</span>uint32_t <em>idle_us</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent11set_idle_usE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent11decode_rmt_EP12rmt_item32_t6size_t">
+<span id="_CPPv2N6remote23RemoteReceiverComponent11decode_rmt_EP12rmt_item32_t6size_t"></span><span id="remote::RemoteReceiverComponent::decode_rmt___rmt_item32_tP.s"></span><span class="target" id="classremote_1_1_remote_receiver_component_1aef47abd33567c05ee435a1e72f396444"></span>std::vector&lt;int32_t&gt; remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">decode_rmt_</code><span class="sig-paren">(</span>rmt_item32_t *<em>item</em>, size_t <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent11decode_rmt_EP12rmt_item32_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent9gpio_intrEv">
+<span id="_CPPv2N6remote23RemoteReceiverComponent9gpio_intrEv"></span><span id="remote::RemoteReceiverComponent::gpio_intr"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a9212543f93a4172a3934ef0355c7a362"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">gpio_intr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent9gpio_intrEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt>
+<span class="target" id="classremote_1_1_remote_receiver_component_1aafe88927800c29ef19b071688d0f996f"></span><code class="descname">friend remote::RemoteReceiverComponent::RemoteReceiveData</code></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent8ringbuf_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent8ringbuf_E"></span><span id="remote::RemoteReceiverComponent::ringbuf___RingbufHandle_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1ac9ecc90dc34a0f5bef4c10d3f07310a1"></span>RingbufHandle_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">ringbuf_</code><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent8ringbuf_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent23remote_buffer_write_at_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent23remote_buffer_write_at_E"></span><span id="remote::RemoteReceiverComponent::remote_buffer_write_at___uint32_tV"></span><span class="target" id="classremote_1_1_remote_receiver_component_1ad16f3965c0556522ab8e90ecade716a8"></span><em class="property">volatile</em> uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">remote_buffer_write_at_</code><a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent23remote_buffer_write_at_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent7buffer_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent7buffer_E"></span><span id="remote::RemoteReceiverComponent::buffer___uint32_tVP"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a91fe736bae995f60a801978ed8386689"></span><em class="property">volatile</em> uint32_t *remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">buffer_</code> = {nullptr}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent7buffer_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent15buffer_read_at_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent15buffer_read_at_E"></span><span id="remote::RemoteReceiverComponent::buffer_read_at___uint32_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a69bdfc39eb4481003ed97f70fa66c009"></span>uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">buffer_read_at_</code> = {0}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent15buffer_read_at_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent12buffer_size_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent12buffer_size_E"></span><span id="remote::RemoteReceiverComponent::buffer_size___uint32_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a37e9c6025c6bd1abbc0439195049a15f"></span>uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">buffer_size_</code> = {10000}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent12buffer_size_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent10tolerance_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent10tolerance_E"></span><span id="remote::RemoteReceiverComponent::tolerance___uint8_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1afc72932a474c93e8486bbc29498c9934"></span>uint8_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">tolerance_</code> = {25}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent10tolerance_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent9decoders_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent9decoders_E"></span><span id="remote::RemoteReceiverComponent::decoders___std::vector:RemoteReceiverP:"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a5a117b918decf80274276bf14d0bbffb"></span>std::vector&lt;<a class="reference internal" href="#_CPPv3N6remote14RemoteReceiverE" title="remote::RemoteReceiver">RemoteReceiver</a> *&gt; remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">decoders_</code> = {}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent9decoders_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent8dumpers_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent8dumpers_E"></span><span id="remote::RemoteReceiverComponent::dumpers___std::vector:RemoteReceiveDumperP:"></span><span class="target" id="classremote_1_1_remote_receiver_component_1ae3cec5c7541a108c515621b1f2406fe9"></span>std::vector&lt;<a class="reference internal" href="#_CPPv3N6remote19RemoteReceiveDumperE" title="remote::RemoteReceiveDumper">RemoteReceiveDumper</a> *&gt; remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">dumpers_</code> = {}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent8dumpers_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent10filter_us_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent10filter_us_E"></span><span id="remote::RemoteReceiverComponent::filter_us___uint8_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a9c547715513a389a14eb3393b3195fea"></span>uint8_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">filter_us_</code> = {10}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent10filter_us_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote23RemoteReceiverComponent8idle_us_E">
+<span id="_CPPv2N6remote23RemoteReceiverComponent8idle_us_E"></span><span id="remote::RemoteReceiverComponent::idle_us___uint32_t"></span><span class="target" id="classremote_1_1_remote_receiver_component_1a56528558f327c86e7721d7138a6eaf2e"></span>uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote23RemoteReceiverComponentE" title="remote::RemoteReceiverComponent">RemoteReceiverComponent</a><code class="descname">idle_us_</code> = {10000}<a class="headerlink" href="#_CPPv3N6remote23RemoteReceiverComponent8idle_us_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote14RemoteReceiverE">
+<span id="_CPPv2N6remote14RemoteReceiverE"></span><span id="remote::RemoteReceiver"></span><span class="target" id="classremote_1_1_remote_receiver"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">RemoteReceiver</code><a class="headerlink" href="#_CPPv3N6remote14RemoteReceiverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="index.html#classbinary__sensor_1_1_binary_sensor"><span class="std std-ref">binary_sensor::BinarySensor</span></a></p>
+<p>Subclassed by <a class="reference internal" href="#classremote_1_1_l_g_receiver"><span class="std std-ref">remote::LGReceiver</span></a>, <a class="reference internal" href="#classremote_1_1_n_e_c_receiver"><span class="std std-ref">remote::NECReceiver</span></a>, <a class="reference internal" href="#classremote_1_1_panasonic_receiver"><span class="std std-ref">remote::PanasonicReceiver</span></a>, <a class="reference internal" href="#classremote_1_1_raw_receiver"><span class="std std-ref">remote::RawReceiver</span></a>, <a class="reference internal" href="#classremote_1_1_sony_receiver"><span class="std std-ref">remote::SonyReceiver</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote14RemoteReceiver14RemoteReceiverERKNSt6stringE">
+<span id="_CPPv2N6remote14RemoteReceiver14RemoteReceiverERKNSt6stringE"></span><span id="remote::RemoteReceiver::RemoteReceiver__ssCR"></span><span class="target" id="classremote_1_1_remote_receiver_1a131cd5bd909501264fecde0cf3268400"></span>remote::<a class="reference internal" href="#_CPPv3N6remote14RemoteReceiverE" title="remote::RemoteReceiver">RemoteReceiver</a><code class="descname">RemoteReceiver</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote14RemoteReceiver14RemoteReceiverERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote14RemoteReceiver8process_ER17RemoteReceiveData">
+<span id="_CPPv2N6remote14RemoteReceiver8process_ER17RemoteReceiveData"></span><span id="remote::RemoteReceiver::process___RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_remote_receiver_1ae2e7d986dd72e7c759690419ed8345c6"></span>bool remote::<a class="reference internal" href="#_CPPv3N6remote14RemoteReceiverE" title="remote::RemoteReceiver">RemoteReceiver</a><code class="descname">process_</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote14RemoteReceiver8process_ER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote14RemoteReceiver7matchesER17RemoteReceiveData">
+<span id="_CPPv2N6remote14RemoteReceiver7matchesER17RemoteReceiveData"></span><span id="remote::RemoteReceiver::matches__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_remote_receiver_1a4247f5b03e5bb83cdac058eaadec7654"></span><em class="property">virtual</em> bool remote::<a class="reference internal" href="#_CPPv3N6remote14RemoteReceiverE" title="remote::RemoteReceiver">RemoteReceiver</a><code class="descname">matches</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv3N6remote14RemoteReceiver7matchesER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote19RemoteReceiveDumperE">
+<span id="_CPPv2N6remote19RemoteReceiveDumperE"></span><span id="remote::RemoteReceiveDumper"></span><span class="target" id="classremote_1_1_remote_receive_dumper"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">RemoteReceiveDumper</code><a class="headerlink" href="#_CPPv3N6remote19RemoteReceiveDumperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by <a class="reference internal" href="#classremote_1_1_l_g_dumper"><span class="std std-ref">remote::LGDumper</span></a>, <a class="reference internal" href="#classremote_1_1_n_e_c_dumper"><span class="std std-ref">remote::NECDumper</span></a>, <a class="reference internal" href="#classremote_1_1_panasonic_dumper"><span class="std std-ref">remote::PanasonicDumper</span></a>, <a class="reference internal" href="#classremote_1_1_raw_dumper"><span class="std std-ref">remote::RawDumper</span></a>, <a class="reference internal" href="#classremote_1_1_sony_dumper"><span class="std std-ref">remote::SonyDumper</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote19RemoteReceiveDumper4dumpER17RemoteReceiveData">
+<span id="_CPPv2N6remote19RemoteReceiveDumper4dumpER17RemoteReceiveData"></span><span id="remote::RemoteReceiveDumper::dump__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_remote_receive_dumper_1a9e685ca316cb6ac8d7f35d683ae50df8"></span><em class="property">virtual</em> void remote::<a class="reference internal" href="#_CPPv3N6remote19RemoteReceiveDumperE" title="remote::RemoteReceiveDumper">RemoteReceiveDumper</a><code class="descname">dump</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv3N6remote19RemoteReceiveDumper4dumpER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote19RemoteReceiveDumper8process_ER17RemoteReceiveData">
+<span id="_CPPv2N6remote19RemoteReceiveDumper8process_ER17RemoteReceiveData"></span><span id="remote::RemoteReceiveDumper::process___RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_remote_receive_dumper_1a0959d59b035ed0378108068b6aa0cc34"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote19RemoteReceiveDumperE" title="remote::RemoteReceiveDumper">RemoteReceiveDumper</a><code class="descname">process_</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote19RemoteReceiveDumper8process_ER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote10LGReceiverE">
+<span id="_CPPv2N6remote10LGReceiverE"></span><span id="remote::LGReceiver"></span><span class="target" id="classremote_1_1_l_g_receiver"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">LGReceiver</code><a class="headerlink" href="#_CPPv3N6remote10LGReceiverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receiver"><span class="std std-ref">remote::RemoteReceiver</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote10LGReceiver10LGReceiverERKNSt6stringE8uint32_t7uint8_t">
+<span id="_CPPv2N6remote10LGReceiver10LGReceiverERKNSt6stringE8uint32_t7uint8_t"></span><span id="remote::LGReceiver::LGReceiver__ssCR.uint32_t.uint8_t"></span><span class="target" id="classremote_1_1_l_g_receiver_1a145726d7dfc905326410fdec6605f80c"></span>remote::<a class="reference internal" href="#_CPPv3N6remote10LGReceiverE" title="remote::LGReceiver">LGReceiver</a><code class="descname">LGReceiver</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, uint32_t <em>data</em>, uint8_t <em>nbits</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote10LGReceiver10LGReceiverERKNSt6stringE8uint32_t7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote10LGReceiver7matchesER17RemoteReceiveData">
+<span id="_CPPv2N6remote10LGReceiver7matchesER17RemoteReceiveData"></span><span id="remote::LGReceiver::matches__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_l_g_receiver_1a104eccae39e567cd703ea82772dff165"></span>bool remote::<a class="reference internal" href="#_CPPv3N6remote10LGReceiverE" title="remote::LGReceiver">LGReceiver</a><code class="descname">matches</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote10LGReceiver7matchesER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6remote10LGReceiver5data_E">
+<span id="_CPPv2N6remote10LGReceiver5data_E"></span><span id="remote::LGReceiver::data___uint32_t"></span><span class="target" id="classremote_1_1_l_g_receiver_1a6506b2e00f6a101d7e39b736e9d9426b"></span>uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote10LGReceiverE" title="remote::LGReceiver">LGReceiver</a><code class="descname">data_</code><a class="headerlink" href="#_CPPv3N6remote10LGReceiver5data_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote10LGReceiver6nbits_E">
+<span id="_CPPv2N6remote10LGReceiver6nbits_E"></span><span id="remote::LGReceiver::nbits___uint8_t"></span><span class="target" id="classremote_1_1_l_g_receiver_1a959b8076f38d040ed2babcceda997f12"></span>uint8_t remote::<a class="reference internal" href="#_CPPv3N6remote10LGReceiverE" title="remote::LGReceiver">LGReceiver</a><code class="descname">nbits_</code><a class="headerlink" href="#_CPPv3N6remote10LGReceiver6nbits_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote8LGDumperE">
+<span id="_CPPv2N6remote8LGDumperE"></span><span id="remote::LGDumper"></span><span class="target" id="classremote_1_1_l_g_dumper"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">LGDumper</code><a class="headerlink" href="#_CPPv3N6remote8LGDumperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receive_dumper"><span class="std std-ref">remote::RemoteReceiveDumper</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote8LGDumper4dumpER17RemoteReceiveData">
+<span id="_CPPv2N6remote8LGDumper4dumpER17RemoteReceiveData"></span><span id="remote::LGDumper::dump__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_l_g_dumper_1a1bab6d0ab60bfc15413c0c1e6dcab668"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote8LGDumperE" title="remote::LGDumper">LGDumper</a><code class="descname">dump</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote8LGDumper4dumpER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote9decode_lgER17RemoteReceiveDataP8uint32_tP7uint8_t">
+<span id="_CPPv2N6remote9decode_lgER17RemoteReceiveDataP8uint32_tP7uint8_t"></span><span id="remote::decode_lg__RemoteReceiveDataR.uint32_tP.uint8_tP"></span><span class="target" id="lg_8cpp_1a51447f9c66585666e528e708ac213f49"></span>bool remote<code class="descclassname">::</code><code class="descname">decode_lg</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em>, uint32_t *<em>data_</em>, uint8_t *<em>nbits</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote9decode_lgER17RemoteReceiveDataP8uint32_tP7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote11NECReceiverE">
+<span id="_CPPv2N6remote11NECReceiverE"></span><span id="remote::NECReceiver"></span><span class="target" id="classremote_1_1_n_e_c_receiver"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">NECReceiver</code><a class="headerlink" href="#_CPPv3N6remote11NECReceiverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receiver"><span class="std std-ref">remote::RemoteReceiver</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote11NECReceiver11NECReceiverERKNSt6stringE8uint16_t8uint16_t">
+<span id="_CPPv2N6remote11NECReceiver11NECReceiverERKNSt6stringE8uint16_t8uint16_t"></span><span id="remote::NECReceiver::NECReceiver__ssCR.uint16_t.uint16_t"></span><span class="target" id="classremote_1_1_n_e_c_receiver_1a6196fd638ca10944c73f9b92cf5f2ab1"></span>remote::<a class="reference internal" href="#_CPPv3N6remote11NECReceiverE" title="remote::NECReceiver">NECReceiver</a><code class="descname">NECReceiver</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, uint16_t <em>address</em>, uint16_t <em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote11NECReceiver11NECReceiverERKNSt6stringE8uint16_t8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote11NECReceiver7matchesER17RemoteReceiveData">
+<span id="_CPPv2N6remote11NECReceiver7matchesER17RemoteReceiveData"></span><span id="remote::NECReceiver::matches__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_n_e_c_receiver_1a4e9d2e87058162819de027e49b80b5a3"></span>bool remote::<a class="reference internal" href="#_CPPv3N6remote11NECReceiverE" title="remote::NECReceiver">NECReceiver</a><code class="descname">matches</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote11NECReceiver7matchesER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6remote11NECReceiver8address_E">
+<span id="_CPPv2N6remote11NECReceiver8address_E"></span><span id="remote::NECReceiver::address___uint16_t"></span><span class="target" id="classremote_1_1_n_e_c_receiver_1a968a4da25de3735901efbe809bba9c8d"></span>uint16_t remote::<a class="reference internal" href="#_CPPv3N6remote11NECReceiverE" title="remote::NECReceiver">NECReceiver</a><code class="descname">address_</code><a class="headerlink" href="#_CPPv3N6remote11NECReceiver8address_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote11NECReceiver8command_E">
+<span id="_CPPv2N6remote11NECReceiver8command_E"></span><span id="remote::NECReceiver::command___uint16_t"></span><span class="target" id="classremote_1_1_n_e_c_receiver_1a5c867b9f890846dcee77baed18134b20"></span>uint16_t remote::<a class="reference internal" href="#_CPPv3N6remote11NECReceiverE" title="remote::NECReceiver">NECReceiver</a><code class="descname">command_</code><a class="headerlink" href="#_CPPv3N6remote11NECReceiver8command_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote9NECDumperE">
+<span id="_CPPv2N6remote9NECDumperE"></span><span id="remote::NECDumper"></span><span class="target" id="classremote_1_1_n_e_c_dumper"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">NECDumper</code><a class="headerlink" href="#_CPPv3N6remote9NECDumperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receive_dumper"><span class="std std-ref">remote::RemoteReceiveDumper</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote9NECDumper4dumpER17RemoteReceiveData">
+<span id="_CPPv2N6remote9NECDumper4dumpER17RemoteReceiveData"></span><span id="remote::NECDumper::dump__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_n_e_c_dumper_1a5694024290fb81babdbd16c9ab71fb9f"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote9NECDumperE" title="remote::NECDumper">NECDumper</a><code class="descname">dump</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote9NECDumper4dumpER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote10decode_necER17RemoteReceiveDataP8uint16_tP8uint16_t">
+<span id="_CPPv2N6remote10decode_necER17RemoteReceiveDataP8uint16_tP8uint16_t"></span><span id="remote::decode_nec__RemoteReceiveDataR.uint16_tP.uint16_tP"></span><span class="target" id="nec_8cpp_1aa12cad5e3c10b67f9fb721cd0149b95c"></span>bool remote<code class="descclassname">::</code><code class="descname">decode_nec</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em>, uint16_t *<em>address</em>, uint16_t *<em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote10decode_necER17RemoteReceiveDataP8uint16_tP8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote17PanasonicReceiverE">
+<span id="_CPPv2N6remote17PanasonicReceiverE"></span><span id="remote::PanasonicReceiver"></span><span class="target" id="classremote_1_1_panasonic_receiver"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">PanasonicReceiver</code><a class="headerlink" href="#_CPPv3N6remote17PanasonicReceiverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receiver"><span class="std std-ref">remote::RemoteReceiver</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote17PanasonicReceiver17PanasonicReceiverERKNSt6stringE8uint16_t8uint32_t">
+<span id="_CPPv2N6remote17PanasonicReceiver17PanasonicReceiverERKNSt6stringE8uint16_t8uint32_t"></span><span id="remote::PanasonicReceiver::PanasonicReceiver__ssCR.uint16_t.uint32_t"></span><span class="target" id="classremote_1_1_panasonic_receiver_1add42c8c41f0e4d68bda05d4486df3dfb"></span>remote::<a class="reference internal" href="#_CPPv3N6remote17PanasonicReceiverE" title="remote::PanasonicReceiver">PanasonicReceiver</a><code class="descname">PanasonicReceiver</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, uint16_t <em>address</em>, uint32_t <em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote17PanasonicReceiver17PanasonicReceiverERKNSt6stringE8uint16_t8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote17PanasonicReceiver7matchesER17RemoteReceiveData">
+<span id="_CPPv2N6remote17PanasonicReceiver7matchesER17RemoteReceiveData"></span><span id="remote::PanasonicReceiver::matches__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_panasonic_receiver_1a9fc6d48b33c6edbeb3fed8579861f454"></span>bool remote::<a class="reference internal" href="#_CPPv3N6remote17PanasonicReceiverE" title="remote::PanasonicReceiver">PanasonicReceiver</a><code class="descname">matches</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote17PanasonicReceiver7matchesER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6remote17PanasonicReceiver8address_E">
+<span id="_CPPv2N6remote17PanasonicReceiver8address_E"></span><span id="remote::PanasonicReceiver::address___uint16_t"></span><span class="target" id="classremote_1_1_panasonic_receiver_1af7c9eb04f03c2c37441228b692fb0fe2"></span>uint16_t remote::<a class="reference internal" href="#_CPPv3N6remote17PanasonicReceiverE" title="remote::PanasonicReceiver">PanasonicReceiver</a><code class="descname">address_</code><a class="headerlink" href="#_CPPv3N6remote17PanasonicReceiver8address_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote17PanasonicReceiver8command_E">
+<span id="_CPPv2N6remote17PanasonicReceiver8command_E"></span><span id="remote::PanasonicReceiver::command___uint32_t"></span><span class="target" id="classremote_1_1_panasonic_receiver_1ac376eb7f3b6006b49aa11437d51ac119"></span>uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote17PanasonicReceiverE" title="remote::PanasonicReceiver">PanasonicReceiver</a><code class="descname">command_</code><a class="headerlink" href="#_CPPv3N6remote17PanasonicReceiver8command_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote15PanasonicDumperE">
+<span id="_CPPv2N6remote15PanasonicDumperE"></span><span id="remote::PanasonicDumper"></span><span class="target" id="classremote_1_1_panasonic_dumper"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">PanasonicDumper</code><a class="headerlink" href="#_CPPv3N6remote15PanasonicDumperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receive_dumper"><span class="std std-ref">remote::RemoteReceiveDumper</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote15PanasonicDumper4dumpER17RemoteReceiveData">
+<span id="_CPPv2N6remote15PanasonicDumper4dumpER17RemoteReceiveData"></span><span id="remote::PanasonicDumper::dump__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_panasonic_dumper_1a5affad8c2ae0c670052a0196e9942d45"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote15PanasonicDumperE" title="remote::PanasonicDumper">PanasonicDumper</a><code class="descname">dump</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote15PanasonicDumper4dumpER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote16decode_panasonicER17RemoteReceiveDataP8uint16_tP8uint32_t">
+<span id="_CPPv2N6remote16decode_panasonicER17RemoteReceiveDataP8uint16_tP8uint32_t"></span><span id="remote::decode_panasonic__RemoteReceiveDataR.uint16_tP.uint32_tP"></span><span class="target" id="panasonic_8cpp_1aff72007f423d67d2cd2f27d56a4c2aac"></span>bool remote<code class="descclassname">::</code><code class="descname">decode_panasonic</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em>, uint16_t *<em>address</em>, uint32_t *<em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote16decode_panasonicER17RemoteReceiveDataP8uint16_tP8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote12SonyReceiverE">
+<span id="_CPPv2N6remote12SonyReceiverE"></span><span id="remote::SonyReceiver"></span><span class="target" id="classremote_1_1_sony_receiver"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">SonyReceiver</code><a class="headerlink" href="#_CPPv3N6remote12SonyReceiverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receiver"><span class="std std-ref">remote::RemoteReceiver</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote12SonyReceiver12SonyReceiverERKNSt6stringE8uint32_t7uint8_t">
+<span id="_CPPv2N6remote12SonyReceiver12SonyReceiverERKNSt6stringE8uint32_t7uint8_t"></span><span id="remote::SonyReceiver::SonyReceiver__ssCR.uint32_t.uint8_t"></span><span class="target" id="classremote_1_1_sony_receiver_1a98b8054f73d3bc8fd138d65aaffefbdb"></span>remote::<a class="reference internal" href="#_CPPv3N6remote12SonyReceiverE" title="remote::SonyReceiver">SonyReceiver</a><code class="descname">SonyReceiver</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, uint32_t <em>data</em>, uint8_t <em>nbits</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote12SonyReceiver12SonyReceiverERKNSt6stringE8uint32_t7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote12SonyReceiver7matchesER17RemoteReceiveData">
+<span id="_CPPv2N6remote12SonyReceiver7matchesER17RemoteReceiveData"></span><span id="remote::SonyReceiver::matches__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_sony_receiver_1a218b891d2241b04d7f5486588372e91e"></span>bool remote::<a class="reference internal" href="#_CPPv3N6remote12SonyReceiverE" title="remote::SonyReceiver">SonyReceiver</a><code class="descname">matches</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote12SonyReceiver7matchesER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6remote12SonyReceiver5data_E">
+<span id="_CPPv2N6remote12SonyReceiver5data_E"></span><span id="remote::SonyReceiver::data___uint32_t"></span><span class="target" id="classremote_1_1_sony_receiver_1ac002e0eca050d1f00044cd7b73dae567"></span>uint32_t remote::<a class="reference internal" href="#_CPPv3N6remote12SonyReceiverE" title="remote::SonyReceiver">SonyReceiver</a><code class="descname">data_</code><a class="headerlink" href="#_CPPv3N6remote12SonyReceiver5data_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N6remote12SonyReceiver6nbits_E">
+<span id="_CPPv2N6remote12SonyReceiver6nbits_E"></span><span id="remote::SonyReceiver::nbits___uint8_t"></span><span class="target" id="classremote_1_1_sony_receiver_1a383eaa8335d6c97bcff2269919678ca7"></span>uint8_t remote::<a class="reference internal" href="#_CPPv3N6remote12SonyReceiverE" title="remote::SonyReceiver">SonyReceiver</a><code class="descname">nbits_</code><a class="headerlink" href="#_CPPv3N6remote12SonyReceiver6nbits_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote10SonyDumperE">
+<span id="_CPPv2N6remote10SonyDumperE"></span><span id="remote::SonyDumper"></span><span class="target" id="classremote_1_1_sony_dumper"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">SonyDumper</code><a class="headerlink" href="#_CPPv3N6remote10SonyDumperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receive_dumper"><span class="std std-ref">remote::RemoteReceiveDumper</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote10SonyDumper4dumpER17RemoteReceiveData">
+<span id="_CPPv2N6remote10SonyDumper4dumpER17RemoteReceiveData"></span><span id="remote::SonyDumper::dump__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_sony_dumper_1ae62254cea9b4d65cb248d325702bd526"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote10SonyDumperE" title="remote::SonyDumper">SonyDumper</a><code class="descname">dump</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote10SonyDumper4dumpER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote11decode_sonyER17RemoteReceiveDataP8uint32_tP7uint8_t">
+<span id="_CPPv2N6remote11decode_sonyER17RemoteReceiveDataP8uint32_tP7uint8_t"></span><span id="remote::decode_sony__RemoteReceiveDataR.uint32_tP.uint8_tP"></span><span class="target" id="sony_8cpp_1ad93e0d8bdb3f3ba3a6af74bd37a9d366"></span>bool remote<code class="descclassname">::</code><code class="descname">decode_sony</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em>, uint32_t *<em>data_</em>, uint8_t *<em>nbits</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote11decode_sonyER17RemoteReceiveDataP8uint32_tP7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote11RawReceiverE">
+<span id="_CPPv2N6remote11RawReceiverE"></span><span id="remote::RawReceiver"></span><span class="target" id="classremote_1_1_raw_receiver"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">RawReceiver</code><a class="headerlink" href="#_CPPv3N6remote11RawReceiverE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receiver"><span class="std std-ref">remote::RemoteReceiver</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote11RawReceiver11RawReceiverERKNSt6stringENSt6vectorI7int32_tEE">
+<span id="_CPPv2N6remote11RawReceiver11RawReceiverERKNSt6stringENSt6vectorI7int32_tEE"></span><span id="remote::RawReceiver::RawReceiver__ssCR.std::vector:int32_t:"></span><span class="target" id="classremote_1_1_raw_receiver_1a896457cc85589e3839caee29637adb5d"></span>remote::<a class="reference internal" href="#_CPPv3N6remote11RawReceiverE" title="remote::RawReceiver">RawReceiver</a><code class="descname">RawReceiver</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, std::vector&lt;int32_t&gt; <em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote11RawReceiver11RawReceiverERKNSt6stringENSt6vectorI7int32_tEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6remote11RawReceiver7matchesER17RemoteReceiveData">
+<span id="_CPPv2N6remote11RawReceiver7matchesER17RemoteReceiveData"></span><span id="remote::RawReceiver::matches__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_raw_receiver_1afa022b3c26007af5964495967780183a"></span>bool remote::<a class="reference internal" href="#_CPPv3N6remote11RawReceiverE" title="remote::RawReceiver">RawReceiver</a><code class="descname">matches</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote11RawReceiver7matchesER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6remote11RawReceiver5data_E">
+<span id="_CPPv2N6remote11RawReceiver5data_E"></span><span id="remote::RawReceiver::data___std::vector:int32_t:"></span><span class="target" id="classremote_1_1_raw_receiver_1a36874c59b45273e5eda533b73c030004"></span>std::vector&lt;int32_t&gt; remote::<a class="reference internal" href="#_CPPv3N6remote11RawReceiverE" title="remote::RawReceiver">RawReceiver</a><code class="descname">data_</code><a class="headerlink" href="#_CPPv3N6remote11RawReceiver5data_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="_CPPv3N6remote9RawDumperE">
+<span id="_CPPv2N6remote9RawDumperE"></span><span id="remote::RawDumper"></span><span class="target" id="classremote_1_1_raw_dumper"></span><em class="property">class </em>remote<code class="descclassname">::</code><code class="descname">RawDumper</code><a class="headerlink" href="#_CPPv3N6remote9RawDumperE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="#classremote_1_1_remote_receive_dumper"><span class="std std-ref">remote::RemoteReceiveDumper</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6remote9RawDumper4dumpER17RemoteReceiveData">
+<span id="_CPPv2N6remote9RawDumper4dumpER17RemoteReceiveData"></span><span id="remote::RawDumper::dump__RemoteReceiveDataR"></span><span class="target" id="classremote_1_1_raw_dumper_1a867996ea2e78e1dd98c0be12390a8fac"></span>void remote::<a class="reference internal" href="#_CPPv3N6remote9RawDumperE" title="remote::RawDumper">RawDumper</a><code class="descname">dump</code><span class="sig-paren">(</span>RemoteReceiveData &amp;<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6remote9RawDumper4dumpER17RemoteReceiveData" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+  <li><a href="index.html">Binary Sensor</a><ul>
+      <li>Previous: <a href="template.html" title="previous chapter">Template Binary Sensor</a></li>
+      <li>Next: <a href="../output/index.html" title="next chapter">Output</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/api/binary_sensor/remote_receiver.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

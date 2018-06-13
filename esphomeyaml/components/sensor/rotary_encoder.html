@@ -1,10 +1,85 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Rotary Encoder Sensor &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../../_static/pygments.css"type="text/css"><script src="../../../_static/documentation_options.js"></script><script src="../../../_static/jquery.js"></script><script src="../../../_static/underscore.js"></script><script src="../../../_static/doctools.js"></script><link rel="index"title="Index"href="../../../genindex.html"><link rel="search"title="Search"href="../../../search.html"><link rel="next"title="Template Sensor"href="template.html"><link rel="prev"title="DHT12 Temperature+Humidity Sensor"href="dht12.html"><link rel="stylesheet"href="../../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="rotary-encoder-sensor"><h1>Rotary Encoder Sensor<a class="headerlink"href="#rotary-encoder-sensor"title="Permalink to this headline">¶</a></h1><p>The <code class="docutils literal notranslate"><span class="pre">rotary_encoder</span></code> sensor platform allows you to use any continuous-rotation rotary encoders with esphomeyaml. These devices usually have two pins with which they encode the rotation. Every time the knob of the rotary encoder is turned, the signals of the two pins go HIGH and LOW in turn. See <a class="reference external"href="https://playground.arduino.cc/Main/RotaryEncoders">this Arduino article</a> to gain a better understanding of these sensors.<div class="figure align-center"id="id1"><a class="reference internal image-reference"href="../../../_images/rotary_encoder.jpg"><img alt="../../../_images/rotary_encoder.jpg"src="../../../_images/rotary_encoder.jpg"style="width: 75.0%;"></a><p class="caption"><span class="caption-text">Example of a continuous rotary encoder. Pin <code class="docutils literal notranslate"><span class="pre">+</span></code> is connected to <code class="docutils literal notranslate"><span class="pre">3.3V</span></code>, <code class="docutils literal notranslate"><span class="pre">GND</span></code> is connected to <code class="docutils literal notranslate"><span class="pre">GND</span></code>, and <code class="docutils literal notranslate"><span class="pre">CLK</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">DT</span></code> are A &amp; B.</span></div><div class="figure align-center"><a class="reference internal image-reference"href="../../../_images/rotary_encoder-ui.png"><img alt="../../../_images/rotary_encoder-ui.png"src="../../../_images/rotary_encoder-ui.png"style="width: 75.0%;"></a></div><p>To use rotary encoders in esphomeyaml, first identify the two pins encoding th step value. These are often called <code class="docutils literal notranslate"><span class="pre">CLK</span></code> and <code class="docutils literal notranslate"><span class="pre">DT</span></code> as in above image. Note if the values this sensor outputs go in the wrong direction, you can just swap these two pins.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Rotary Encoder Sensor &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Template Sensor" href="template.html" />
+    <link rel="prev" title="DHT12 Temperature+Humidity Sensor" href="dht12.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="rotary-encoder-sensor">
+<h1>Rotary Encoder Sensor<a class="headerlink" href="#rotary-encoder-sensor" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">rotary_encoder</span></code> sensor platform allows you to use any continuous-rotation
+rotary encoders with esphomeyaml. These devices usually have two pins with which
+they encode the rotation. Every time the knob of the rotary encoder is turned, the
+signals of the two pins go HIGH and LOW in turn. See
+<a class="reference external" href="https://playground.arduino.cc/Main/RotaryEncoders">this Arduino article</a> to gain
+a better understanding of these sensors.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/rotary_encoder.jpg"><img alt="../../../_images/rotary_encoder.jpg" src="../../../_images/rotary_encoder.jpg" style="width: 75.0%;" /></a>
+<p class="caption"><span class="caption-text">Example of a continuous rotary encoder. Pin <code class="docutils literal notranslate"><span class="pre">+</span></code> is connected to <code class="docutils literal notranslate"><span class="pre">3.3V</span></code>,
+<code class="docutils literal notranslate"><span class="pre">GND</span></code> is connected to <code class="docutils literal notranslate"><span class="pre">GND</span></code>, and <code class="docutils literal notranslate"><span class="pre">CLK</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">DT</span></code> are A &amp; B.</span></p>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/rotary_encoder-ui.png"><img alt="../../../_images/rotary_encoder-ui.png" src="../../../_images/rotary_encoder-ui.png" style="width: 75.0%;" /></a>
+</div>
+<p>To use rotary encoders in esphomeyaml, first identify the two pins encoding th step value.
+These are often called <code class="docutils literal notranslate"><span class="pre">CLK</span></code> and <code class="docutils literal notranslate"><span class="pre">DT</span></code> as in above image. Note if the values this sensor
+outputs go in the wrong direction, you can just swap these two pins.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
 <span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">rotary_encoder</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Rotary Encoder&quot;</span>
     <span class="n">pin_a</span><span class="p">:</span> <span class="n">D1</span>
     <span class="n">pin_b</span><span class="p">:</span> <span class="n">D2</span>
-</pre></div></div><div class="section"id="configuration-variables"><h2>Configuration variables:<a class="headerlink"href="#configuration-variables"title="Permalink to this headline">¶</a></h2><ul class="simple"><li><strong>pin_a</strong> (<strong>Required</strong>, <a class="reference internal"href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>): The first pin for determining the step value. Must not be a pin from an external I/O expander.<li><strong>pin_b</strong> (<strong>Required</strong>, <a class="reference internal"href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>): The second pin for determining the step value. Must not be a pin from an external I/O expander.<li><strong>name</strong> (<strong>Required</strong>, string): The name of the rotary encoder sensor.<li><strong>pin_reset</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>): An optional pin that resets the step value. This is useful with rotary encoders that have have a third pin. Defaults to no reset pin.<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.<li>All other options from <a class="reference internal"href="index.html#config-sensor"><span class="std std-ref">Sensor</span></a> and <a class="reference internal"href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</ul></div><div class="section"id="debouncing-output"><h2>Debouncing Output<a class="headerlink"href="#debouncing-output"title="Permalink to this headline">¶</a></h2><p>This sensor can output a lot of values in a short period of time when turning the knob. In order to not put too much stress on your network connection, you can leverage esphomelib’s sensor filters. The following will only send out values if the last input value is at least 0.1s seconds old <em>or</em> if the new rotary encoder value has changed by 10 from the previous value.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
+</pre></div>
+</div>
+<div class="section" id="configuration-variables">
+<h2>Configuration variables:<a class="headerlink" href="#configuration-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>pin_a</strong> (<strong>Required</strong>, <a class="reference internal" href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>):
+The first pin for determining the step value. Must not be a pin from an external I/O expander.</li>
+<li><strong>pin_b</strong> (<strong>Required</strong>, <a class="reference internal" href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>):
+The second pin for determining the step value. Must not be a pin from an external I/O expander.</li>
+<li><strong>name</strong> (<strong>Required</strong>, string): The name of the rotary encoder sensor.</li>
+<li><strong>pin_reset</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-pin-schema"><span class="std std-ref">Pin Schema</span></a>):
+An optional pin that resets the step value. This is useful with rotary encoders that have have a
+third pin. Defaults to no reset pin.</li>
+<li><strong>id</strong> (<em>Optional</em>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): Manually specify the ID used for code generation.</li>
+<li>All other options from <a class="reference internal" href="index.html#config-sensor"><span class="std std-ref">Sensor</span></a> and <a class="reference internal" href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="debouncing-output">
+<h2>Debouncing Output<a class="headerlink" href="#debouncing-output" title="Permalink to this headline">¶</a></h2>
+<p>This sensor can output a lot of values in a short period of time when turning the knob.
+In order to not put too much stress on your network connection, you can leverage esphomelib’s
+sensor filters. The following will only send out values if the last input value is at least
+0.1s seconds old <em>or</em> if the new rotary encoder value has changed by 10 from the previous value.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example configuration entry</span>
 <span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">rotary_encoder</span>
     <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Rotary Encoder&quot;</span>
@@ -14,4 +89,71 @@
       <span class="o">-</span> <span class="ow">or</span><span class="p">:</span>
         <span class="o">-</span> <span class="n">debounce</span><span class="p">:</span> <span class="mf">0.1</span><span class="n">s</span>
         <span class="o">-</span> <span class="n">delta</span><span class="p">:</span> <span class="mi">10</span>
-</pre></div></div><div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="index.html#sensor-filters"><span class="std std-ref">Sensor Filters</span></a><li><a class="reference internal"href="pulse_counter.html"><span class="doc">ESP32 Pulse Counter Sensor</span></a><li><a class="reference internal"href="template.html"><span class="doc">Template Sensor</span></a><li><a class="reference internal"href="../../../api/sensor/rotary_encoder.html"><span class="doc">API Reference</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/rotary_encoder.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../../index.html">Documentation overview</a><ul><li><a href="../../index.html">esphomeyaml</a><ul><li><a href="../index.html">Components</a><ul><li><a href="index.html">Sensor Component</a><ul><li>Previous: <a href="dht12.html"title="previous chapter">DHT12 Temperature+Humidity Sensor</a><li>Next: <a href="template.html"title="next chapter">Template Sensor</a></ul></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../../_sources/esphomeyaml/components/sensor/rotary_encoder.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="index.html#sensor-filters"><span class="std std-ref">Sensor Filters</span></a></li>
+<li><a class="reference internal" href="pulse_counter.html"><span class="doc">Pulse Counter Sensor</span></a></li>
+<li><a class="reference internal" href="template.html"><span class="doc">Template Sensor</span></a></li>
+<li><a class="reference internal" href="../../../api/sensor/rotary_encoder.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/sensor/rotary_encoder.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">esphomeyaml</a><ul>
+  <li><a href="../index.html">Components</a><ul>
+  <li><a href="index.html">Sensor Component</a><ul>
+      <li>Previous: <a href="dht12.html" title="previous chapter">DHT12 Temperature+Humidity Sensor</a></li>
+      <li>Next: <a href="template.html" title="next chapter">Template Sensor</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/esphomeyaml/components/sensor/rotary_encoder.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,8 +1,126 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Non-Invasive Power Meter &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Cookbook"href="../devices/index.html"><link rel="prev"title="Relay"href="relay.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="non-invasive-power-meter"><h1>Non-Invasive Power Meter<a class="headerlink"href="#non-invasive-power-meter"title="Permalink to this headline">¶</a></h1><p>So an essential part of making your home smart is knowing how much power it uses over the day. Tracking this can be difficult, often you need to install a completely new power meter which can often cost a bunch of money. However, quite a few power meters have a red LED on the front that blinks every time that one Wh has been used.<p>The simple idea therefore is: Why don’t we just abuse that functionality to make the power-meter IoT enabled? We just have to hook up a simple photoresistor in front of that aforementioned LED and track the amount of pulses we receive. Then using esphomelib we can instantly have the power meter show up in Home Assistant 🎉<div class="admonition note"><p class="first admonition-title">Note<p class="last">This guide currently only works with the ESP32, and even if it is ported back to the ESP8266 at some point, the ESP32 will still achieve a much higher accuracy because it has a hardware-based pulse counter.</div><p>Hooking it all up is quite easy: Just buy a suitable photoresistor (make sure the wave length approximately matches the one from your power meter). Then connect it using a simple variable resistor divider (see <a class="reference external"href="https://blog.udemy.com/arduino-ldr/">this article</a> for inspiration). And… that should already be it :)<div class="figure align-center"><a class="reference internal image-reference"href="../../_images/power_meter-header.jpg"><img alt="../../_images/power_meter-header.jpg"src="../../_images/power_meter-header.jpg"style="width: 80.0%;"></a></div><p>For esphomelib, you can then use the <a class="reference internal"href="../components/sensor/pulse_counter.html"><span class="doc">pulse counter sensor</span></a> using below configuration:<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Non-Invasive Power Meter &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dual relay cover motor control" href="dual-r2-cover.html" />
+    <link rel="prev" title="Relay" href="relay.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="non-invasive-power-meter">
+<h1>Non-Invasive Power Meter<a class="headerlink" href="#non-invasive-power-meter" title="Permalink to this headline">¶</a></h1>
+<p>So an essential part of making your home smart is knowing how much power it uses over
+the day. Tracking this can be difficult, often you need to install a completely new
+power meter which can often cost a bunch of money. However, quite a few power meters
+have a red LED on the front that blinks every time that one Wh has been used.</p>
+<p>The simple idea therefore is: Why don’t we just abuse that functionality to make the power-meter
+IoT enabled? We just have to hook up a simple photoresistor in front of that aforementioned
+LED and track the amount of pulses we receive. Then using esphomelib we can instantly have
+the power meter show up in Home Assistant 🎉</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This guide currently only works with the ESP32, and even if it is ported back to the ESP8266
+at some point, the ESP32 will still achieve a much higher accuracy because it has a
+hardware-based pulse counter.</p>
+</div>
+<p>Hooking it all up is quite easy: Just buy a suitable photoresistor (make sure the wave length
+approximately matches the one from your power meter). Then connect it using a simple variable
+resistor divider (see <a class="reference external" href="https://blog.udemy.com/arduino-ldr/">this article</a> for inspiration).
+And… that should already be it :)</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../_images/power_meter-header.jpg"><img alt="../../_images/power_meter-header.jpg" src="../../_images/power_meter-header.jpg" style="width: 80.0%;" /></a>
+</div>
+<p>For esphomelib, you can then use the
+<a class="reference internal" href="../components/sensor/pulse_counter.html"><span class="doc">pulse counter sensor</span></a> using below configuration:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sensor</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">pulse_counter</span>
     <span class="n">pin</span><span class="p">:</span> <span class="n">GPIO12</span>
     <span class="n">unit_of_measurement</span><span class="p">:</span> <span class="s1">&#39;kW&#39;</span>
     <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Power Meter&#39;</span>
     <span class="n">filters</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">multiply</span><span class="p">:</span> <span class="mf">0.06</span>
-</pre></div></div><p>Adjust <code class="docutils literal notranslate"><span class="pre">GPIO12</span></code> to match your set up of course. The output from the pulse counter sensor is in <code class="docutils literal notranslate"><span class="pre">pulses/min</span></code> and we also know that 1000 pulses from the LED should equal 1kWh of power usage. Thus, rearranging the expression yields a proportional factor of <code class="docutils literal notranslate"><span class="pre">0.06</span></code> from <code class="docutils literal notranslate"><span class="pre">pulses/min</span></code> to <code class="docutils literal notranslate"><span class="pre">kW</span></code>.<p>And if a technician shows up and he looks confused about what the heck you have done to your power meter, tell them about esphomelib 😉</div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Cookbook</a><ul><li>Previous: <a href="relay.html"title="previous chapter">Relay</a><li>Next: <a href="../devices/index.html"title="next chapter">Cookbook</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/cookbook/power_meter.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<p>Adjust <code class="docutils literal notranslate"><span class="pre">GPIO12</span></code> to match your set up of course. The output from the pulse counter sensor is in
+<code class="docutils literal notranslate"><span class="pre">pulses/min</span></code> and we also know that 1000 pulses from the LED should equal 1kWh of power usage.
+Thus, rearranging the expression yields a proportional factor of <code class="docutils literal notranslate"><span class="pre">0.06</span></code> from <code class="docutils literal notranslate"><span class="pre">pulses/min</span></code> to
+<code class="docutils literal notranslate"><span class="pre">kW</span></code>.</p>
+<p>And if a technician shows up and he looks confused about what the heck you have done to your
+power meter, tell them about esphomelib 😉</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Cookbook</a><ul>
+      <li>Previous: <a href="relay.html" title="previous chapter">Relay</a></li>
+      <li>Next: <a href="dual-r2-cover.html" title="next chapter">Dual relay cover motor control</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/cookbook/power_meter.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

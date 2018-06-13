@@ -1,0 +1,201 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dual relay cover motor control &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Cookbook" href="../devices/index.html" />
+    <link rel="prev" title="Non-Invasive Power Meter" href="power_meter.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dual-relay-cover-motor-control">
+<h1>Dual relay cover motor control<a class="headerlink" href="#dual-relay-cover-motor-control" title="Permalink to this headline">¶</a></h1>
+<p>The following is a possible configuration file for common covers that use a motor with 2 inputs. Only one should be powered at a time (interlocking) to either move the cover up or down. For this the <a class="reference external" href="https://www.itead.cc/sonoff-dual.html">Sonoff Dual R2</a> can be used which has two independent relays. Additionally this configuration allows the single button on the Sonoff to control the motion by cycling between: open-&gt;stop-&gt;down-&gt;stop-&gt;…</p>
+<p>These kind of motors automatically stop when the end of the cover movement is reached. However, to be safe, this automation stops powering the motor after 1 minute of movement. In the rare case of the end-stop switch in the motor failing this will reduce the risk for damage or fire.</p>
+<p>Of the four main components (button sensor, 2 relays switches and the cover), only the cover will be visible to the end-user. The other three are hidden by means of not including a <code class="docutils literal notranslate"><span class="pre">name</span></code>. This is to prevent accidentally switching on both relays simultaneously from MQTT/Home-assistant as that might be harmful for some motors.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controlling the cover to quickly (sending new open/close commands within a minute of previous commands) might cause unexpected behaviour (eg: cover stopping halfway). This is because the delayed relay off feature is implemented using asynchronous automations. So every time a open/close command is sent a delayed relay off command is added and old ones are not removed.</p>
+</div>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">cover</span>
+  <span class="n">platform</span><span class="p">:</span> <span class="n">espressif8266</span>
+  <span class="n">board</span><span class="p">:</span> <span class="n">esp01_1m</span>
+  <span class="n">board_flash_mode</span><span class="p">:</span> <span class="n">dout</span>
+  <span class="c1"># required until next release (&gt;1.6.2)</span>
+  <span class="n">library_uri</span><span class="p">:</span> <span class="s1">&#39;https://github.com/OttoWinter/esphomelib.git&#39;</span>
+
+<span class="n">wifi</span><span class="p">:</span>
+  <span class="n">ssid</span><span class="p">:</span> <span class="s1">&#39;***&#39;</span>
+  <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;***&#39;</span>
+
+<span class="n">mqtt</span><span class="p">:</span>
+  <span class="n">broker</span><span class="p">:</span> <span class="s1">&#39;mqtt&#39;</span>
+  <span class="n">username</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+
+<span class="n">logger</span><span class="p">:</span>
+
+<span class="n">ota</span><span class="p">:</span>
+
+<span class="n">binary_sensor</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span>
+      <span class="n">number</span><span class="p">:</span> <span class="mi">10</span>
+      <span class="n">inverted</span><span class="p">:</span> <span class="n">true</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">button</span>
+    <span class="n">on_press</span><span class="p">:</span>
+      <span class="n">then</span><span class="p">:</span>
+        <span class="c1"># logic for cycling through movements: open-&gt;stop-&gt;close-&gt;stop-&gt;...</span>
+        <span class="o">-</span> <span class="k">lambda</span><span class="p">:</span> <span class="o">|</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">cover</span><span class="p">::</span><span class="n">COVER_OPEN</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="nb">open</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">){</span>
+                <span class="o">//</span> <span class="n">cover</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">opening</span> <span class="n">movement</span><span class="p">,</span> <span class="n">stop</span> <span class="n">it</span>
+                <span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">();</span>
+              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="o">//</span> <span class="n">cover</span> <span class="n">has</span> <span class="n">finished</span> <span class="n">opening</span><span class="p">,</span> <span class="n">close</span> <span class="n">it</span>
+                <span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+              <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">cover</span><span class="p">::</span><span class="n">COVER_CLOSED</span><span class="p">)</span> <span class="p">{</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">close</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">){</span>
+                <span class="o">//</span> <span class="n">cover</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">closing</span> <span class="n">movement</span><span class="p">,</span> <span class="n">stop</span> <span class="n">it</span>
+                <span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">();</span>
+              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="o">//</span> <span class="n">cover</span> <span class="n">has</span> <span class="n">finished</span> <span class="n">closing</span><span class="p">,</span> <span class="nb">open</span> <span class="n">it</span>
+                <span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">();</span>
+              <span class="p">}</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+              <span class="o">//</span> <span class="n">state</span> <span class="n">of</span> <span class="n">cover</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">known</span>
+              <span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="nb">open</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="o">||</span> <span class="nb">id</span><span class="p">(</span><span class="n">close</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">){</span>
+                <span class="o">//</span> <span class="n">cover</span> <span class="ow">is</span> <span class="n">either</span> <span class="n">opening</span> <span class="ow">or</span> <span class="n">closing</span><span class="p">,</span> <span class="n">stop</span> <span class="n">it</span>
+                <span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">();</span>
+              <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nb">id</span><span class="p">(</span><span class="n">cover</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">();</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+
+<span class="n">switch</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="mi">12</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="nb">open</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">gpio</span>
+    <span class="n">pin</span><span class="p">:</span> <span class="mi">5</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">close</span>
+
+<span class="n">cover</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="n">template</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;Cover&quot;</span>
+    <span class="nb">id</span><span class="p">:</span> <span class="n">cover</span>
+    <span class="n">open_action</span><span class="p">:</span>
+      <span class="c1"># cancel potential previous movement</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close</span>
+      <span class="c1"># perform movement</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_on</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="nb">open</span>
+      <span class="c1"># wait until cover is open</span>
+      <span class="o">-</span> <span class="n">delay</span><span class="p">:</span> <span class="mi">60</span><span class="n">s</span>
+      <span class="c1"># turn of relay to prevent keeping the motor powered</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="nb">open</span>
+    <span class="n">close_action</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="nb">open</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_on</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close</span>
+      <span class="o">-</span> <span class="n">delay</span><span class="p">:</span> <span class="mi">60</span><span class="n">s</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close</span>
+    <span class="n">stop_action</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="nb">open</span>
+      <span class="o">-</span> <span class="n">switch</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
+          <span class="nb">id</span><span class="p">:</span> <span class="n">close</span>
+    <span class="n">optimistic</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<div class="section" id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="../guides/automations.html"><span class="doc">Automations And Templates</span></a></li>
+<li><a class="reference internal" href="../components/cover/template.html"><span class="doc">Template Cover</span></a></li>
+<li><a class="reference internal" href="../devices/sonoff.html"><span class="doc">Generic Sonoff</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/cookbook/dual-r2-cover.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Cookbook</a><ul>
+      <li>Previous: <a href="power_meter.html" title="previous chapter">Non-Invasive Power Meter</a></li>
+      <li>Next: <a href="../devices/index.html" title="next chapter">Cookbook</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/cookbook/dual-r2-cover.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

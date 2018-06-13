@@ -1,12 +1,337 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Frequently Asked Questions &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="Getting Started with esphomeyaml"href="getting_started_command_line.html"><link rel="prev"title="Configuration Types"href="configuration-types.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="frequently-asked-questions"><h1>Frequently Asked Questions<a class="headerlink"href="#frequently-asked-questions"title="Permalink to this headline">¶</a></h1><div class="section"id="tips-for-using-esphomeyaml"><h2>Tips for using esphomeyaml<a class="headerlink"href="#tips-for-using-esphomeyaml"title="Permalink to this headline">¶</a></h2><ol class="arabic"><li><p class="first">esphomeyaml supports (most of) Home Assistant’s YAML configuration directives like <code class="docutils literal notranslate"><span class="pre">!include</span></code>, <code class="docutils literal notranslate"><span class="pre">!secret</span></code>. So you can store all your secret WiFi passwords and so on in a file called <code class="docutils literal notranslate"><span class="pre">secrets.yaml</span></code> within the directory where the configuration file is.<li><p class="first">If you want to see how esphomeyaml interprets your configuration, run<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">livingroom</span><span class="o">.</span><span class="n">yaml</span> <span class="n">config</span>
-</pre></div></div><li><p class="first">To view the logs from your node without uploading, run<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">livingroom</span><span class="o">.</span><span class="n">yaml</span> <span class="n">logs</span>
-</pre></div></div><li><p class="first">If you have changed the name of the node and want to update over-the-air, just specify <code class="docutils literal notranslate"><span class="pre">--upload-port</span></code> when running esphomeyaml. For example:<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">livingroom</span><span class="o">.</span><span class="n">yaml</span> <span class="n">run</span> <span class="o">--</span><span class="n">upload</span><span class="o">-</span><span class="n">port</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">178.52</span>
-</pre></div></div><li><p class="first">You can always find the source esphomeyaml generates under <code class="docutils literal notranslate"><span class="pre">&lt;NODE_NAME&gt;/src/main.cpp</span></code>. It’s even possible to edit anything outside of the <code class="docutils literal notranslate"><span class="pre">AUTO</span> <span class="pre">GENERATED</span> <span class="pre">CODE</span> <span class="pre">BEGIN/END</span></code> lines for creating <a class="reference internal"href="../components/sensor/custom.html"><span class="doc">custom sensors</span></a>.</ol></div><div class="section"id="what-s-the-difference-between-esphomelib-and-esphomeyaml"><h2>What’s the difference between esphomelib and esphomeyaml?<a class="headerlink"href="#what-s-the-difference-between-esphomelib-and-esphomeyaml"title="Permalink to this headline">¶</a></h2><p><a class="reference external"href="https://github.com/OttoWinter/esphomelib">esphomelib</a> is a C++ framework around Arduino for creating custom firmwares for ESP8266/ESP32 devices. So with esphomelib, you need to write C++ code.<p><a class="reference external"href="https://github.com/OttoWinter/esphomeyaml">esphomeyaml</a> is a tool, written in python, that creates source code that uses the esphomelib framework. It does this by parsing in a YAML file and generating a C++ source file, compiling it and uploading the binary to the device. It is meant to be a powerful yet user-friendly engine for creating custom firmwares for ESP8266/ESP32 devices. Ideally, it should enable users to use a single command to do everything they want to do with their device without messing around with build systems and so on.<p>The nice part of the esphomelib/esphomeyaml combo is that you can easily edit the source code esphomeyaml generates and insert your own custom components such as sensors in it. So, if for example a sensor you really want to use, is not supported, you can easily <a class="reference external"href="https://github.com/OttoWinter/esphomelib/wiki/Custom-Sensor-Component">create a custom component</a> for it.<p>Because esphomeyaml runs on a host with lots of resources (as opposed to the ESP node itself), esphomeyaml will in the future also be able to do some really powerful stuff. I have some ideas like having an automatic schematic creator or a simple <a class="reference external"href="https://developers.google.com/blockly/">blockly-like</a> in mind that will hopefully make the user-experience of using ESP32/ESP8266 nodes a lot easier.</div><div class="section"id="help-something-s-not-working-1"><h2>Help! Something’s not working!1!<a class="headerlink"href="#help-something-s-not-working-1"title="Permalink to this headline">¶</a></h2><p>That’s no good. Here are some steps that resolve some problems:<ul class="simple"><li><strong>Update platformio</strong> Some errors are caused by platformio not having the latest version. Try running <code class="docutils literal notranslate"><span class="pre">platformio</span> <span class="pre">update</span></code> in your terminal.<li><strong>Clean the platformio cache</strong>: Sometimes the build cache leaves behind some weird artifacts. Try running <code class="docutils literal notranslate"><span class="pre">platformio</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">&lt;NAME_OF_NODE&gt;</span> <span class="pre">-t</span> <span class="pre">clean</span></code>.<li><strong>Try with the latest Arduino framework version</strong>: See <a class="reference internal"href="../components/esphomeyaml.html#using-latest-arduino-framework"><span class="std std-ref">this</span></a>.<li><strong>Still an error?</strong> Please file a bug report over in the <a class="reference external"href="https://github.com/OttoWinter/esphomelib/issues">esphomelib issue tracker</a>. I will take a look at it as soon as I can. Thanks!</ul></div><div class="section"id="how-to-submit-an-issue-report"><h2>How to submit an issue report<a class="headerlink"href="#how-to-submit-an-issue-report"title="Permalink to this headline">¶</a></h2><p>First of all, thank you very much to everybody submitting issue reports! While I try to test esphomelib/yaml as much as I can using my own hardware, I don’t own every single device type and mostly only do tests with my own home automation system. When doing some changes in the core, it can quickly happen that something somewhere breaks. Issue reports are a great way for me to track and (hopefully) fix issues, so thank you!<p>For me to fix the issue the quickest, there are some things that would be really helpful:<ol class="arabic simple"><li>How do you use esphomelib? Through esphomeyaml or directly through C++ code?<li>If it’s a build/upload issue: What system are you compiling/uploading things from? Windows, POSIX, from docker?<li>A snippet of the code/configuration file used is always great for a better understanding of the issue.<li>If it’s an i2c or hardware communication issue please also try setting the <a class="reference internal"href="../components/logger.html#logger-log-levels"><span class="std std-ref">log level</span></a> to <code class="docutils literal notranslate"><span class="pre">VERY_VERBOSE</span></code> as it provides helpful information about what is going on.</ol><p>You can find the issue tracker here <a class="reference external"href="https://github.com/OttoWinter/esphomelib/issues">https://github.com/OttoWinter/esphomelib/issues</a></div><div class="section"id="how-do-i-update-to-the-latest-version"><h2>How do I update to the latest version?<a class="headerlink"href="#how-do-i-update-to-the-latest-version"title="Permalink to this headline">¶</a></h2><p>It’s simple. Run:<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip2</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">esphomeyaml</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Frequently Asked Questions &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Getting Started with esphomeyaml" href="getting_started_command_line.html" />
+    <link rel="prev" title="Configuration Types" href="configuration-types.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="frequently-asked-questions">
+<h1>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tips-for-using-esphomeyaml">
+<h2>Tips for using esphomeyaml<a class="headerlink" href="#tips-for-using-esphomeyaml" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">esphomeyaml supports (most of) Home Assistant’s YAML configuration directives like
+<code class="docutils literal notranslate"><span class="pre">!include</span></code>, <code class="docutils literal notranslate"><span class="pre">!secret</span></code>. So you can store all your secret WiFi passwords and so on
+in a file called <code class="docutils literal notranslate"><span class="pre">secrets.yaml</span></code> within the directory where the configuration file is.</p>
+</li>
+<li><p class="first">If you want to see how esphomeyaml interprets your configuration, run</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">livingroom</span><span class="o">.</span><span class="n">yaml</span> <span class="n">config</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">To view the logs from your node without uploading, run</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">livingroom</span><span class="o">.</span><span class="n">yaml</span> <span class="n">logs</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you have changed the name of the node and want to update over-the-air, just specify
+<code class="docutils literal notranslate"><span class="pre">--upload-port</span></code> when running esphomeyaml. For example:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span> <span class="n">livingroom</span><span class="o">.</span><span class="n">yaml</span> <span class="n">run</span> <span class="o">--</span><span class="n">upload</span><span class="o">-</span><span class="n">port</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">178.52</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You can always find the source esphomeyaml generates under <code class="docutils literal notranslate"><span class="pre">&lt;NODE_NAME&gt;/src/main.cpp</span></code>. It’s even
+possible to edit anything outside of the <code class="docutils literal notranslate"><span class="pre">AUTO</span> <span class="pre">GENERATED</span> <span class="pre">CODE</span> <span class="pre">BEGIN/END</span></code> lines for creating
+<a class="reference internal" href="../components/sensor/custom.html"><span class="doc">custom sensors</span></a>.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="what-s-the-difference-between-esphomelib-and-esphomeyaml">
+<h2>What’s the difference between esphomelib and esphomeyaml?<a class="headerlink" href="#what-s-the-difference-between-esphomelib-and-esphomeyaml" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/OttoWinter/esphomelib">esphomelib</a> is a C++ framework
+around Arduino for creating custom firmwares for ESP8266/ESP32 devices. So with
+esphomelib, you need to write C++ code.</p>
+<p><a class="reference external" href="https://github.com/OttoWinter/esphomeyaml">esphomeyaml</a> is a tool, written in python,
+that creates source code that uses the esphomelib framework. It does this by parsing in
+a YAML file and generating a C++ source file, compiling it and uploading the binary to the
+device. It is meant to be a powerful yet user-friendly engine for creating custom
+firmwares for ESP8266/ESP32 devices. Ideally, it should enable users to use a single command
+to do everything they want to do with their device without messing around with build systems and so on.</p>
+<p>The nice part of the esphomelib/esphomeyaml combo is that you can easily edit the source code
+esphomeyaml generates and insert your own custom components such as sensors in it. So, if for example
+a sensor you really want to use, is not supported, you can easily <a class="reference external" href="https://github.com/OttoWinter/esphomelib/wiki/Custom-Sensor-Component">create a custom component</a> for it.</p>
+<p>Because esphomeyaml runs on a host with lots of resources (as opposed to the ESP node itself),
+esphomeyaml will in the future also be able to do some really powerful stuff. I have some ideas
+like having an automatic schematic creator or a simple <a class="reference external" href="https://developers.google.com/blockly/">blockly-like</a>
+in mind that will hopefully make the user-experience of using ESP32/ESP8266 nodes a lot easier.</p>
+</div>
+<div class="section" id="help-something-s-not-working-1">
+<h2>Help! Something’s not working!1!<a class="headerlink" href="#help-something-s-not-working-1" title="Permalink to this headline">¶</a></h2>
+<p>That’s no good. Here are some steps that resolve some problems:</p>
+<ul class="simple">
+<li><strong>Update platformio</strong> Some errors are caused by platformio not having the latest version. Try running
+<code class="docutils literal notranslate"><span class="pre">platformio</span> <span class="pre">update</span></code> in your terminal.</li>
+<li><strong>Clean the platformio cache</strong>: Sometimes the build cache leaves behind some weird artifacts. Try running
+<code class="docutils literal notranslate"><span class="pre">platformio</span> <span class="pre">run</span> <span class="pre">-d</span> <span class="pre">&lt;NAME_OF_NODE&gt;</span> <span class="pre">-t</span> <span class="pre">clean</span></code>.</li>
+<li><strong>Try with the latest Arduino framework version</strong>:
+See <a class="reference internal" href="../components/esphomeyaml.html#using-latest-arduino-framework"><span class="std std-ref">this</span></a>.</li>
+<li><strong>Still an error?</strong> Please file a bug report over in the <a class="reference external" href="https://github.com/OttoWinter/esphomelib/issues">esphomelib issue tracker</a>.
+I will take a look at it as soon as I can. Thanks!</li>
+</ul>
+</div>
+<div class="section" id="how-to-submit-an-issue-report">
+<h2>How to submit an issue report<a class="headerlink" href="#how-to-submit-an-issue-report" title="Permalink to this headline">¶</a></h2>
+<p>First of all, thank you very much to everybody submitting issue reports! While I try to test esphomelib/yaml as much as
+I can using my own hardware, I don’t own every single device type and mostly only do tests with my own home automation
+system. When doing some changes in the core, it can quickly happen that something somewhere breaks. Issue reports are a
+great way for me to track and (hopefully) fix issues, so thank you!</p>
+<p>For me to fix the issue the quickest, there are some things that would be really helpful:</p>
+<ol class="arabic simple">
+<li>How do you use esphomelib? Through esphomeyaml or directly through C++ code?</li>
+<li>If it’s a build/upload issue: What system are you compiling/uploading things from? Windows, POSIX, from docker?</li>
+<li>A snippet of the code/configuration file used is always great for a better understanding of the issue.</li>
+<li>If it’s an i2c or hardware communication issue please also try setting the
+<a class="reference internal" href="../components/logger.html#logger-log-levels"><span class="std std-ref">log level</span></a> to <code class="docutils literal notranslate"><span class="pre">VERY_VERBOSE</span></code> as it provides helpful information
+about what is going on.</li>
+</ol>
+<p>You can find the issue tracker here <a class="reference external" href="https://github.com/OttoWinter/esphomelib/issues">https://github.com/OttoWinter/esphomelib/issues</a></p>
+</div>
+<div class="section" id="how-do-i-update-to-the-latest-version">
+<h2>How do I update to the latest version?<a class="headerlink" href="#how-do-i-update-to-the-latest-version" title="Permalink to this headline">¶</a></h2>
+<p>It’s simple. Run:</p>
+<div class="code bash highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip2</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">esphomeyaml</span>
 <span class="c1"># From docker:</span>
 <span class="n">docker</span> <span class="n">pull</span> <span class="n">ottowinter</span><span class="o">/</span><span class="n">esphomeyaml</span><span class="p">:</span><span class="n">latest</span>
-</pre></div></div><p>And in HassIO, there’s a simple UPDATE button when there’s an update available as with all add-ons</div><div class="section"id="how-do-i-use-the-latest-bleeding-edge-version"><h2>How do I use the latest bleeding edge version?<a class="headerlink"href="#how-do-i-use-the-latest-bleeding-edge-version"title="Permalink to this headline">¶</a></h2><p>First, a fair warning that the latest bleeding edge version is not always stable and might have issues. If you find some, please do however report them if you have time :)<p>Installing the latest bleeding edge version of esphomelib is also quite easy. It’s most often required if there was a bug somewhere and I didn’t feel like building &amp; pushing a whole new release out (this often takes up to 2 hours!). To install the dev version of esphomeyaml:<ul class="simple"><li>In HassIO: In the esphomeyaml add-on repository there’s also a second add-on called <code class="docutils literal notranslate"><span class="pre">esphomeyaml-edge</span></code>. Install that and stop the stable version (both can’t run at the same time without port collisions).<li>From <code class="docutils literal notranslate"><span class="pre">pip</span></code>: Run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+git://github.com/OttoWinter/esphomeyaml.git</span></code><li>From docker: Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ottowinter/esphomeyaml:dev</span></code> and use <code class="docutils literal notranslate"><span class="pre">ottowinter/esphomeyaml:dev</span></code> in all commands.</ul><p>Next, if you want to use the latest version of esphomelib too:<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample configuration entry</span>
+</pre></div>
+</div>
+<p>And in HassIO, there’s a simple UPDATE button when there’s an update available as with all add-ons</p>
+</div>
+<div class="section" id="how-do-i-use-the-latest-bleeding-edge-version">
+<h2>How do I use the latest bleeding edge version?<a class="headerlink" href="#how-do-i-use-the-latest-bleeding-edge-version" title="Permalink to this headline">¶</a></h2>
+<p>First, a fair warning that the latest bleeding edge version is not always stable and might have issues.
+If you find some, please do however report them if you have time :)</p>
+<p>Installing the latest bleeding edge version of esphomelib is also quite easy. It’s most often required
+if there was a bug somewhere and I didn’t feel like building &amp; pushing a whole new release out (this often
+takes up to 2 hours!). To install the dev version of esphomeyaml:</p>
+<ul class="simple">
+<li>In HassIO: In the esphomeyaml add-on repository there’s also a second add-on called <code class="docutils literal notranslate"><span class="pre">esphomeyaml-edge</span></code>.
+Install that and stop the stable version (both can’t run at the same time without port collisions).</li>
+<li>From <code class="docutils literal notranslate"><span class="pre">pip</span></code>: Run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">git+git://github.com/OttoWinter/esphomeyaml.git</span></code></li>
+<li>From docker: Run <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">ottowinter/esphomeyaml:dev</span></code> and use <code class="docutils literal notranslate"><span class="pre">ottowinter/esphomeyaml:dev</span></code> in all
+commands.</li>
+</ul>
+<p>Next, if you want to use the latest version of esphomelib too:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sample configuration entry</span>
 <span class="n">esphomeyaml</span><span class="p">:</span>
   <span class="n">name</span><span class="p">:</span> <span class="o">...</span>
   <span class="n">library_uri</span><span class="p">:</span> <span class="s1">&#39;https://github.com/OttoWinter/esphomelib.git&#39;</span>
   <span class="c1"># ...</span>
-</pre></div></div><p>In some cases it’s also a good idea to use the latest Arduino framework version. See <a class="reference internal"href="../components/esphomeyaml.html#using-latest-arduino-framework"><span class="std std-ref">this</span></a>.</div><div class="section"id="does-esphomelib-support-this-device-feature"><h2>Does esphomelib support [this device/feature]?<a class="headerlink"href="#does-esphomelib-support-this-device-feature"title="Permalink to this headline">¶</a></h2><p>If it’s not in <a class="reference internal"href="../index.html"><span class="doc">the docs</span></a>, it’s probably sadly not supported. However, I’m always trying to add support for new features, so feel free to create a feature request in the <a class="reference external"href="https://github.com/OttoWinter/esphomelib/issues">esphomelib issue tracker</a>. Thanks!</div><div class="section"id="i-have-a-question-how-can-i-contact-you"><h2>I have a question… How can I contact you?<a class="headerlink"href="#i-have-a-question-how-can-i-contact-you"title="Permalink to this headline">¶</a></h2><p>Sure! I’d be happy to help :) You can contact me here:<ul class="simple"><li><a class="reference external"href="https://discord.gg/KhAMKrd">Discord</a><li><a class="reference external"href="https://community.home-assistant.io/t/esphomelib-library-to-greatly-simplify-home-assistant-integration-with-esp32">Home Assistant Community Forums</a><li><a class="reference external"href="https://github.com/OttoWinter/esphomelib/issues">esphomelib</a> and <a class="reference external"href="https://github.com/OttoWinter/esphomeyaml/issues">esphomeyaml</a> issue trackers. Preferably only for issues and feature requests.<li>Alternatively, also under my e-mail address contact (at) otto-winter.com</ul></div><div class="section"id="my-node-keeps-reconnecting-randomly"><h2>My node keeps reconnecting randomly<a class="headerlink"href="#my-node-keeps-reconnecting-randomly"title="Permalink to this headline">¶</a></h2><p>Jep, that’s a known issue. However, it seems to be very low-level and I don’t really know how to solve it. I’m working on possible work-arounds for the issue but currently I do not have a real solution.<p>Some steps that can help with the issue:<ul class="simple"><li>Use the most recent version of th arduino framework. The platformio arduino package always takes some time to update and the most recent version often includes some awesome patches. See <a class="reference internal"href="../components/esphomeyaml.html#using-latest-arduino-framework"><span class="std std-ref">Using the latest Arduino framework version</span></a>.<li>The issue seems to be happen with cheap boards more frequently. Especially the “cheap” NodeMCU boards from eBay sometimes have quite bad antennas.<li>Play around with the <code class="docutils literal notranslate"><span class="pre">keepalive</span></code> option of the <a class="reference internal"href="../components/mqtt.html"><span class="doc">MQTT client</span></a>, sometimes increasing this value helps (because it’s causing more pings in the background), some other times a higher keepalive works better.</ul></div><div class="section"id="devices-that-will-hopefully-be-supported-soon"><h2>Devices that will (hopefully) be supported soon:<a class="headerlink"href="#devices-that-will-hopefully-be-supported-soon"title="Permalink to this headline">¶</a></h2><p>Devices/Sensors that I’ve bought and will be supported at some point (ordered by priority):<ul class="simple"><li>433MHz Transmitter Component<li>PN532 NFC Board<li>INA219/INA3221 Current Sensor<li>GP2Y10 Dust Sensor<li>TCS34725 RGB Light Sensor<li>APDS-9960 RGB Gesture Sensor<li>MCP2301 16-Channel I/O Expander<li>MH-Z19 CO^2 Sensor<li>HMC5883L Compass Sensor<li>SPI E-Ink Display Module<li>8-Segment Display<li>I^2C LCD Display (4 rows, 20 characters)<li>I^2C/SPI SSD1306 OLED Display<li>Nextion TFT LCD Display<li>MLX90614 Infrared Thermometer<li>MS5611 Pressure Sensor<li>PCF8591 ADC<li>OV2640 Camera<li>L298N H-Bridge Motor Driver<li>A4988 Stepper Motor Driver<li>MQ-2 Gas Sensor</ul><p>Other features that I’m working on:<ul class="simple"><li>ESP32 IR/433MHz Receiver<li>Pulse Counter for the ESP8266 (using interrupts)<li>Multiple WiFi Networks to connect to<li>Improve “Restart due to WiFi/MQTT disconnect” logic and make the timeouts more configurable<li>Color Temperature for Lights<li>Status LED<li>More FastLED effects<li>Support for displays (like LCD/OLED/E-Ink displays)<li>Cameras (probably through ArduCAM)</ul><p>Devices which are supported, but not tested yet. I’m still waiting for these to arrive from China:<ul class="simple"><li>ADS1115 Voltage Sensor<li>TSL2561 Brightness Sensor<li>HDC1080 Temperature+Humidity Sensor<li>SHT31-D Temperature+Humidity Sensor<li>BME280<li>BME680</ul><p>Devices that are technically already supported, but for which guides will be created soon-ish:<ul class="simple"><li>Sonoff Basic<li>Sonoff Basic RF<li>Soil Moisture Sensor</ul><p>Anything missing? I’d be happy to chat about more integrations over on the <a class="reference external"href="https://discord.gg/KhAMKrd">discord channel</a> - no guarantees that everything will be supported though!<div class="section"id="see-also"><h3>See Also<a class="headerlink"href="#see-also"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="../index.html"><span class="doc">esphomeyaml index</span></a><li><a class="reference internal"href="contributing.html"><span class="doc">Contributing</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/guides/faq.rst">Edit this page on GitHub</a></ul></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">esphomeyaml</a><ul><li><a href="index.html">Guides</a><ul><li>Previous: <a href="configuration-types.html"title="previous chapter">Configuration Types</a><li>Next: <a href="getting_started_command_line.html"title="next chapter">Getting Started with esphomeyaml</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/esphomeyaml/guides/faq.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<p>In some cases it’s also a good idea to use the latest Arduino framework version. See
+<a class="reference internal" href="../components/esphomeyaml.html#using-latest-arduino-framework"><span class="std std-ref">this</span></a>.</p>
+</div>
+<div class="section" id="does-esphomelib-support-this-device-feature">
+<h2>Does esphomelib support [this device/feature]?<a class="headerlink" href="#does-esphomelib-support-this-device-feature" title="Permalink to this headline">¶</a></h2>
+<p>If it’s not in <a class="reference internal" href="../index.html"><span class="doc">the docs</span></a>, it’s probably sadly not
+supported. However, I’m always trying to add support for new features, so feel free to create a feature
+request in the <a class="reference external" href="https://github.com/OttoWinter/esphomelib/issues">esphomelib issue tracker</a>. Thanks!</p>
+</div>
+<div class="section" id="i-have-a-question-how-can-i-contact-you">
+<h2>I have a question… How can I contact you?<a class="headerlink" href="#i-have-a-question-how-can-i-contact-you" title="Permalink to this headline">¶</a></h2>
+<p>Sure! I’d be happy to help :) You can contact me here:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://discord.gg/KhAMKrd">Discord</a></li>
+<li><a class="reference external" href="https://community.home-assistant.io/t/esphomelib-library-to-greatly-simplify-home-assistant-integration-with-esp32">Home Assistant Community Forums</a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomelib/issues">esphomelib</a> and
+<a class="reference external" href="https://github.com/OttoWinter/esphomeyaml/issues">esphomeyaml</a> issue trackers. Preferably only for issues and
+feature requests.</li>
+<li>Alternatively, also under my e-mail address contact (at) otto-winter.com</li>
+</ul>
+</div>
+<div class="section" id="my-node-keeps-reconnecting-randomly">
+<h2>My node keeps reconnecting randomly<a class="headerlink" href="#my-node-keeps-reconnecting-randomly" title="Permalink to this headline">¶</a></h2>
+<p>Jep, that’s a known issue. However, it seems to be very low-level and I don’t really know
+how to solve it. I’m working on possible work-arounds for the issue but currently I do
+not have a real solution.</p>
+<p>Some steps that can help with the issue:</p>
+<ul class="simple">
+<li>Use the most recent version of th arduino framework. The platformio arduino package
+always takes some time to update and the most recent version often includes some awesome
+patches. See <a class="reference internal" href="../components/esphomeyaml.html#using-latest-arduino-framework"><span class="std std-ref">Using the latest Arduino framework version</span></a>.</li>
+<li>The issue seems to be happen with cheap boards more frequently. Especially the “cheap” NodeMCU
+boards from eBay sometimes have quite bad antennas.</li>
+<li>Play around with the <code class="docutils literal notranslate"><span class="pre">keepalive</span></code> option of the <a class="reference internal" href="../components/mqtt.html"><span class="doc">MQTT client</span></a>, sometimes
+increasing this value helps (because it’s causing more pings in the background), some other times a higher
+keepalive works better.</li>
+</ul>
+</div>
+<div class="section" id="devices-that-will-hopefully-be-supported-soon">
+<h2>Devices that will (hopefully) be supported soon:<a class="headerlink" href="#devices-that-will-hopefully-be-supported-soon" title="Permalink to this headline">¶</a></h2>
+<p>Devices/Sensors that I’ve bought and will be supported at some point (ordered by priority):</p>
+<ul class="simple">
+<li>433MHz Transmitter Component</li>
+<li>PN532 NFC Board</li>
+<li>INA219/INA3221 Current Sensor</li>
+<li>GP2Y10 Dust Sensor</li>
+<li>TCS34725 RGB Light Sensor</li>
+<li>APDS-9960 RGB Gesture Sensor</li>
+<li>MCP2301 16-Channel I/O Expander</li>
+<li>MH-Z19 CO^2 Sensor</li>
+<li>HMC5883L Compass Sensor</li>
+<li>SPI E-Ink Display Module</li>
+<li>8-Segment Display</li>
+<li>I^2C LCD Display (4 rows, 20 characters)</li>
+<li>I^2C/SPI SSD1306 OLED Display</li>
+<li>Nextion TFT LCD Display</li>
+<li>MLX90614 Infrared Thermometer</li>
+<li>MS5611 Pressure Sensor</li>
+<li>PCF8591 ADC</li>
+<li>OV2640 Camera</li>
+<li>L298N H-Bridge Motor Driver</li>
+<li>A4988 Stepper Motor Driver</li>
+<li>MQ-2 Gas Sensor</li>
+</ul>
+<p>Other features that I’m working on:</p>
+<ul class="simple">
+<li>ESP32 IR/433MHz Receiver</li>
+<li>Pulse Counter for the ESP8266 (using interrupts)</li>
+<li>Multiple WiFi Networks to connect to</li>
+<li>Improve “Restart due to WiFi/MQTT disconnect” logic and make the timeouts more configurable</li>
+<li>Color Temperature for Lights</li>
+<li>Status LED</li>
+<li>More FastLED effects</li>
+<li>Support for displays (like LCD/OLED/E-Ink displays)</li>
+<li>Cameras (probably through ArduCAM)</li>
+</ul>
+<p>Devices which are supported, but not tested yet. I’m still waiting for these to arrive from China:</p>
+<ul class="simple">
+<li>ADS1115 Voltage Sensor</li>
+<li>TSL2561 Brightness Sensor</li>
+<li>HDC1080 Temperature+Humidity Sensor</li>
+<li>SHT31-D Temperature+Humidity Sensor</li>
+<li>BME280</li>
+<li>BME680</li>
+</ul>
+<p>Devices that are technically already supported, but for which guides will be created soon-ish:</p>
+<ul class="simple">
+<li>Sonoff Basic</li>
+<li>Sonoff Basic RF</li>
+<li>Soil Moisture Sensor</li>
+</ul>
+<p>Anything missing? I’d be happy to chat about more integrations over on the <a class="reference external" href="https://discord.gg/KhAMKrd">discord channel</a> - no guarantees that everything will be supported though!</p>
+</div>
+<div class="section" id="i-can-t-update-using-ota-because-of-to-little-space-now-what">
+<h2>I can’t update using OTA because of to little space, now what?<a class="headerlink" href="#i-can-t-update-using-ota-because-of-to-little-space-now-what" title="Permalink to this headline">¶</a></h2>
+<p>If you are using ESP8266/Sonoff devices and you have many components enabled you will probably encounter this error during OTA update:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span> <span class="p">[</span><span class="n">esphomeyaml</span><span class="o">.</span><span class="n">espota</span><span class="p">]</span> <span class="n">Bad</span> <span class="n">Answer</span><span class="p">:</span> <span class="n">ERR</span><span class="p">:</span> <span class="n">ERROR</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">Not</span> <span class="n">Enough</span> <span class="n">Space</span>
+</pre></div>
+</div>
+<p>This is because of the limited amount of flash memory available on these devices (often just 1M). The size of the firmware data that is created by esphomeyaml depends on the number of components enabled (eg: webserver, sensors, etc). Especially the webserver component is very large.</p>
+<p>During an OTA update the new firmware data needs to be stored on the flash chip so it can be used to replace the old firmware. However it is possible the old firmware is taking up to much space so the new firmware won’t fit next to it. This makes a normal OTA update impossible. Forcing you to choose between easy updates or components.</p>
+<p>A possible solution is to disable (large) components like webserver so the size of the firmware data stays below a certain size.</p>
+<p>If even this doesn’t work or you like to have a lot of components enabled there is a workaround that might help you out so you can have your cake and eat it too. Using a two stage OTA update.</p>
+<p>First we temporary ‘remove’ (comment out) all components from the <code class="docutils literal notranslate"><span class="pre">yaml</span></code> file, leaving only: <code class="docutils literal notranslate"><span class="pre">esphomeyaml</span></code>, <code class="docutils literal notranslate"><span class="pre">ota</span></code> and <code class="docutils literal notranslate"><span class="pre">wifi</span></code>, example:</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">esphomeyaml</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">sonoff_basic</span>
+  <span class="n">platform</span><span class="p">:</span> <span class="n">espressif8266</span>
+  <span class="n">board</span><span class="p">:</span> <span class="n">esp01_1m</span>
+  <span class="n">board_flash_mode</span><span class="p">:</span> <span class="n">dout</span>
+
+<span class="n">wifi</span><span class="p">:</span>
+  <span class="n">ssid</span><span class="p">:</span> <span class="s1">&#39;***&#39;</span>
+  <span class="n">password</span><span class="p">:</span> <span class="s1">&#39;***&#39;</span>
+
+<span class="n">ota</span><span class="p">:</span>
+
+<span class="c1"># mqtt:</span>
+<span class="c1">#   broker: &#39;mqtt&#39;</span>
+<span class="c1">#   username: &#39;&#39;</span>
+<span class="c1">#   password: &#39;&#39;</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># logger:</span>
+<span class="c1">#</span>
+<span class="c1"># switch:</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>This will result in really small firmware data which has a high chance of fitting the remaining space on your device. After this OTA update has succeeded you are left with a device with no functionality except OTA. Now you can re-enable all components previously commented out and perform a ‘normal’ OTA update again.</p>
+<div class="section" id="see-also">
+<h3>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="../index.html"><span class="doc">esphomeyaml index</span></a></li>
+<li><a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/guides/faq.rst">Edit this page on GitHub</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">esphomeyaml</a><ul>
+  <li><a href="index.html">Guides</a><ul>
+      <li>Previous: <a href="configuration-types.html" title="previous chapter">Configuration Types</a></li>
+      <li>Next: <a href="getting_started_command_line.html" title="next chapter">Getting Started with esphomeyaml</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/esphomeyaml/guides/faq.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

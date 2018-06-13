@@ -1,1 +1,414 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Switch &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="IR Transmitter"href="ir-transmitter.html"><link rel="prev"title="FastLED Light Output"href="../light/fastled.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="switch"><h1>Switch<a class="headerlink"href="#switch"title="Permalink to this headline">¶</a></h1><p>The <cite>switch_</cite> namespace contains all switch helpers.<div class="toctree-wrapper compound"><ul><li class="toctree-l1"><a class="reference internal"href="ir-transmitter.html">IR Transmitter</a><ul><li class="toctree-l2"><a class="reference internal"href="ir-transmitter.html#example-usage">Example Usage</a><li class="toctree-l2"><a class="reference internal"href="ir-transmitter.html#api-reference">API Reference</a><ul><li class="toctree-l3"><a class="reference internal"href="ir-transmitter.html#irtransmittercomponent">IRTransmitterComponent</a><li class="toctree-l3"><a class="reference internal"href="ir-transmitter.html#senddata">SendData</a></ul></ul><li class="toctree-l1"><a class="reference internal"href="restart.html">Restart Switch</a><ul><li class="toctree-l2"><a class="reference internal"href="restart.html#example-usage">Example Usage</a><li class="toctree-l2"><a class="reference internal"href="restart.html#api-reference">API Reference</a></ul><li class="toctree-l1"><a class="reference internal"href="shutdown.html">Shutdown Switch</a><ul><li class="toctree-l2"><a class="reference internal"href="shutdown.html#example-usage">Example Usage</a><li class="toctree-l2"><a class="reference internal"href="shutdown.html#api-reference">API Reference</a></ul><li class="toctree-l1"><a class="reference internal"href="template.html">Template Switch</a><ul><li class="toctree-l2"><a class="reference internal"href="template.html#api-reference">API Reference</a></ul></ul></div><div class="section"id="api-reference"><h2>API Reference<a class="headerlink"href="#api-reference"title="Permalink to this headline">¶</a></h2><div class="section"id="id1"><h3>Switch<a class="headerlink"href="#id1"title="Permalink to this headline">¶</a></h3><dl class="class"><dt id="_CPPv3N7switch_6SwitchE"><span id="_CPPv2N7switch_6SwitchE"></span><span id="switch_::Switch"></span><span class="target"id="classswitch___1_1_switch"></span><em class="property">class </em>switch_<code class="descclassname">::</code><code class="descname">Switch</code><a class="headerlink"href="#_CPPv3N7switch_6SwitchE"title="Permalink to this definition">¶</a><br><dd><p>Base class for all switches.<p>A switch is basically just a combination of a binary sensor (for reporting switch values) and a write_state method that writes a state to the hardware.<p>Inherits from <a class="reference internal"href="../binary_sensor/index.html#classbinary__sensor_1_1_binary_sensor"><span class="std std-ref">binary_sensor::BinarySensor</span></a>, <a class="reference internal"href="../core/component.html#class_component"><span class="std std-ref">Component</span></a><p>Subclassed by <a class="reference internal"href="ir-transmitter.html#classswitch___1_1_i_r_transmitter_component_1_1_data_transmitter"><span class="std std-ref">switch_::IRTransmitterComponent::DataTransmitter</span></a>, <a class="reference internal"href="restart.html#classswitch___1_1_restart_switch"><span class="std std-ref">switch_::RestartSwitch</span></a>, <a class="reference internal"href="shutdown.html#classswitch___1_1_shutdown_switch"><span class="std std-ref">switch_::ShutdownSwitch</span></a>, <a class="reference internal"href="#classswitch___1_1_simple_switch"><span class="std std-ref">switch_::SimpleSwitch</span></a>, <a class="reference internal"href="template.html#classswitch___1_1_template_switch"><span class="std std-ref">switch_::TemplateSwitch</span></a><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Functions<dl class="function"><dt id="_CPPv3N7switch_6Switch6SwitchERKNSt6stringE"><span id="_CPPv2N7switch_6Switch6SwitchERKNSt6stringE"></span><span id="switch_::Switch::Switch__ssCR"></span><span class="target"id="classswitch___1_1_switch_1a237f5923616d6144d4fac62d92edbb07"></span>switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">Switch</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch6SwitchERKNSt6stringE"title="Permalink to this definition">¶</a><br><dd></dl><dl class="function"><dt id="_CPPv3NK7switch_6Switch18get_setup_priorityEv"><span id="_CPPv2NK7switch_6Switch18get_setup_priorityEv"></span><span id="switch_::Switch::get_setup_priorityC"></span><span class="target"id="classswitch___1_1_switch_1a8262ee2be18353a18665cfcef48d1af9"></span>float switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink"href="#_CPPv3NK7switch_6Switch18get_setup_priorityEv"title="Permalink to this definition">¶</a><br><dd><p>priority of <a class="reference internal"href="../core/component.html#class_component_1a9cc04b36ceb2cf5bb0abe5672b096c64"><span class="std std-ref">setup()</span></a>.<p>higher -&gt; executed earlier<p>Defaults to 0.<p><dl class="docutils"><dt><strong>Return</strong><dd>The setup priority of this component</dl><p></dl><dl class="function"><dt id="_CPPv3N7switch_6Switch6setup_Ev"><span id="_CPPv2N7switch_6Switch6setup_Ev"></span><span id="switch_::Switch::setup_"></span><span class="target"id="classswitch___1_1_switch_1aa514dab2e36268dcead556a259f53ee5"></span>void switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">setup_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch6setup_Ev"title="Permalink to this definition">¶</a><br><dd></dl><dl class="function"><dt id="_CPPv3N7switch_6Switch13publish_stateEb"><span id="_CPPv2N7switch_6Switch13publish_stateEb"></span><span id="switch_::Switch::publish_state__b"></span><span class="target"id="classswitch___1_1_switch_1a44f8eeaaf71f0d24ecca127772f230c0"></span>void switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">publish_state</code><span class="sig-paren">(</span>bool <em>state</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch13publish_stateEb"title="Permalink to this definition">¶</a><br><dd><p>Publish a new state.<p>Inverted input is handled by this method and sub-classes don’t need to worry about inverting themselves.<p><dl class="docutils"><dt><strong>Parameters</strong><dd><ul class="breatheparameterlist first last simple"><li><code class="docutils literal notranslate"><span class="pre">state</span></code>: The new state.</ul></dl><p></dl><dl class="function"><dt id="_CPPv3N7switch_6Switch11write_stateEb"><span id="_CPPv2N7switch_6Switch11write_stateEb"></span><span id="switch_::Switch::write_state__b"></span><span class="target"id="classswitch___1_1_switch_1af0dcd81805531f4272f007af1e35464b"></span>void switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">write_state</code><span class="sig-paren">(</span>bool <em>state</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch11write_stateEb"title="Permalink to this definition">¶</a><br><dd><p>This method is called by the front-end components.</dl><dl class="function"><dt id="_CPPv3N7switch_6Switch4iconEv"><span id="_CPPv2N7switch_6Switch4iconEv"></span><span id="switch_::Switch::icon"></span><span class="target"id="classswitch___1_1_switch_1ae437577e4da81811090e462b47438abc"></span>std::string switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">icon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch4iconEv"title="Permalink to this definition">¶</a><br><dd><p>Override this to set the Home Assistant icon for this switch.<p>Return “” to disable this feature.<p><dl class="docutils"><dt><strong>Return</strong><dd>The icon of this switch, for example “mdi:fan”.</dl><p></dl><dl class="function"><dt id="_CPPv3N7switch_6Switch8set_iconERKNSt6stringE"><span id="_CPPv2N7switch_6Switch8set_iconERKNSt6stringE"></span><span id="switch_::Switch::set_icon__ssCR"></span><span class="target"id="classswitch___1_1_switch_1a1de284e2dbf695970315a85f8d654b46"></span>void switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">set_icon</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>icon</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch8set_iconERKNSt6stringE"title="Permalink to this definition">¶</a><br><dd><p>Set the icon for this switch. “” for no icon.</dl><dl class="function"><dt id="_CPPv3N7switch_6Switch8get_iconEv"><span id="_CPPv2N7switch_6Switch8get_iconEv"></span><span id="switch_::Switch::get_icon"></span><span class="target"id="classswitch___1_1_switch_1ae9b1ad4be339a8176345361a41c355a3"></span>std::string switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">get_icon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch8get_iconEv"title="Permalink to this definition">¶</a><br><dd><p>Get the icon for this switch. Using <a class="reference internal"href="#classswitch___1_1_switch_1ae437577e4da81811090e462b47438abc"><span class="std std-ref">icon()</span></a> if not manually set.</dl><dl class="function"><dt><em class="property">template </em>&lt;<em class="property">typename</em> T&gt;<dt id="_CPPv3N7switch_6Switch18make_toggle_actionEv"><span id="_CPPv2N7switch_6Switch18make_toggle_actionEv"></span><span id="switch_::Switch::make_toggle_action"></span><span class="target"id="classswitch___1_1_switch_1a4619d90cddab796d3a6a0383c93435dc"></span>ToggleAction&lt;T&gt; *switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">make_toggle_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch18make_toggle_actionEv"title="Permalink to this definition">¶</a><br><dd></dl><dl class="function"><dt><em class="property">template </em>&lt;<em class="property">typename</em> T&gt;<dt id="_CPPv3N7switch_6Switch20make_turn_off_actionEv"><span id="_CPPv2N7switch_6Switch20make_turn_off_actionEv"></span><span id="switch_::Switch::make_turn_off_action"></span><span class="target"id="classswitch___1_1_switch_1a1ff9421ee9150fcd47c43e1c0f7cb6f8"></span>TurnOffAction&lt;T&gt; *switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">make_turn_off_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch20make_turn_off_actionEv"title="Permalink to this definition">¶</a><br><dd></dl><dl class="function"><dt><em class="property">template </em>&lt;<em class="property">typename</em> T&gt;<dt id="_CPPv3N7switch_6Switch19make_turn_on_actionEv"><span id="_CPPv2N7switch_6Switch19make_turn_on_actionEv"></span><span id="switch_::Switch::make_turn_on_action"></span><span class="target"id="classswitch___1_1_switch_1a0b2871ee9598fccb4c973e41c46b3b84"></span>TurnOnAction&lt;T&gt; *switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">make_turn_on_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch19make_turn_on_actionEv"title="Permalink to this definition">¶</a><br><dd></dl><dl class="function"><dt id="_CPPv3N7switch_6Switch10optimisticEv"><span id="_CPPv2N7switch_6Switch10optimisticEv"></span><span id="switch_::Switch::optimistic"></span><span class="target"id="classswitch___1_1_switch_1aff534b34d1b570a74f2a4ffb0ca2d4c7"></span>bool switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">optimistic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_6Switch10optimisticEv"title="Permalink to this definition">¶</a><br><dd><p>Return whether this switch is optimistic - i.e.<p>if both the ON/OFF actions should be displayed in Home Assistant because the real state is unknown.<p>Defaults to false.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Functions<dl class="function"><dt id="_CPPv3N7switch_6Switch7turn_onEv"><span id="_CPPv2N7switch_6Switch7turn_onEv"></span><span id="switch_::Switch::turn_on"></span><span class="target"id="classswitch___1_1_switch_1a846a34b93951a87ac583c74c2481d79e"></span><em class="property">virtual</em> void switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">turn_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink"href="#_CPPv3N7switch_6Switch7turn_onEv"title="Permalink to this definition">¶</a><br><dd><p>Turn this switch on. When creating a switch, you should implement this (inversion will already be applied).</dl><dl class="function"><dt id="_CPPv3N7switch_6Switch8turn_offEv"><span id="_CPPv2N7switch_6Switch8turn_offEv"></span><span id="switch_::Switch::turn_off"></span><span class="target"id="classswitch___1_1_switch_1a1f8c18d43a53ae4bab0e9cb68efde2ad"></span><em class="property">virtual</em> void switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">turn_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink"href="#_CPPv3N7switch_6Switch8turn_offEv"title="Permalink to this definition">¶</a><br><dd><p>Turn this switch off. When creating a switch, you should implement this (inversion will already be applied).</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Attributes<dl class="member"><dt id="_CPPv3N7switch_6Switch5icon_E"><span id="_CPPv2N7switch_6Switch5icon_E"></span><span id="switch_::Switch::icon___optional:ss:"></span><span class="target"id="classswitch___1_1_switch_1af73db1e5af517bb1f7ad9b5efc9f384c"></span><a class="reference internal"href="../core/helpers.html#_CPPv38optional"title="optional">optional</a>&lt;std::string&gt; switch_::<a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a><code class="descname">icon_</code> = {}<a class="headerlink"href="#_CPPv3N7switch_6Switch5icon_E"title="Permalink to this definition">¶</a><br><dd><p>The icon shown here. Not set means use default from switch. Empty means no icon.</dl></div></dl></div><div class="section"id="simpleswitch"><h3>SimpleSwitch<a class="headerlink"href="#simpleswitch"title="Permalink to this headline">¶</a></h3><dl class="class"><dt id="_CPPv3N7switch_12SimpleSwitchE"><span id="_CPPv2N7switch_12SimpleSwitchE"></span><span id="switch_::SimpleSwitch"></span><span class="target"id="classswitch___1_1_simple_switch"></span><em class="property">class </em>switch_<code class="descclassname">::</code><code class="descname">SimpleSwitch</code><a class="headerlink"href="#_CPPv3N7switch_12SimpleSwitchE"title="Permalink to this definition">¶</a><br><dd><p>A simple switch that exposes a binary output as a switch.<p>Inherits from <a class="reference internal"href="#classswitch___1_1_switch"><span class="std std-ref">switch_::Switch</span></a><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Functions<dl class="function"><dt id="_CPPv3N7switch_12SimpleSwitch12SimpleSwitchERKNSt6stringEPN6output12BinaryOutputE"><span id="_CPPv2N7switch_12SimpleSwitch12SimpleSwitchERKNSt6stringEPN6output12BinaryOutputE"></span><span id="switch_::SimpleSwitch::SimpleSwitch__ssCR.output::BinaryOutputP"></span><span class="target"id="classswitch___1_1_simple_switch_1ab2e5a23a5ae7d628f5fa87df378858d3"></span>switch_::<a class="reference internal"href="#_CPPv3N7switch_12SimpleSwitchE"title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">SimpleSwitch</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, output::BinaryOutput *<em>output</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_12SimpleSwitch12SimpleSwitchERKNSt6stringEPN6output12BinaryOutputE"title="Permalink to this definition">¶</a><br><dd><p>Construct this <a class="reference internal"href="#classswitch___1_1_simple_switch"><span class="std std-ref">SimpleSwitch</span></a> with the provided BinaryOutput.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Functions<dl class="function"><dt id="_CPPv3N7switch_12SimpleSwitch7turn_onEv"><span id="_CPPv2N7switch_12SimpleSwitch7turn_onEv"></span><span id="switch_::SimpleSwitch::turn_on"></span><span class="target"id="classswitch___1_1_simple_switch_1aeae2ca753381e430c89169520c40795c"></span>void switch_::<a class="reference internal"href="#_CPPv3N7switch_12SimpleSwitchE"title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">turn_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_12SimpleSwitch7turn_onEv"title="Permalink to this definition">¶</a><br><dd><p>Turn this <a class="reference internal"href="#classswitch___1_1_simple_switch"><span class="std std-ref">SimpleSwitch</span></a> on.</dl><dl class="function"><dt id="_CPPv3N7switch_12SimpleSwitch8turn_offEv"><span id="_CPPv2N7switch_12SimpleSwitch8turn_offEv"></span><span id="switch_::SimpleSwitch::turn_off"></span><span class="target"id="classswitch___1_1_simple_switch_1a74b9e646fb0519cf954647de0bd4c0a7"></span>void switch_::<a class="reference internal"href="#_CPPv3N7switch_12SimpleSwitchE"title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">turn_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_12SimpleSwitch8turn_offEv"title="Permalink to this definition">¶</a><br><dd><p>Turn this <a class="reference internal"href="#classswitch___1_1_simple_switch"><span class="std std-ref">SimpleSwitch</span></a> off.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Attributes<dl class="member"><dt id="_CPPv3N7switch_12SimpleSwitch7output_E"><span id="_CPPv2N7switch_12SimpleSwitch7output_E"></span><span id="switch_::SimpleSwitch::output___output::BinaryOutputP"></span><span class="target"id="classswitch___1_1_simple_switch_1a5deea1a89ffa957939ef45e63b38940c"></span>output::<a class="reference internal"href="../output/index.html#_CPPv3N6output12BinaryOutputE"title="output::BinaryOutput">BinaryOutput</a> *switch_::<a class="reference internal"href="#_CPPv3N7switch_12SimpleSwitchE"title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">output_</code><a class="headerlink"href="#_CPPv3N7switch_12SimpleSwitch7output_E"title="Permalink to this definition">¶</a><br><dd></dl></div></dl></div><div class="section"id="mqttswitchcomponent"><h3>MQTTSwitchComponent<a class="headerlink"href="#mqttswitchcomponent"title="Permalink to this headline">¶</a></h3><dl class="class"><dt id="_CPPv3N7switch_19MQTTSwitchComponentE"><span id="_CPPv2N7switch_19MQTTSwitchComponentE"></span><span id="switch_::MQTTSwitchComponent"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component"></span><em class="property">class </em><a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a><code class="descclassname">::</code><code class="descname">MQTTSwitchComponent</code><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponentE"title="Permalink to this definition">¶</a><br><dd><p>MQTT representation of switches.<p>Overrides MQTTBinarySensorComponent with a callback that can write values to hardware.<p>Inherits from <a class="reference internal"href="../binary_sensor/index.html#classbinary__sensor_1_1_m_q_t_t_binary_sensor_component"><span class="std std-ref">binary_sensor::MQTTBinarySensorComponent</span></a><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Functions<dl class="function"><dt id="_CPPv3N7switch_19MQTTSwitchComponent19MQTTSwitchComponentEPN7switch_6SwitchE"><span id="_CPPv2N7switch_19MQTTSwitchComponent19MQTTSwitchComponentEPN7switch_6SwitchE"></span><span id="switch_::MQTTSwitchComponent::MQTTSwitchComponent__switch_::SwitchP"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1a33c5d2c31e9b7af381fde76d41dbf1f5"></span>switch_::MQTTSwitchComponent<code class="descname">MQTTSwitchComponent</code><span class="sig-paren">(</span>switch_::Switch *<em>switch_</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponent19MQTTSwitchComponentEPN7switch_6SwitchE"title="Permalink to this definition">¶</a><br><dd></dl><dl class="function"><dt id="_CPPv3N7switch_19MQTTSwitchComponent5setupEv"><span id="_CPPv2N7switch_19MQTTSwitchComponent5setupEv"></span><span id="switch_::MQTTSwitchComponent::setup"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1ac24e01cbd0b7ed3ad0996bf73dbb9795"></span>void <a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponent5setupEv"title="Permalink to this definition">¶</a><br><dd><p>Send discovery.</dl><dl class="function"><dt id="_CPPv3N7switch_19MQTTSwitchComponent14send_discoveryER10JsonBufferR10JsonObjectRN4mqtt19SendDiscoveryConfigE"><span id="_CPPv2N7switch_19MQTTSwitchComponent14send_discoveryER10JsonBufferR10JsonObjectRN4mqtt19SendDiscoveryConfigE"></span><span id="switch_::MQTTSwitchComponent::send_discovery__JsonBufferR.JsonObjectR.mqtt::SendDiscoveryConfigR"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1a95716abd00340a3b911551f5cd46b797"></span>void <a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">send_discovery</code><span class="sig-paren">(</span>JsonBuffer &amp;<em>buffer</em>, JsonObject &amp;<em>obj</em>, mqtt::<a class="reference internal"href="../core/mqtt.html#_CPPv3N4mqtt19SendDiscoveryConfigE"title="mqtt::SendDiscoveryConfig">SendDiscoveryConfig</a> &amp;<em>config</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponent14send_discoveryER10JsonBufferR10JsonObjectRN4mqtt19SendDiscoveryConfigE"title="Permalink to this definition">¶</a><br><dd><p>Send Home Assistant discovery info.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Functions<dl class="function"><dt id="_CPPv3NK7switch_19MQTTSwitchComponent14component_typeEv"><span id="_CPPv2NK7switch_19MQTTSwitchComponent14component_typeEv"></span><span id="switch_::MQTTSwitchComponent::component_typeC"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1af710e3889f14416c995b75f5dfb78eea"></span>std::string <a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">component_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink"href="#_CPPv3NK7switch_19MQTTSwitchComponent14component_typeEv"title="Permalink to this definition">¶</a><br><dd><p>“switch” component type.</dl><dl class="function"><dt id="_CPPv3N7switch_19MQTTSwitchComponent7turn_onEv"><span id="_CPPv2N7switch_19MQTTSwitchComponent7turn_onEv"></span><span id="switch_::MQTTSwitchComponent::turn_on"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1a9b3d28a52ab73bdec53457b7f312d89c"></span>void <a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">turn_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponent7turn_onEv"title="Permalink to this definition">¶</a><br><dd><p>Helper method to turn the switch on.</dl><dl class="function"><dt id="_CPPv3N7switch_19MQTTSwitchComponent8turn_offEv"><span id="_CPPv2N7switch_19MQTTSwitchComponent8turn_offEv"></span><span id="switch_::MQTTSwitchComponent::turn_off"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1aa77ea9322ee37d2af93812ed6fdd068e"></span>void <a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">turn_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponent8turn_offEv"title="Permalink to this definition">¶</a><br><dd><p>Helper method to turn the switch off.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Attributes<dl class="member"><dt id="_CPPv3N7switch_19MQTTSwitchComponent7switch_E"><span id="_CPPv2N7switch_19MQTTSwitchComponent7switch_E"></span><span id="switch_::MQTTSwitchComponent::switch___SwitchP"></span><span class="target"id="classswitch___1_1_m_q_t_t_switch_component_1a502ddf7403500748e3678ec6d9f6a23c"></span><a class="reference internal"href="#_CPPv3N7switch_6SwitchE"title="switch_::Switch">Switch</a> *<a class="reference internal"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">switch_</code><a class="headerlink"href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E"title="Permalink to this definition">¶</a><br><dd></dl></div></dl></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">API Reference</a><ul><li>Previous: <a href="../light/fastled.html"title="previous chapter">FastLED Light Output</a><li>Next: <a href="ir-transmitter.html"title="next chapter">IR Transmitter</a></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/api/switch/index.rst.txt"rel="nofollow">Page source</a></div>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Switch &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Remote Transmitter" href="remote_transmitter.html" />
+    <link rel="prev" title="FastLED Light Output" href="../light/fastled.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="switch">
+<h1>Switch<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>switch_</cite> namespace contains all switch helpers.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="remote_transmitter.html">Remote Transmitter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="remote_transmitter.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restart.html">Restart Switch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restart.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restart.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shutdown.html">Shutdown Switch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shutdown.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="template.html">Template Switch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="template.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Switch<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="_CPPv3N7switch_6SwitchE">
+<span id="_CPPv2N7switch_6SwitchE"></span><span id="switch_::Switch"></span><span class="target" id="classswitch___1_1_switch"></span><em class="property">class </em>switch_<code class="descclassname">::</code><code class="descname">Switch</code><a class="headerlink" href="#_CPPv3N7switch_6SwitchE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Base class for all switches. </p>
+<p>A switch is basically just a combination of a binary sensor (for reporting switch values) and a write_state method that writes a state to the hardware. </p>
+<p>Inherits from <a class="reference internal" href="../core/component.html#class_component"><span class="std std-ref">Component</span></a>, Nameable</p>
+<p>Subclassed by <a class="reference internal" href="remote_transmitter.html#classremote_1_1_remote_transmitter"><span class="std std-ref">remote::RemoteTransmitter</span></a>, <a class="reference internal" href="restart.html#classswitch___1_1_restart_switch"><span class="std std-ref">switch_::RestartSwitch</span></a>, <a class="reference internal" href="shutdown.html#classswitch___1_1_shutdown_switch"><span class="std std-ref">switch_::ShutdownSwitch</span></a>, <a class="reference internal" href="#classswitch___1_1_simple_switch"><span class="std std-ref">switch_::SimpleSwitch</span></a>, <a class="reference internal" href="template.html#classswitch___1_1_template_switch"><span class="std std-ref">switch_::TemplateSwitch</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch6SwitchERKNSt6stringE">
+<span id="_CPPv2N7switch_6Switch6SwitchERKNSt6stringE"></span><span id="switch_::Switch::Switch__ssCR"></span><span class="target" id="classswitch___1_1_switch_1a237f5923616d6144d4fac62d92edbb07"></span>switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">Switch</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch6SwitchERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK7switch_6Switch18get_setup_priorityEv">
+<span id="_CPPv2NK7switch_6Switch18get_setup_priorityEv"></span><span id="switch_::Switch::get_setup_priorityC"></span><span class="target" id="classswitch___1_1_switch_1a8262ee2be18353a18665cfcef48d1af9"></span>float switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK7switch_6Switch18get_setup_priorityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>priority of <a class="reference internal" href="../core/component.html#class_component_1a9cc04b36ceb2cf5bb0abe5672b096c64"><span class="std std-ref">setup()</span></a>. </p>
+<p>higher -&gt; executed earlier</p>
+<p>Defaults to 0.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The setup priority of this component </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch6setup_Ev">
+<span id="_CPPv2N7switch_6Switch6setup_Ev"></span><span id="switch_::Switch::setup_"></span><span class="target" id="classswitch___1_1_switch_1aa514dab2e36268dcead556a259f53ee5"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">setup_</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch6setup_Ev" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch13publish_stateEb">
+<span id="_CPPv2N7switch_6Switch13publish_stateEb"></span><span id="switch_::Switch::publish_state__b"></span><span class="target" id="classswitch___1_1_switch_1af94166c1b50c243d01932ab825aadd3b"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">publish_state</code><span class="sig-paren">(</span>bool <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch13publish_stateEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Publish a state to the front-end from the back-end. </p>
+<p>The input value is inverted if applicable. Then the internal value member is set and finally the callbacks are called.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">state</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch12set_invertedEb">
+<span id="_CPPv2N7switch_6Switch12set_invertedEb"></span><span id="switch_::Switch::set_inverted__b"></span><span class="target" id="classswitch___1_1_switch_1adec5edcec8be4c67435a33e9f97f215d"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">set_inverted</code><span class="sig-paren">(</span>bool <em>inverted</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch12set_invertedEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch11write_stateEb">
+<span id="_CPPv2N7switch_6Switch11write_stateEb"></span><span id="switch_::Switch::write_state__b"></span><span class="target" id="classswitch___1_1_switch_1af0dcd81805531f4272f007af1e35464b"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">write_state</code><span class="sig-paren">(</span>bool <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch11write_stateEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This method is called by the front-end components to set the state. </p>
+<p>The internal logic will then invert it if applicable and call the turn_on or turn_off abstract method.</p>
+<p>Note that this will not trigger sending the state. The overriden turn_on and turn_off methods should do this manually.</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">state</span></code>: The binary state to write. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch4iconEv">
+<span id="_CPPv2N7switch_6Switch4iconEv"></span><span id="switch_::Switch::icon"></span><span class="target" id="classswitch___1_1_switch_1ae437577e4da81811090e462b47438abc"></span>std::string switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">icon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch4iconEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Override this to set the Home Assistant icon for this switch. </p>
+<p>Return “” to disable this feature.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The icon of this switch, for example “mdi:fan”. </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch8set_iconERKNSt6stringE">
+<span id="_CPPv2N7switch_6Switch8set_iconERKNSt6stringE"></span><span id="switch_::Switch::set_icon__ssCR"></span><span class="target" id="classswitch___1_1_switch_1a1de284e2dbf695970315a85f8d654b46"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">set_icon</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>icon</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch8set_iconERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the icon for this switch. “” for no icon. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch8get_iconEv">
+<span id="_CPPv2N7switch_6Switch8get_iconEv"></span><span id="switch_::Switch::get_icon"></span><span class="target" id="classswitch___1_1_switch_1ae9b1ad4be339a8176345361a41c355a3"></span>std::string switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">get_icon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch8get_iconEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the icon for this switch. Using <a class="reference internal" href="#classswitch___1_1_switch_1ae437577e4da81811090e462b47438abc"><span class="std std-ref">icon()</span></a> if not manually set. </p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<em class="property">template </em>&lt;<em class="property">typename</em> T&gt;</dt>
+<dt id="_CPPv3N7switch_6Switch18make_toggle_actionEv">
+<span id="_CPPv2N7switch_6Switch18make_toggle_actionEv"></span><span id="switch_::Switch::make_toggle_action"></span><span class="target" id="classswitch___1_1_switch_1a4619d90cddab796d3a6a0383c93435dc"></span>ToggleAction&lt;T&gt; *switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">make_toggle_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch18make_toggle_actionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+<em class="property">template </em>&lt;<em class="property">typename</em> T&gt;</dt>
+<dt id="_CPPv3N7switch_6Switch20make_turn_off_actionEv">
+<span id="_CPPv2N7switch_6Switch20make_turn_off_actionEv"></span><span id="switch_::Switch::make_turn_off_action"></span><span class="target" id="classswitch___1_1_switch_1a1ff9421ee9150fcd47c43e1c0f7cb6f8"></span>TurnOffAction&lt;T&gt; *switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">make_turn_off_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch20make_turn_off_actionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+<em class="property">template </em>&lt;<em class="property">typename</em> T&gt;</dt>
+<dt id="_CPPv3N7switch_6Switch19make_turn_on_actionEv">
+<span id="_CPPv2N7switch_6Switch19make_turn_on_actionEv"></span><span id="switch_::Switch::make_turn_on_action"></span><span class="target" id="classswitch___1_1_switch_1a0b2871ee9598fccb4c973e41c46b3b84"></span>TurnOnAction&lt;T&gt; *switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">make_turn_on_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch19make_turn_on_actionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch10optimisticEv">
+<span id="_CPPv2N7switch_6Switch10optimisticEv"></span><span id="switch_::Switch::optimistic"></span><span class="target" id="classswitch___1_1_switch_1aff534b34d1b570a74f2a4ffb0ca2d4c7"></span>bool switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">optimistic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch10optimisticEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Return whether this switch is optimistic - i.e. </p>
+<p>if both the ON/OFF actions should be displayed in Home Assistant because the real state is unknown.</p>
+<p>Defaults to false. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch21add_on_state_callbackERRNSt8functionIFvbEEE">
+<span id="_CPPv2N7switch_6Switch21add_on_state_callbackERRNSt8functionIFvbEEE"></span><span class="target" id="classswitch___1_1_switch_1ac445695ca53724df6abe25907191da94"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">add_on_state_callback</code><span class="sig-paren">(</span>std::function&lt;void<span class="sig-paren">(</span>bool<span class="sig-paren">)</span>&gt; &amp;&amp;<em>callback</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_6Switch21add_on_state_callbackERRNSt8functionIFvbEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set callback for state changes. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">callback</span></code>: The void(bool) callback. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt id="_CPPv3N7switch_6Switch5valueE">
+<span id="_CPPv2N7switch_6Switch5valueE"></span><span id="switch_::Switch::value__b"></span><span class="target" id="classswitch___1_1_switch_1a4d4c2c82731d3f334d5f94d275d497e4"></span>bool switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">value</code> = {false}<a class="headerlink" href="#_CPPv3N7switch_6Switch5valueE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The current published state of the switch. </p>
+<p>Inversion is already applied on this value. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch7turn_onEv">
+<span id="_CPPv2N7switch_6Switch7turn_onEv"></span><span id="switch_::Switch::turn_on"></span><span class="target" id="classswitch___1_1_switch_1a846a34b93951a87ac583c74c2481d79e"></span><em class="property">virtual</em> void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">turn_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv3N7switch_6Switch7turn_onEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Turn this switch on. When creating a switch, you should implement this (inversion will already be applied). </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_6Switch8turn_offEv">
+<span id="_CPPv2N7switch_6Switch8turn_offEv"></span><span id="switch_::Switch::turn_off"></span><span class="target" id="classswitch___1_1_switch_1a1f8c18d43a53ae4bab0e9cb68efde2ad"></span><em class="property">virtual</em> void switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">turn_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span> = 0<a class="headerlink" href="#_CPPv3N7switch_6Switch8turn_offEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Turn this switch off. When creating a switch, you should implement this (inversion will already be applied). </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N7switch_6Switch5icon_E">
+<span id="_CPPv2N7switch_6Switch5icon_E"></span><span id="switch_::Switch::icon___optional:ss:"></span><span class="target" id="classswitch___1_1_switch_1af73db1e5af517bb1f7ad9b5efc9f384c"></span><a class="reference internal" href="../core/helpers.html#_CPPv38optional" title="optional">optional</a>&lt;std::string&gt; switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">icon_</code> = {}<a class="headerlink" href="#_CPPv3N7switch_6Switch5icon_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The icon shown here. Not set means use default from switch. Empty means no icon. </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N7switch_6Switch15state_callback_E">
+<span id="_CPPv2N7switch_6Switch15state_callback_E"></span><span class="target" id="classswitch___1_1_switch_1a850a54b7429414cf2ddd76a20349a053"></span>CallbackManager&lt;void<span class="sig-paren">(</span>bool<span class="sig-paren">)</span>&gt; switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">state_callback_</code> = {}<a class="headerlink" href="#_CPPv3N7switch_6Switch15state_callback_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N7switch_6Switch9inverted_E">
+<span id="_CPPv2N7switch_6Switch9inverted_E"></span><span id="switch_::Switch::inverted___b"></span><span class="target" id="classswitch___1_1_switch_1a8c230d788402cecb5a67c36741734c05"></span>bool switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">inverted_</code> = {false}<a class="headerlink" href="#_CPPv3N7switch_6Switch9inverted_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N7switch_6Switch12first_value_E">
+<span id="_CPPv2N7switch_6Switch12first_value_E"></span><span id="switch_::Switch::first_value___b"></span><span class="target" id="classswitch___1_1_switch_1a0cf43c3aedb8eb066e72b2b5f568d82b"></span>bool switch_::<a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a><code class="descname">first_value_</code> = {true}<a class="headerlink" href="#_CPPv3N7switch_6Switch12first_value_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="simpleswitch">
+<h3>SimpleSwitch<a class="headerlink" href="#simpleswitch" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="_CPPv3N7switch_12SimpleSwitchE">
+<span id="_CPPv2N7switch_12SimpleSwitchE"></span><span id="switch_::SimpleSwitch"></span><span class="target" id="classswitch___1_1_simple_switch"></span><em class="property">class </em>switch_<code class="descclassname">::</code><code class="descname">SimpleSwitch</code><a class="headerlink" href="#_CPPv3N7switch_12SimpleSwitchE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A simple switch that exposes a binary output as a switch. </p>
+<p>Inherits from <a class="reference internal" href="#classswitch___1_1_switch"><span class="std std-ref">switch_::Switch</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N7switch_12SimpleSwitch12SimpleSwitchERKNSt6stringEPN6output12BinaryOutputE">
+<span id="_CPPv2N7switch_12SimpleSwitch12SimpleSwitchERKNSt6stringEPN6output12BinaryOutputE"></span><span id="switch_::SimpleSwitch::SimpleSwitch__ssCR.output::BinaryOutputP"></span><span class="target" id="classswitch___1_1_simple_switch_1ab2e5a23a5ae7d628f5fa87df378858d3"></span>switch_::<a class="reference internal" href="#_CPPv3N7switch_12SimpleSwitchE" title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">SimpleSwitch</code><span class="sig-paren">(</span><em class="property">const</em> std::string &amp;<em>name</em>, output::BinaryOutput *<em>output</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_12SimpleSwitch12SimpleSwitchERKNSt6stringEPN6output12BinaryOutputE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Construct this <a class="reference internal" href="#classswitch___1_1_simple_switch"><span class="std std-ref">SimpleSwitch</span></a> with the provided BinaryOutput. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3N7switch_12SimpleSwitch7turn_onEv">
+<span id="_CPPv2N7switch_12SimpleSwitch7turn_onEv"></span><span id="switch_::SimpleSwitch::turn_on"></span><span class="target" id="classswitch___1_1_simple_switch_1aeae2ca753381e430c89169520c40795c"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_12SimpleSwitchE" title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">turn_on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_12SimpleSwitch7turn_onEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Turn this <a class="reference internal" href="#classswitch___1_1_simple_switch"><span class="std std-ref">SimpleSwitch</span></a> on. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_12SimpleSwitch8turn_offEv">
+<span id="_CPPv2N7switch_12SimpleSwitch8turn_offEv"></span><span id="switch_::SimpleSwitch::turn_off"></span><span class="target" id="classswitch___1_1_simple_switch_1a74b9e646fb0519cf954647de0bd4c0a7"></span>void switch_::<a class="reference internal" href="#_CPPv3N7switch_12SimpleSwitchE" title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">turn_off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_12SimpleSwitch8turn_offEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Turn this <a class="reference internal" href="#classswitch___1_1_simple_switch"><span class="std std-ref">SimpleSwitch</span></a> off. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N7switch_12SimpleSwitch7output_E">
+<span id="_CPPv2N7switch_12SimpleSwitch7output_E"></span><span id="switch_::SimpleSwitch::output___output::BinaryOutputP"></span><span class="target" id="classswitch___1_1_simple_switch_1a5deea1a89ffa957939ef45e63b38940c"></span>output::<a class="reference internal" href="../output/index.html#_CPPv3N6output12BinaryOutputE" title="output::BinaryOutput">BinaryOutput</a> *switch_::<a class="reference internal" href="#_CPPv3N7switch_12SimpleSwitchE" title="switch_::SimpleSwitch">SimpleSwitch</a><code class="descname">output_</code><a class="headerlink" href="#_CPPv3N7switch_12SimpleSwitch7output_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="mqttswitchcomponent">
+<h3>MQTTSwitchComponent<a class="headerlink" href="#mqttswitchcomponent" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponentE">
+<span id="_CPPv2N7switch_19MQTTSwitchComponentE"></span><span id="switch_::MQTTSwitchComponent"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component"></span><em class="property">class </em><a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a><code class="descclassname">::</code><code class="descname">MQTTSwitchComponent</code><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>MQTT representation of switches. </p>
+<p>Overrides MQTTBinarySensorComponent with a callback that can write values to hardware. </p>
+<p>Inherits from <a class="reference internal" href="../core/mqtt.html#classmqtt_1_1_m_q_t_t_component"><span class="std std-ref">mqtt::MQTTComponent</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent19MQTTSwitchComponentEPN7switch_6SwitchE">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent19MQTTSwitchComponentEPN7switch_6SwitchE"></span><span id="switch_::MQTTSwitchComponent::MQTTSwitchComponent__switch_::SwitchP"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1a33c5d2c31e9b7af381fde76d41dbf1f5"></span>switch_::MQTTSwitchComponent<code class="descname">MQTTSwitchComponent</code><span class="sig-paren">(</span>switch_::Switch *<em>switch_</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent19MQTTSwitchComponentEPN7switch_6SwitchE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent5setupEv">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent5setupEv"></span><span id="switch_::MQTTSwitchComponent::setup"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1ac24e01cbd0b7ed3ad0996bf73dbb9795"></span>void <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Where the component’s initialization should happen. </p>
+<p>Analogous to Arduino’s <a class="reference internal" href="#classswitch___1_1_m_q_t_t_switch_component_1ac24e01cbd0b7ed3ad0996bf73dbb9795"><span class="std std-ref">setup()</span></a>. This method is guaranteed to only be called once. Defaults to doing noting. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent14send_discoveryER10JsonBufferR10JsonObjectRN4mqtt19SendDiscoveryConfigE">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent14send_discoveryER10JsonBufferR10JsonObjectRN4mqtt19SendDiscoveryConfigE"></span><span id="switch_::MQTTSwitchComponent::send_discovery__JsonBufferR.JsonObjectR.mqtt::SendDiscoveryConfigR"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1a95716abd00340a3b911551f5cd46b797"></span>void <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">send_discovery</code><span class="sig-paren">(</span>JsonBuffer &amp;<em>buffer</em>, JsonObject &amp;<em>root</em>, mqtt::<a class="reference internal" href="../core/mqtt.html#_CPPv3N4mqtt19SendDiscoveryConfigE" title="mqtt::SendDiscoveryConfig">SendDiscoveryConfig</a> &amp;<em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent14send_discoveryER10JsonBufferR10JsonObjectRN4mqtt19SendDiscoveryConfigE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Send discovery info the Home Assistant, override this. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent18send_initial_stateEv">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent18send_initial_stateEv"></span><span id="switch_::MQTTSwitchComponent::send_initial_state"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1a357cc2e236984a2a5b5e81ca3ad95875"></span>void <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">send_initial_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent18send_initial_stateEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent11is_internalEv">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent11is_internalEv"></span><span id="switch_::MQTTSwitchComponent::is_internal"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1a9a0e55af1e41d7f8f0e839018b60ec60"></span>bool <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">is_internal</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent11is_internalEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent13publish_stateEb">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent13publish_stateEb"></span><span id="switch_::MQTTSwitchComponent::publish_state__b"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1acac382e46afc612018006861690a18b6"></span>void <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">publish_state</code><span class="sig-paren">(</span>bool <em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent13publish_stateEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Functions</p>
+<dl class="function">
+<dt id="_CPPv3NK7switch_19MQTTSwitchComponent13friendly_nameEv">
+<span id="_CPPv2NK7switch_19MQTTSwitchComponent13friendly_nameEv"></span><span id="switch_::MQTTSwitchComponent::friendly_nameC"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1a79c9918caa7c481f2fc086562ba5a1bc"></span>std::string <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">friendly_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK7switch_19MQTTSwitchComponent13friendly_nameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the friendly name of this MQTT component. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK7switch_19MQTTSwitchComponent14component_typeEv">
+<span id="_CPPv2NK7switch_19MQTTSwitchComponent14component_typeEv"></span><span id="switch_::MQTTSwitchComponent::component_typeC"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1af710e3889f14416c995b75f5dfb78eea"></span>std::string <a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">component_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK7switch_19MQTTSwitchComponent14component_typeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>“switch” component type. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N7switch_19MQTTSwitchComponent7switch_E">
+<span id="_CPPv2N7switch_19MQTTSwitchComponent7switch_E"></span><span id="switch_::MQTTSwitchComponent::switch___SwitchP"></span><span class="target" id="classswitch___1_1_m_q_t_t_switch_component_1a502ddf7403500748e3678ec6d9f6a23c"></span><a class="reference internal" href="#_CPPv3N7switch_6SwitchE" title="switch_::Switch">Switch</a> *<a class="reference internal" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="switch_::MQTTSwitchComponent::switch_">switch_</a>::MQTTSwitchComponent<code class="descname">switch_</code><a class="headerlink" href="#_CPPv3N7switch_19MQTTSwitchComponent7switch_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+      <li>Previous: <a href="../light/fastled.html" title="previous chapter">FastLED Light Output</a></li>
+      <li>Next: <a href="remote_transmitter.html" title="next chapter">Remote Transmitter</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/api/switch/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

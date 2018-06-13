@@ -1,5 +1,157 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>GPIO Binary Output &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../_static/pygments.css"type="text/css"><script src="../../_static/documentation_options.js"></script><script src="../../_static/jquery.js"></script><script src="../../_static/underscore.js"></script><script src="../../_static/doctools.js"></script><link rel="index"title="Index"href="../../genindex.html"><link rel="search"title="Search"href="../../search.html"><link rel="next"title="ESP32 LEDC Output"href="ledc.html"><link rel="prev"title="Output"href="index.html"><link rel="stylesheet"href="../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="gpio-binary-output"><h1>GPIO Binary Output<a class="headerlink"href="#gpio-binary-output"title="Permalink to this headline">¶</a></h1><div class="section"id="example-usage"><h2>Example Usage<a class="headerlink"href="#example-usage"title="Permalink to this headline">¶</a></h2><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a binary output, *not a switch*</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>GPIO Binary Output &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ESP32 LEDC Output" href="ledc.html" />
+    <link rel="prev" title="Output" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gpio-binary-output">
+<h1>GPIO Binary Output<a class="headerlink" href="#gpio-binary-output" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-usage">
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a binary output, *not a switch*</span>
 <span class="n">App</span><span class="p">.</span><span class="n">make_gpio_output</span><span class="p">(</span><span class="mi">33</span><span class="p">);</span>
 <span class="c1">// Custom pinMode</span>
 <span class="n">App</span><span class="p">.</span><span class="n">make_gpio_output</span><span class="p">(</span><span class="n">GPIOOutputPin</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span> <span class="n">OUTPUT_OPEN_DRAIN</span><span class="p">));</span>
-</pre></div></div><p>See <a class="reference internal"href="../core/application.html#_CPPv3N11Application16make_gpio_outputERK13GPIOOutputPin"title="Application::make_gpio_output"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_gpio_output()</span></code></a> (and <a class="reference internal"href="../core/application.html#_CPPv3N11Application16make_gpio_switchERKNSt6stringERK13GPIOOutputPin"title="Application::make_gpio_switch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_gpio_switch()</span></code></a>).</div><div class="section"id="api-reference"><h2>API Reference<a class="headerlink"href="#api-reference"title="Permalink to this headline">¶</a></h2><div class="section"id="gpiobinaryoutputcomponent"><h3>GPIOBinaryOutputComponent<a class="headerlink"href="#gpiobinaryoutputcomponent"title="Permalink to this headline">¶</a></h3><dl class="class"><dt id="_CPPv3N6output25GPIOBinaryOutputComponentE"><span id="_CPPv2N6output25GPIOBinaryOutputComponentE"></span><span id="output::GPIOBinaryOutputComponent"></span><span class="target"id="classoutput_1_1_g_p_i_o_binary_output_component"></span><em class="property">class </em>output<code class="descclassname">::</code><code class="descname">GPIOBinaryOutputComponent</code><a class="headerlink"href="#_CPPv3N6output25GPIOBinaryOutputComponentE"title="Permalink to this definition">¶</a><br><dd><p>Simple binary output component for a GPIO pin.<p>This component allows you to control a GPIO pin as a switch.<p>Note that with this output component you actually have two ways of inverting the output: either through the <a class="reference internal"href="../core/helpers.html#class_g_p_i_o_output_pin"><span class="std std-ref">GPIOOutputPin</span></a>, or the <a class="reference internal"href="index.html#classoutput_1_1_binary_output"><span class="std std-ref">BinaryOutput</span></a> API. You can use either one of these.<p>This is only an <em>output component</em>, not a <em>switch</em>, if what you want is a switch, take a look at App.make_gpio_switch();<p>Inherits from <a class="reference internal"href="index.html#classoutput_1_1_binary_output"><span class="std std-ref">output::BinaryOutput</span></a>, <a class="reference internal"href="../core/component.html#class_component"><span class="std std-ref">Component</span></a><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Public Functions<dl class="function"><dt id="_CPPv3N6output25GPIOBinaryOutputComponent25GPIOBinaryOutputComponentEP7GPIOPin"><span id="_CPPv2N6output25GPIOBinaryOutputComponent25GPIOBinaryOutputComponentEP7GPIOPin"></span><span id="output::GPIOBinaryOutputComponent::GPIOBinaryOutputComponent__GPIOPinP"></span><span class="target"id="classoutput_1_1_g_p_i_o_binary_output_component_1ad004e0b349269e79fa4f1f0c256ec068"></span>output::<a class="reference internal"href="#_CPPv3N6output25GPIOBinaryOutputComponentE"title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">GPIOBinaryOutputComponent</code><span class="sig-paren">(</span><a class="reference internal"href="../core/helpers.html#_CPPv37GPIOPin"title="GPIOPin">GPIOPin</a> *<em>pin</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6output25GPIOBinaryOutputComponent25GPIOBinaryOutputComponentEP7GPIOPin"title="Permalink to this definition">¶</a><br><dd><p>Construct the GPIO binary output.<p><dl class="docutils"><dt><strong>Parameters</strong><dd><ul class="breatheparameterlist first last simple"><li><code class="docutils literal notranslate"><span class="pre">pin</span></code>: The output pin to use for this output, can be integer or <a class="reference internal"href="../core/helpers.html#class_g_p_i_o_output_pin"><span class="std std-ref">GPIOOutputPin</span></a>.</ul></dl><p></dl><dl class="function"><dt id="_CPPv3N6output25GPIOBinaryOutputComponent5setupEv"><span id="_CPPv2N6output25GPIOBinaryOutputComponent5setupEv"></span><span id="output::GPIOBinaryOutputComponent::setup"></span><span class="target"id="classoutput_1_1_g_p_i_o_binary_output_component_1ae305c56d614a064ebf6bfcd99f5e9c9b"></span>void output::<a class="reference internal"href="#_CPPv3N6output25GPIOBinaryOutputComponentE"title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6output25GPIOBinaryOutputComponent5setupEv"title="Permalink to this definition">¶</a><br><dd><p>Set pin mode.</dl><dl class="function"><dt id="_CPPv3NK6output25GPIOBinaryOutputComponent18get_setup_priorityEv"><span id="_CPPv2NK6output25GPIOBinaryOutputComponent18get_setup_priorityEv"></span><span id="output::GPIOBinaryOutputComponent::get_setup_priorityC"></span><span class="target"id="classoutput_1_1_g_p_i_o_binary_output_component_1a541f8d7b3d6a3c3a2b8b851bf475c604"></span>float output::<a class="reference internal"href="#_CPPv3N6output25GPIOBinaryOutputComponentE"title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink"href="#_CPPv3NK6output25GPIOBinaryOutputComponent18get_setup_priorityEv"title="Permalink to this definition">¶</a><br><dd><p>Hardware setup priority.</dl><dl class="function"><dt id="_CPPv3N6output25GPIOBinaryOutputComponent13write_enabledEb"><span id="_CPPv2N6output25GPIOBinaryOutputComponent13write_enabledEb"></span><span id="output::GPIOBinaryOutputComponent::write_enabled__b"></span><span class="target"id="classoutput_1_1_g_p_i_o_binary_output_component_1a04bbd22547d8997129f7b1ef50565587"></span>void output::<a class="reference internal"href="#_CPPv3N6output25GPIOBinaryOutputComponentE"title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">write_enabled</code><span class="sig-paren">(</span>bool <em>value</em><span class="sig-paren">)</span><a class="headerlink"href="#_CPPv3N6output25GPIOBinaryOutputComponent13write_enabledEb"title="Permalink to this definition">¶</a><br><dd><p>Override the <a class="reference internal"href="index.html#classoutput_1_1_binary_output"><span class="std std-ref">BinaryOutput</span></a> method for writing values to HW.</dl></div><div class="breathe-sectiondef docutils container"><p class="breathe-sectiondef-title rubric">Protected Attributes<dl class="member"><dt id="_CPPv3N6output25GPIOBinaryOutputComponent4pin_E"><span id="_CPPv2N6output25GPIOBinaryOutputComponent4pin_E"></span><span id="output::GPIOBinaryOutputComponent::pin___GPIOPinP"></span><span class="target"id="classoutput_1_1_g_p_i_o_binary_output_component_1a4a7b4491d325c595f14c841401879713"></span><a class="reference internal"href="../core/helpers.html#_CPPv37GPIOPin"title="GPIOPin">GPIOPin</a> *output::<a class="reference internal"href="#_CPPv3N6output25GPIOBinaryOutputComponentE"title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">pin_</code><a class="headerlink"href="#_CPPv3N6output25GPIOBinaryOutputComponent4pin_E"title="Permalink to this definition">¶</a><br><dd></dl></div></dl></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../index.html">Documentation overview</a><ul><li><a href="../index.html">API Reference</a><ul><li><a href="index.html">Output</a><ul><li>Previous: <a href="index.html"title="previous chapter">Output</a><li>Next: <a href="ledc.html"title="next chapter">ESP32 LEDC Output</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../_sources/api/output/gpio-binary.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../core/application.html#_CPPv3N11Application16make_gpio_outputERK13GPIOOutputPin" title="Application::make_gpio_output"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_gpio_output()</span></code></a> (and <a class="reference internal" href="../core/application.html#_CPPv3N11Application16make_gpio_switchERKNSt6stringERK13GPIOOutputPin" title="Application::make_gpio_switch"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_gpio_switch()</span></code></a>).</p>
+</div>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gpiobinaryoutputcomponent">
+<h3>GPIOBinaryOutputComponent<a class="headerlink" href="#gpiobinaryoutputcomponent" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="_CPPv3N6output25GPIOBinaryOutputComponentE">
+<span id="_CPPv2N6output25GPIOBinaryOutputComponentE"></span><span id="output::GPIOBinaryOutputComponent"></span><span class="target" id="classoutput_1_1_g_p_i_o_binary_output_component"></span><em class="property">class </em>output<code class="descclassname">::</code><code class="descname">GPIOBinaryOutputComponent</code><a class="headerlink" href="#_CPPv3N6output25GPIOBinaryOutputComponentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Simple binary output component for a GPIO pin. </p>
+<p>This component allows you to control a GPIO pin as a switch.</p>
+<p>Note that with this output component you actually have two ways of inverting the output: either through the <a class="reference internal" href="../core/helpers.html#class_g_p_i_o_output_pin"><span class="std std-ref">GPIOOutputPin</span></a>, or the <a class="reference internal" href="index.html#classoutput_1_1_binary_output"><span class="std std-ref">BinaryOutput</span></a> API. You can use either one of these.</p>
+<p>This is only an <em>output component</em>, not a <em>switch</em>, if what you want is a switch, take a look at App.make_gpio_switch(); </p>
+<p>Inherits from <a class="reference internal" href="index.html#classoutput_1_1_binary_output"><span class="std std-ref">output::BinaryOutput</span></a>, <a class="reference internal" href="../core/component.html#class_component"><span class="std std-ref">Component</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N6output25GPIOBinaryOutputComponent25GPIOBinaryOutputComponentEP7GPIOPin">
+<span id="_CPPv2N6output25GPIOBinaryOutputComponent25GPIOBinaryOutputComponentEP7GPIOPin"></span><span id="output::GPIOBinaryOutputComponent::GPIOBinaryOutputComponent__GPIOPinP"></span><span class="target" id="classoutput_1_1_g_p_i_o_binary_output_component_1ad004e0b349269e79fa4f1f0c256ec068"></span>output::<a class="reference internal" href="#_CPPv3N6output25GPIOBinaryOutputComponentE" title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">GPIOBinaryOutputComponent</code><span class="sig-paren">(</span><a class="reference internal" href="../core/helpers.html#_CPPv37GPIOPin" title="GPIOPin">GPIOPin</a> *<em>pin</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6output25GPIOBinaryOutputComponent25GPIOBinaryOutputComponentEP7GPIOPin" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Construct the GPIO binary output. </p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal notranslate"><span class="pre">pin</span></code>: The output pin to use for this output, can be integer or <a class="reference internal" href="../core/helpers.html#class_g_p_i_o_output_pin"><span class="std std-ref">GPIOOutputPin</span></a>. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6output25GPIOBinaryOutputComponent5setupEv">
+<span id="_CPPv2N6output25GPIOBinaryOutputComponent5setupEv"></span><span id="output::GPIOBinaryOutputComponent::setup"></span><span class="target" id="classoutput_1_1_g_p_i_o_binary_output_component_1ae305c56d614a064ebf6bfcd99f5e9c9b"></span>void output::<a class="reference internal" href="#_CPPv3N6output25GPIOBinaryOutputComponentE" title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6output25GPIOBinaryOutputComponent5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set pin mode. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK6output25GPIOBinaryOutputComponent18get_setup_priorityEv">
+<span id="_CPPv2NK6output25GPIOBinaryOutputComponent18get_setup_priorityEv"></span><span id="output::GPIOBinaryOutputComponent::get_setup_priorityC"></span><span class="target" id="classoutput_1_1_g_p_i_o_binary_output_component_1a541f8d7b3d6a3c3a2b8b851bf475c604"></span>float output::<a class="reference internal" href="#_CPPv3N6output25GPIOBinaryOutputComponentE" title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK6output25GPIOBinaryOutputComponent18get_setup_priorityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Hardware setup priority. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N6output25GPIOBinaryOutputComponent13write_enabledEb">
+<span id="_CPPv2N6output25GPIOBinaryOutputComponent13write_enabledEb"></span><span id="output::GPIOBinaryOutputComponent::write_enabled__b"></span><span class="target" id="classoutput_1_1_g_p_i_o_binary_output_component_1a04bbd22547d8997129f7b1ef50565587"></span>void output::<a class="reference internal" href="#_CPPv3N6output25GPIOBinaryOutputComponentE" title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">write_enabled</code><span class="sig-paren">(</span>bool <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N6output25GPIOBinaryOutputComponent13write_enabledEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Override the <a class="reference internal" href="index.html#classoutput_1_1_binary_output"><span class="std std-ref">BinaryOutput</span></a> method for writing values to HW. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N6output25GPIOBinaryOutputComponent4pin_E">
+<span id="_CPPv2N6output25GPIOBinaryOutputComponent4pin_E"></span><span id="output::GPIOBinaryOutputComponent::pin___GPIOPinP"></span><span class="target" id="classoutput_1_1_g_p_i_o_binary_output_component_1a4a7b4491d325c595f14c841401879713"></span><a class="reference internal" href="../core/helpers.html#_CPPv37GPIOPin" title="GPIOPin">GPIOPin</a> *output::<a class="reference internal" href="#_CPPv3N6output25GPIOBinaryOutputComponentE" title="output::GPIOBinaryOutputComponent">GPIOBinaryOutputComponent</a><code class="descname">pin_</code><a class="headerlink" href="#_CPPv3N6output25GPIOBinaryOutputComponent4pin_E" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+  <li><a href="index.html">Output</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Output</a></li>
+      <li>Next: <a href="ledc.html" title="next chapter">ESP32 LEDC Output</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/api/output/gpio-binary.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

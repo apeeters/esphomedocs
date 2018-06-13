@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ESP32 Bluetooth Low Energy Beacon &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Status LED" href="status_led.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="esp32-bluetooth-low-energy-beacon">
+<h1>ESP32 Bluetooth Low Energy Beacon<a class="headerlink" href="#esp32-bluetooth-low-energy-beacon" title="Permalink to this headline">¶</a></h1>
+<p>See <a class="reference internal" href="../core/application.html#_CPPv3N11Application21make_esp32_ble_beaconERKNSt5arrayI7uint8_tXL16EEEE" title="Application::make_esp32_ble_beacon"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Application::make_esp32_ble_beacon()</span></code></a>.</p>
+<div class="section" id="api-reference">
+<h2>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="_CPPv314ESP32BLEBeacon">
+<span id="_CPPv214ESP32BLEBeacon"></span><span id="ESP32BLEBeacon"></span><span class="target" id="class_e_s_p32_b_l_e_beacon"></span><em class="property">class </em><code class="descname">ESP32BLEBeacon</code><a class="headerlink" href="#_CPPv314ESP32BLEBeacon" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Inherits from <a class="reference internal" href="../core/component.html#class_component"><span class="std std-ref">Component</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="function">
+<dt id="_CPPv3N14ESP32BLEBeacon14ESP32BLEBeaconERKNSt5arrayI7uint8_tXL16EEEE">
+<span id="_CPPv2N14ESP32BLEBeacon14ESP32BLEBeaconERKNSt5arrayI7uint8_tX16EEE"></span><span id="ESP32BLEBeacon::ESP32BLEBeacon__std::array:uint8_t.16:CR"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1a54a8d9df6758d40233f5954bfe67243e"></span><a class="reference internal" href="#_CPPv3N14ESP32BLEBeacon14ESP32BLEBeaconERKNSt5arrayI7uint8_tXL16EEEE" title="ESP32BLEBeacon::ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">ESP32BLEBeacon</code><span class="sig-paren">(</span><em class="property">const</em> std::array&lt;uint8_t, 16&gt; &amp;<em>uuid</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon14ESP32BLEBeaconERKNSt5arrayI7uint8_tXL16EEEE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N14ESP32BLEBeacon5setupEv">
+<span id="_CPPv2N14ESP32BLEBeacon5setupEv"></span><span id="ESP32BLEBeacon::setup"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1adaa65b4ed9d4236893271b4debf54b6d"></span>void <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">setup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon5setupEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Where the component’s initialization should happen. </p>
+<p>Analogous to Arduino’s <a class="reference internal" href="#class_e_s_p32_b_l_e_beacon_1adaa65b4ed9d4236893271b4debf54b6d"><span class="std std-ref">setup()</span></a>. This method is guaranteed to only be called once. Defaults to doing noting. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3NK14ESP32BLEBeacon18get_setup_priorityEv">
+<span id="_CPPv2NK14ESP32BLEBeacon18get_setup_priorityEv"></span><span id="ESP32BLEBeacon::get_setup_priorityC"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1a0d2c636de0cb4b704bee402eb6c81985"></span>float <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">get_setup_priority</code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property">const</em><a class="headerlink" href="#_CPPv3NK14ESP32BLEBeacon18get_setup_priorityEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>priority of <a class="reference internal" href="#class_e_s_p32_b_l_e_beacon_1adaa65b4ed9d4236893271b4debf54b6d"><span class="std std-ref">setup()</span></a>. </p>
+<p>higher -&gt; executed earlier</p>
+<p>Defaults to 0.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>The setup priority of this component </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N14ESP32BLEBeacon9set_majorE8uint16_t">
+<span id="_CPPv2N14ESP32BLEBeacon9set_majorE8uint16_t"></span><span id="ESP32BLEBeacon::set_major__uint16_t"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1a59e893c554fd8d79e1d0a7c1471bcbaf"></span>void <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">set_major</code><span class="sig-paren">(</span>uint16_t <em>major</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon9set_majorE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N14ESP32BLEBeacon9set_minorE8uint16_t">
+<span id="_CPPv2N14ESP32BLEBeacon9set_minorE8uint16_t"></span><span id="ESP32BLEBeacon::set_minor__uint16_t"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1a268548efb63380b8cfc3bc6199a7b04d"></span>void <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">set_minor</code><span class="sig-paren">(</span>uint16_t <em>minor</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon9set_minorE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Attributes</p>
+<dl class="member">
+<dt id="_CPPv3N14ESP32BLEBeacon4uuidE">
+<span id="_CPPv2N14ESP32BLEBeacon4uuidE"></span><span id="ESP32BLEBeacon::uuid__std::array:uint8_t.16:"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1acac3ae87a71d3a392526be28ab7ff228"></span>std::array&lt;uint8_t, 16&gt; <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">uuid</code><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon4uuidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N14ESP32BLEBeacon5majorE">
+<span id="_CPPv2N14ESP32BLEBeacon5majorE"></span><span id="ESP32BLEBeacon::major__uint16_t"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1af651b497bd49769427021ce69b51811d"></span>uint16_t <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">major</code> = {10167}<a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon5majorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt id="_CPPv3N14ESP32BLEBeacon5minorE">
+<span id="_CPPv2N14ESP32BLEBeacon5minorE"></span><span id="ESP32BLEBeacon::minor__uint16_t"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1a65b447b79b8cde897aa8dbe374b5488a"></span>uint16_t <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">minor</code> = {61958}<a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon5minorE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Protected Static Functions</p>
+<dl class="function">
+<dt id="_CPPv3N14ESP32BLEBeacon17gap_event_handlerE22esp_gap_ble_cb_event_tP22esp_ble_gap_cb_param_t">
+<span id="_CPPv2N14ESP32BLEBeacon17gap_event_handlerE22esp_gap_ble_cb_event_tP22esp_ble_gap_cb_param_t"></span><span id="ESP32BLEBeacon::gap_event_handler__esp_gap_ble_cb_event_t.esp_ble_gap_cb_param_tP"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1ac9c585b230ae566999968619047b686e"></span>void <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">gap_event_handler</code><span class="sig-paren">(</span>esp_gap_ble_cb_event_t <em>event</em>, esp_ble_gap_cb_param_t *<em>param</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon17gap_event_handlerE22esp_gap_ble_cb_event_tP22esp_ble_gap_cb_param_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv3N14ESP32BLEBeacon13ble_core_taskEPv">
+<span id="_CPPv2N14ESP32BLEBeacon13ble_core_taskEPv"></span><span id="ESP32BLEBeacon::ble_core_task__voidP"></span><span class="target" id="class_e_s_p32_b_l_e_beacon_1ad31c93562435d445829389cd71ed24bc"></span>void <a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a><code class="descname">ble_core_task</code><span class="sig-paren">(</span>void *<em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv3N14ESP32BLEBeacon13ble_core_taskEPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv323global_esp32_ble_beacon">
+<span id="_CPPv223global_esp32_ble_beacon"></span><span id="global_esp32_ble_beacon__ESP32BLEBeaconP"></span><span class="target" id="esp32__ble__beacon_8h_1a4e8cae8845bcc38889c8728af8948236"></span><a class="reference internal" href="#_CPPv314ESP32BLEBeacon" title="ESP32BLEBeacon">ESP32BLEBeacon</a> *<code class="descname">global_esp32_ble_beacon</code><a class="headerlink" href="#_CPPv323global_esp32_ble_beacon" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+  <li><a href="index.html">Miscellaneous Components</a><ul>
+      <li>Previous: <a href="status_led.html" title="previous chapter">Status LED</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../_sources/api/misc/esp32_ble_beacon.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,16 +1,168 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml"><meta http-equiv="X-UA-Compatible"content="IE=Edge"><meta http-equiv="Content-Type"content="text/html; charset=utf-8"><title>Fan Component &#8212; esphomelib 1.6.2 documentation</title><link rel="stylesheet"href="../../../_static/alabaster.css"type="text/css"><link rel="stylesheet"href="../../../_static/pygments.css"type="text/css"><script src="../../../_static/documentation_options.js"></script><script src="../../../_static/jquery.js"></script><script src="../../../_static/underscore.js"></script><script src="../../../_static/doctools.js"></script><link rel="index"title="Index"href="../../../genindex.html"><link rel="search"title="Search"href="../../../search.html"><link rel="next"title="Binary Fan"href="binary.html"><link rel="prev"title="Template Cover"href="../cover/template.html"><link rel="stylesheet"href="../../../_static/custom.css"type="text/css"><meta name="viewport"content="width=device-width,initial-scale=0.9,maximum-scale=0.9"><div class="document"><div class="documentwrapper"><div class="bodywrapper"><div class="body"role="main"><div class="section"id="fan-component"><h1>Fan Component<a class="headerlink"href="#fan-component"title="Permalink to this headline">¶</a></h1><p>With the <code class="docutils literal notranslate"><span class="pre">fan</span></code> domain you can create components that appear as fans in the Home Assistant frontend. A fan can be switched ON or OFF, optionally has a speed setting (<code class="docutils literal notranslate"><span class="pre">LOW</span></code>, <code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code>, <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>) and can have an oscillate output.<div class="figure align-center"><a class="reference internal image-reference"href="../../../_images/fan-ui.png"><img alt="../../../_images/fan-ui.png"src="../../../_images/fan-ui.png"style="width: 70.0%;"></a></div><div class="section"id="base-fan-configuration"><span id="config-fan"></span><h2>Base Fan Configuration<a class="headerlink"href="#base-fan-configuration"title="Permalink to this headline">¶</a></h2><div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fan</span><span class="p">:</span>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Fan Component &#8212; esphomelib 1.7.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Binary Fan" href="binary.html" />
+    <link rel="prev" title="Template Cover" href="../cover/template.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fan-component">
+<h1>Fan Component<a class="headerlink" href="#fan-component" title="Permalink to this headline">¶</a></h1>
+<p>With the <code class="docutils literal notranslate"><span class="pre">fan</span></code> domain you can create components that appear as fans in
+the Home Assistant frontend. A fan can be switched ON or OFF, optionally
+has a speed setting (<code class="docutils literal notranslate"><span class="pre">LOW</span></code>, <code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code>, <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>) and can have an
+oscillate output.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../_images/fan-ui.png"><img alt="../../../_images/fan-ui.png" src="../../../_images/fan-ui.png" style="width: 70.0%;" /></a>
+</div>
+<div class="section" id="base-fan-configuration">
+<span id="config-fan"></span><h2>Base Fan Configuration<a class="headerlink" href="#base-fan-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fan</span><span class="p">:</span>
   <span class="o">-</span> <span class="n">platform</span><span class="p">:</span> <span class="o">...</span>
     <span class="n">name</span><span class="p">:</span> <span class="o">...</span>
-</pre></div></div><p>Configuration variables:<ul class="simple"><li><strong>name</strong> (<strong>Required</strong>, string): The name of the fan.<li><strong>oscillation_state_topic</strong> (<em>Optional</em>, string): The topic to publish fan oscillaiton state changes to.<li><strong>oscillation_command_topic</strong> (<em>Optional</em>, string): The topic to receive oscillation commands on.<li><strong>speed_state_topic</strong> (<em>Optional</em>, string): The topic to publish fan speed state changes to.<li><strong>speed_command_topic</strong> (<em>Optional</em>, string): The topic to receive speed commands on.<li>All other options from <a class="reference internal"href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</ul><div class="section"id="fan-toggle-action"><span id="id1"></span><h3><code class="docutils literal notranslate"><span class="pre">fan.toggle</span></code> Action<a class="headerlink"href="#fan-toggle-action"title="Permalink to this headline">¶</a></h3><p>Toggles the ON/OFF state of the fan with the given ID when executed.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Configuration variables:</p>
+<ul class="simple">
+<li><strong>name</strong> (<strong>Required</strong>, string): The name of the fan.</li>
+<li><strong>oscillation_state_topic</strong> (<em>Optional</em>, string): The topic to
+publish fan oscillaiton state changes to.</li>
+<li><strong>oscillation_command_topic</strong> (<em>Optional</em>, string): The topic to
+receive oscillation commands on.</li>
+<li><strong>speed_state_topic</strong> (<em>Optional</em>, string): The topic to publish fan
+speed state changes to.</li>
+<li><strong>speed_command_topic</strong> (<em>Optional</em>, string): The topic to receive
+speed commands on.</li>
+<li>All other options from <a class="reference internal" href="../mqtt.html#config-mqtt-component"><span class="std std-ref">MQTT Component</span></a>.</li>
+</ul>
+<div class="section" id="fan-toggle-action">
+<span id="id1"></span><h3><code class="docutils literal notranslate"><span class="pre">fan.toggle</span></code> Action<a class="headerlink" href="#fan-toggle-action" title="Permalink to this headline">¶</a></h3>
+<p>Toggles the ON/OFF state of the fan with the given ID when executed.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
   <span class="n">then</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">fan</span><span class="o">.</span><span class="n">toggle</span><span class="p">:</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">fan_1</span>
-</pre></div></div></div><div class="section"id="fan-turn-off-action"><span id="id2"></span><h3><code class="docutils literal notranslate"><span class="pre">fan.turn_off</span></code> Action<a class="headerlink"href="#fan-turn-off-action"title="Permalink to this headline">¶</a></h3><p>Turns the fan with the given ID off when executed.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fan-turn-off-action">
+<span id="id2"></span><h3><code class="docutils literal notranslate"><span class="pre">fan.turn_off</span></code> Action<a class="headerlink" href="#fan-turn-off-action" title="Permalink to this headline">¶</a></h3>
+<p>Turns the fan with the given ID off when executed.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
   <span class="n">then</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">fan</span><span class="o">.</span><span class="n">turn_off</span><span class="p">:</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">fan_1</span>
-</pre></div></div></div><div class="section"id="fan-turn-on-action"><span id="id3"></span><h3><code class="docutils literal notranslate"><span class="pre">fan.turn_on</span></code> Action<a class="headerlink"href="#fan-turn-on-action"title="Permalink to this headline">¶</a></h3><p>Turns the fan with the given ID off when executed.<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fan-turn-on-action">
+<span id="id3"></span><h3><code class="docutils literal notranslate"><span class="pre">fan.turn_on</span></code> Action<a class="headerlink" href="#fan-turn-on-action" title="Permalink to this headline">¶</a></h3>
+<p>Turns the fan with the given ID off when executed.</p>
+<div class="code yaml highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on_</span><span class="o">...</span><span class="p">:</span>
   <span class="n">then</span><span class="p">:</span>
     <span class="o">-</span> <span class="n">fan</span><span class="o">.</span><span class="n">turn_on</span><span class="p">:</span>
         <span class="nb">id</span><span class="p">:</span> <span class="n">fan_1</span>
-</pre></div></div><p>Configuration options:<ul class="simple"><li><strong>id</strong> (<strong>Required</strong>, <a class="reference internal"href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): The ID of the fan.<li><strong>oscillating</strong> (<em>Optional</em>, boolean, <a class="reference internal"href="../../guides/automations.html#config-templatable"><span class="std std-ref">templatable</span></a>): Set the oscillation state of the fan. Defaults to not affecting oscillation.<li><strong>speed</strong> (<em>Optional</em>, string, <a class="reference internal"href="../../guides/automations.html#config-templatable"><span class="std std-ref">templatable</span></a>): Set the speed setting of the fan. One of <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, <code class="docutils literal notranslate"><span class="pre">LOW</span></code>, <code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code>, <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>. If you template this value, return <code class="docutils literal notranslate"><span class="pre">fan::FAN_SPEED_...</span></code>, for example <code class="docutils literal notranslate"><span class="pre">fan::FAN_SPEED_HIGH</span></code>.</ul></div><div class="section"id="full-fan-index"><h3>Full Fan Index<a class="headerlink"href="#full-fan-index"title="Permalink to this headline">¶</a></h3><ul class="simple"><li><a class="reference internal"href="../../../api/fan/index.html"><span class="doc">API Reference</span></a><li><a class="reference external"href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/fan/index.rst">Edit this page on GitHub</a></ul><div class="toctree-wrapper compound"><ul><li class="toctree-l1"><a class="reference internal"href="binary.html">Binary Fan</a><li class="toctree-l1"><a class="reference internal"href="speed.html">Speed Fan</a></ul></div></div></div></div></div></div></div><div class="sphinxsidebar"role="navigation"aria-label="main navigation"><div class="sphinxsidebarwrapper"><div class="relations"><h3>Related Topics</h3><ul><li><a href="../../../index.html">Documentation overview</a><ul><li><a href="../../index.html">esphomeyaml</a><ul><li><a href="../index.html">Components</a><ul><li>Previous: <a href="../cover/template.html"title="previous chapter">Template Cover</a><li>Next: <a href="binary.html"title="next chapter">Binary Fan</a></ul></ul></ul></ul></div><div id="searchbox"style="display: none"role="search"><h3>Quick search</h3><div class="searchformwrapper"><form class="search"action="../../../search.html"><input name="q"> <input type="submit"value="Go"> <input type="hidden"name="check_keywords"value="yes"> <input type="hidden"name="area"value="default"></form></div></div><script>$('#searchbox').show(0);</script></div></div><div class="clearer"></div></div><div class="footer">&copy;2018, Otto Winter. | Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a> &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a> | <a href="../../../_sources/esphomeyaml/components/fan/index.rst.txt"rel="nofollow">Page source</a></div>
+</pre></div>
+</div>
+<p>Configuration options:</p>
+<ul class="simple">
+<li><strong>id</strong> (<strong>Required</strong>, <a class="reference internal" href="../../guides/configuration-types.html#config-id"><span class="std std-ref">ID</span></a>): The ID of the fan.</li>
+<li><strong>oscillating</strong> (<em>Optional</em>, boolean, <a class="reference internal" href="../../guides/automations.html#config-templatable"><span class="std std-ref">templatable</span></a>):
+Set the oscillation state of the fan. Defaults to not affecting oscillation.</li>
+<li><strong>speed</strong> (<em>Optional</em>, string, <a class="reference internal" href="../../guides/automations.html#config-templatable"><span class="std std-ref">templatable</span></a>):
+Set the speed setting of the fan. One of <code class="docutils literal notranslate"><span class="pre">OFF</span></code>, <code class="docutils literal notranslate"><span class="pre">LOW</span></code>, <code class="docutils literal notranslate"><span class="pre">MEDIUM</span></code>, <code class="docutils literal notranslate"><span class="pre">HIGH</span></code>.
+If you template this value, return <code class="docutils literal notranslate"><span class="pre">fan::FAN_SPEED_...</span></code>, for example <code class="docutils literal notranslate"><span class="pre">fan::FAN_SPEED_HIGH</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="full-fan-index">
+<h3>Full Fan Index<a class="headerlink" href="#full-fan-index" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference internal" href="../../../api/fan/index.html"><span class="doc">API Reference</span></a></li>
+<li><a class="reference external" href="https://github.com/OttoWinter/esphomedocs/blob/current/esphomeyaml/components/fan/index.rst">Edit this page on GitHub</a></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="binary.html">Binary Fan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="speed.html">Speed Fan</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">esphomeyaml</a><ul>
+  <li><a href="../index.html">Components</a><ul>
+      <li>Previous: <a href="../cover/template.html" title="previous chapter">Template Cover</a></li>
+      <li>Next: <a href="binary.html" title="next chapter">Binary Fan</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Otto Winter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../../../_sources/esphomeyaml/components/fan/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
