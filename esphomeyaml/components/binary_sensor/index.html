@@ -79,7 +79,7 @@ They are similar to <a class="reference internal" href="../sensor/index.html#sen
     <span class="n">filters</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">invert</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">delayed_on</span><span class="p">:</span> <span class="mi">100</span><span class="n">ms</span>
-      <span class="o">-</span> <span class="n">delay_off</span><span class="p">:</span> <span class="mi">100</span><span class="n">ms</span>
+      <span class="o">-</span> <span class="n">delayed_off</span><span class="p">:</span> <span class="mi">100</span><span class="n">ms</span>
       <span class="o">-</span> <span class="k">lambda</span><span class="p">:</span> <span class="o">&gt;-</span>
           <span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">other_binary_sensor</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
@@ -95,7 +95,7 @@ They are similar to <a class="reference internal" href="../sensor/index.html#sen
 an ON state. If an OFF value is received while waiting, the ON action is discarded. Or in other words:
 Only send an ON value if the binary sensor has stayed ON for at least the specified time period.
 <strong>Useful for debouncing push buttons</strong>.</li>
-<li><strong>delayed_on</strong>: When a signal OFF is received, wait for the specified time period until publishing
+<li><strong>delayed_off</strong>: When a signal OFF is received, wait for the specified time period until publishing
 an OFF state. If an ON value is received while waiting, the OFF action is discarded. Or in other words:
 Only send an OFF value if the binary sensor has stayed OFF for at least the specified time period.
 <strong>Useful for debouncing push buttons</strong>.</li>
