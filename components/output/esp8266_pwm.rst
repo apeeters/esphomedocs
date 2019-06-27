@@ -55,6 +55,22 @@ Configuration variables:
 - **frequency** (**Required**, :ref:`templatable <config-templatable>`, float): The frequency
   to set in hertz.
 
+Using a piezo buzzer
+--------------------
+
+To use a piezo buzzer, the output level must be set to 50%. Given the output defined above, the following code results in a simple beep.
+
+.. code-block:: yaml
+
+  on_...:
+    then:
+      - output.set_level:
+          id: pwm_output
+          level: 50%
+      - delay: 100ms
+      - output.turn_off:
+          id: pwm_output
+
 See Also
 --------
 
